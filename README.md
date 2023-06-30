@@ -2,13 +2,13 @@
 
 # SITE Capstone Project
 
-SITE Course Year: **20__**
+SITE Course Year: **2023**
 
-Cohort: **Add Company Sponsor Name**
+Cohort: **2**
 
-Team Member Names:**Insert Team Member Names**
+Team Member Names:**Marwan Kabir, Alan Salazar, Luis Bravo**
 
-Mentors Names: **Insert Professional Mentor Names**
+Mentors Names: **Samuel Parmar, Madhu Nama**
 
 Project Code Repository Links
 
