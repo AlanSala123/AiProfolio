@@ -1,24 +1,45 @@
 # Project Proposal
 
-Pod Members: **Add Pod Members Names**
+Pod Members: ** Luis Bravo, Marwan Kabir, Alan Salazar **
 
 ## Problem Statement
 
-Insert your groups problem statement and target audience.
+  In today's digital age, professionals across industries are seeking a more efficient and visually appealing way to showcase their skills, experience, and accomplishments. Traditional resumes, while informative, often lack the capability to fully capture a person's professional narrative in a way that is easily digestible and engaging. Simultaneously, creating a personal portfolio website from scratch requires coding knowledge or using time-consuming website builders, which can be a deterrent for individuals who are not tech-savvy or lack the necessary time. Moreover, with the increased competition in the job market, it's crucial to have an accessible, comprehensive, and visually pleasing online presence to attract potential employers and network. 
+  The target audience for our web application encompasses a wide range of individuals who seek to establish a robust online professional presence. This includes recent graduates and early-career professionals who are just stepping into the job market and are looking for a way to differentiate themselves from the competition. It also encompasses mid-career and senior professionals who want to provide a holistic view of their career journey and showcase their in-depth project details, achievements, testimonials, and detailed career timelines. Our application will also serve freelancers and consultants who need to continuously display their work and attract new clients, as well as job seekers in creative fields like design, writing, and photography, for whom a portfolio website is an excellent platform to display their creativity and work samples. Non-technical individuals who lack coding knowledge or experience but want a personalized website to present their professional selves online will find our application incredibly useful. Lastly, our web application will cater to academics and researchers, enabling them to share their research work, publications, and contributions to their field.
 
 ## User Roles
 
-Include at least at least 1, but no more than 3, user roles
+"Registered user"
 
 ## User Personas
 
-Include at least 2 personas per User Role
+Sarah, the Recent Graduate: Sarah just finished her degree in Graphic Design. Tech-savvy but time-constrained, she seeks an easy way to professionally showcase her design projects online.
+
+John, the Mid-career Professional: John, a 35-year-old Project Manager, wants a user-friendly tool to create a comprehensive portfolio highlighting his career progression and leadership skills, despite not having coding skills.
+
+Emma, the Freelance Writer: Emma is on the lookout for a simple, intuitive platform where she can continuously update and showcase her writing projects to attract new clients.
 
 ## User Stories
 
-Include at least 10 user stories.
+As an end user, I want to be able to customize the look and feel of my portfolio, so that I can reflect my personal brand and style.
 
-1. **As a [user role], I want to [what], so that [why]**
+As a job seeker, I want to connect my portfolio to my LinkedIn profile or other social media, so that I can maintain consistent professional information across platforms.
+
+As a busy professional, I want to be able to save my work in progress and continue later, so that I can work on my portfolio at my own pace.
+
+As an end user, I want to receive suggestions or recommendations for improving my portfolio, so that I can make my portfolio as compelling as possible.
+
+As a user with multiple job experiences, I want to easily reorder or prioritize the information in my portfolio, so that I can highlight my most relevant experiences or skills according to the jobs I am applying for.
+
+As a creative professional, I want to embed multimedia content like videos, images, or slideshows in my portfolio, so that I can better showcase my work and skills.
+
+As a user interested in feedback, I want to enable comments on my portfolio, so that I can receive direct feedback and engage with viewers.
+
+As an active job seeker, I want to link my portfolio directly to job applications, so that employers can easily access my complete professional profile.
+
+As a privacy-conscious user, I want to control who can see certain sections of my portfolio, so that I can manage my privacy and disclose information selectively.
+
+As an end user, I want to be notified of any updates or improvements to the portfolio creation tool, so that I can leverage new features and keep my portfolio up-to-date and engaging.
 
 ## Wireframe (Bonus)
 
