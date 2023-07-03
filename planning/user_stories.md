@@ -27,19 +27,19 @@ As a job seeker, I want to connect my portfolio to my LinkedIn profile or other 
 
 As a busy professional, I want to be able to save my work in progress and continue later, so that I can work on my portfolio at my own pace.
 
-As an end user, I want to receive suggestions or recommendations for improving my portfolio, so that I can make my portfolio as compelling as possible.
+As an end user, I want to receive visualizations for improving my portfolio, so that I can make my portfolio as compelling as possible.
 
 As a user with multiple job experiences, I want to easily reorder or prioritize the information in my portfolio, so that I can highlight my most relevant experiences or skills according to the jobs I am applying for.
 
 As a creative professional, I want to embed multimedia content like videos, images, or slideshows in my portfolio, so that I can better showcase my work and skills.
 
-As a user interested in feedback, I want to enable comments on my portfolio, so that I can receive direct feedback and engage with viewers.
-
 As an active job seeker, I want to link my portfolio directly to job applications, so that employers can easily access my complete professional profile.
 
-As a privacy-conscious user, I want to control who can see certain sections of my portfolio, so that I can manage my privacy and disclose information selectively.
-
 As an end user, I want to be notified of any updates or improvements to the portfolio creation tool, so that I can leverage new features and keep my portfolio up-to-date and engaging.
+
+As an end user, I want to be able to deploy my website through an external side pipelined through this portfolio creation tool.
+
+As a frequent user, I want to be able to duplicate previous portfolio designs, so that I can create different versions of my portfolio for different job applications without starting from scratch each time.
 
 ## Wireframe (Bonus)
 
