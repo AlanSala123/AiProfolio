@@ -9,7 +9,7 @@ Pod Members: ** Luis Bravo, Marwan Kabir, Alan Salazar **
 
 ## User Roles
 
-"Registered user"
+"Registered user" : has an account.
 
 ## User Personas
 
