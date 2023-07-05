@@ -41,6 +41,9 @@ As an end user, I want to be able to deploy my website through an external side 
 
 As a frequent user, I want to be able to duplicate previous portfolio designs, so that I can create different versions of my portfolio for different job applications without starting from scratch each time.
 
+As a person who has trouble seeing, I want to be able to use a screen reader to read the sections of the website.
+
+As a person who is sensitive to light, I want to be able to toggle my webpage and portfolio from light and dark mode.
 ## Wireframe (Bonus)
 
 Insert link or image to your group's wireframe. 
