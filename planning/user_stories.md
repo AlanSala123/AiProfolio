@@ -45,7 +45,7 @@ As a person who has trouble seeing, I want to be able to use a screen reader to 
 
 As a person who is sensitive to light, I want to be able to toggle my webpage and portfolio from light and dark mode.
 
-##THE GIVEN/WHEN/THEN
+## THE GIVEN/WHEN/THEN
 
 Scenario: customizing personal template
 
