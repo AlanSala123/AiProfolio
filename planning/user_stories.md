@@ -20,30 +20,25 @@ John, the Mid-career Professional: John, a 35-year-old Project Manager, wants a 
 Emma, the Freelance Writer: Emma is on the lookout for a simple, intuitive platform where she can continuously update and showcase her writing projects to attract new clients.
 
 ## User Stories
+As a user, before I login or register I should be greeted by a landing page that explains what the site is, and has a button to register.
 
-As an end user, I want to be able to customize the look and feel of my portfolio, so that I can reflect my personal brand and style.
+As a user I want to be able to register (registration page)
 
-As a job seeker, I want to connect my portfolio to my LinkedIn profile or other social media, so that I can maintain consistent professional information across platforms.
+As a user I want to be able to login (
 
-As a busy professional, I want to be able to save my work in progress and continue later, so that I can work on my portfolio at my own pace.
+As a user, after logging in I should be routed to a page that has my saved templates.
 
-As an end user, I want to receive visualizations for improving my portfolio, so that I can make my portfolio as compelling as possible.
+As a user I should be able to click a button that lets me create a new portfolio template
 
-As a user with multiple job experiences, I want to easily reorder or prioritize the information in my portfolio, so that I can highlight my most relevant experiences or skills according to the jobs I am applying for.
+As a user, I should be able to upload my files, and personal information to populate the information form.
 
-As a creative professional, I want to embed multimedia content like videos, images, or slideshows in my portfolio, so that I can better showcase my work and skills.
+As a user, I should be able to submit my information and generate a template
 
-As an active job seeker, I want to link my portfolio directly to job applications, so that employers can easily access my complete professional profile.
+As a user, I should be able to save my template
 
-As an end user, I want to be notified of any updates or improvements to the portfolio creation tool, so that I can leverage new features and keep my portfolio up-to-date and engaging.
+As a user, I should be able to share my portfolio (deploy)
 
-As an end user, I want to be able to deploy my website through an external side pipelined through this portfolio creation tool.
-
-As a frequent user, I want to be able to duplicate previous portfolio designs, so that I can create different versions of my portfolio for different job applications without starting from scratch each time.
-
-As a person who has trouble seeing, I want to be able to use a screen reader to read the sections of the website.
-
-As a person who is sensitive to light, I want to be able to toggle my webpage and portfolio from light and dark mode.
+As a user, I should be able to click and edit text on my protfilio.
 
 ## THE GIVEN/WHEN/THEN
 
