@@ -5,6 +5,7 @@ const {
   InvalidCredentialsError,
   NotFoundError,
   InternalServerError,
+  FieldValidationError,
 } = require("../utilities/error.js");
 const crypto = require("crypto");
 
@@ -25,26 +26,42 @@ class User {
     }
   }
 
+  // TO DO: FILL OUT PAYLOAD
   static generateAuthToken(user) {
     let payload = {};
     let token = jwt.sign(payload, secretKey, { expiresIn: "30d" });
     return token;
   }
 
-  static async fetchById(userId) {
-    try {
-      const result = await pool.query("SELECT * FROM users WHERE id=$1", [
-        userId,
-      ])
 
-      console.log(result.rows[0])
-
-      if (result.rows.length) {
-        const user = result.rows[0];
-        return user;
-        } else {
-            throw new NotFoundError("User Not Found");
+  // Fetch User by any specified column and value
+  static async fetch(column, value){
+    if (!(column.toLowerCase() === "email") && !(column.toLowerCase() === "id")) {
+      throw new FieldValidationError("Invalid Column Specified in User Fetch");
+    }
+      try {
+        const result = await pool.query(`SELECT * FROM users WHERE ${column}=$1`, [value])
+        if (result.rows.length) {
+          const user = result.rows[0];
+          return user;
+          } else {
+              throw new NotFoundError("User Not Found");
+        }
+      } catch (error) {
+        throw error
       }
+  }
+
+
+  static async login({loginForm, token}){
+    try {
+
+      const email = token ? this.verifyToken(token).email : loginForm.email
+      const user = await this.fetch("email", email)
+      const newToken = this.generateAuthToken(user)
+
+      return {user, newToken}
+
     } catch (error) {
       throw error
     }

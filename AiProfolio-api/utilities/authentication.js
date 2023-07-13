@@ -28,8 +28,6 @@ async function authenticateJWT(req, res, next){
     } catch (error) {
         throw error
     }
-
-    next()
 }
 
 
