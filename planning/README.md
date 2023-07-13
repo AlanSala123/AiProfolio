@@ -12,4 +12,3 @@ For each group deliverable, have **one member** of your pod submit a link to thi
 * **User Stories:** Week 5
 * **Development Plan:** Week 6
 * 
-[FTL Planning.pdf](https://github.com/FTL-AiProfolio/AiProfolio/files/12035178/FTL.Planning.pdf)
