@@ -27,7 +27,6 @@ class User {
   }
 }
 
-  // TO DO: FILL OUT PAYLOAD
   static generateAuthToken(user) {
     let payload = {
       id : user.id, 
@@ -108,9 +107,9 @@ class User {
   }
 
   static validateEmail(email) {
-    // must start with one or more word characters.
+    // must start with one or more characters.
     // can be zero or more occurrences of a dot, hyphen, or underscore, followed by one or more characters.
-    // after the @ symbol, there must be one or more word characters for the domain name.
+    // after the @ symbol, there must be one or more characters for the domain name.
     // domain name can also have optional occurrences of dot, hyphen, or underscore, followed by one or more word characters.
     // domain must end with a dot followed by two or three word characters.
     const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
