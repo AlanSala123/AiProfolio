@@ -1,59 +1,145 @@
-const bcrypt = require("bcrypt");
-const pool = require("../config/database.js");
-const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt")
+const pool = require("../config/database.js")
+const jwt = require("jsonwebtoken")
 const {
   InvalidCredentialsError,
   NotFoundError,
   InternalServerError,
-} = require("../utilities/error.js");
-const crypto = require("crypto");
+  FieldValidationError,
+} = require("../utilities/error.js")
 
-const secretKey = crypto.randomBytes(32).toString("hex");
+const crypto = require("crypto")
+const secretKey = crypto.randomBytes(32).toString("hex")
 
 class User {
+
   static verifyToken(token) {
     if (typeof token !== "string")
-      throw InvalidCredentialsError(
-        (message = `Token not a string, its a ${typeof token}`)
-      );
-    let verified = jwt.verify(token, secretKey);
-    if (verified) {
-      let decoded = jwt.decode(token);
-      return decoded;
-    } else {
-      throw InvalidCredentialsError((message = "Invalid Token"));
+      throw new InvalidCredentialsError(`Token not a string, its a ${typeof token}`)
+    try{
+      let verified = jwt.verify(token, secretKey)
+      if (verified) {
+        let decoded = jwt.decode(token)
+        return decoded
+      }
+    } catch {
+      throw new InvalidCredentialsError("Invalid Token")
+  }
+}
+
+  // TO DO: FILL OUT PAYLOAD
+  static generateAuthToken(user) {
+    let payload = {
+      id : user.id, 
+      first_name : user.first_name,
+      email : user.email
+    }
+    let token = jwt.sign(payload, secretKey, { expiresIn: "3s" })
+    return token
+  }
+
+  // Fetch User by any specified column and value
+  static async fetch(column, value){
+    if (!(column.toLowerCase() === "email") && !(column.toLowerCase() === "id")) {
+      throw new FieldValidationError("Invalid Column Specified in User Fetch")
+    }
+      try {
+        const result = await pool.query(`SELECT * FROM users WHERE ${column}=$1`, [value])
+        if (result.rows.length) {
+          const user = result.rows[0]
+          return user
+          } else {
+              throw new NotFoundError("User Not Found")
+        }
+      } catch (error) {
+        throw error
+      }
+  }
+
+  static async create({password, email, first_name}){
+    this.validateEmail(email)
+    this.validatePassword(password)
+    try {
+      const result = await pool.query(`INSERT INTO users(id, password, first_name, email) VALUES($1,$2,$3,$4) RETURNING email`,[
+        crypto.randomBytes(8).toString('hex'),
+        bcrypt.hashSync(password, 15),
+        first_name,
+        email
+      ])
+      return result.rows[0]
+    }catch{
+      throw new InternalServerError("Error Creating User")
     }
   }
 
-  static generateAuthToken(user) {
-    let payload = {};
-    let token = jwt.sign(payload, secretKey, { expiresIn: "30d" });
-    return token;
+  static async delete(email){
+    try {
+      await pool.query(`DELETE FROM users WHERE email=$1`,[email])
+    } catch {
+      throw InternalServerError("Error Deleting User")
+    }
   }
 
-  static async fetchById(userId) {
+  static async register(registerForm){
+    if(!registerForm.email || !registerForm.first_name || !registerForm.password){
+      throw new FieldValidationError("Missing Field")
+    }
+    const user = await this.create(registerForm)
+    const token = this.generateAuthToken(user)
+    return {user, token}
+  }
+
+  static async login(loginForm, token){
     try {
-      const result = await pool.query("SELECT * FROM users WHERE id=$1", [
-        userId,
-      ])
+      const password = loginForm?.password
+      const email = token ? this.verifyToken(token).email : loginForm.email
+      const user = await this.fetch("email", email)
 
-      console.log(result.rows[0])
-
-      if (result.rows.length) {
-        const user = result.rows[0];
-        return user;
-        } else {
-            throw new NotFoundError("User Not Found");
+      if(bcrypt.compareSync(password, user.password)){
+        const newToken = this.generateAuthToken(user)
+        return {user, newToken}
+      } else{
+        throw new InvalidCredentialsError("Invalid Password")
       }
+
     } catch (error) {
       throw error
     }
   }
 
   static validateEmail(email) {
-    let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return emailPattern.test(email);
+    // must start with one or more word characters.
+    // can be zero or more occurrences of a dot, hyphen, or underscore, followed by one or more word characters.
+    // after the @ symbol, there must be one or more word characters for the domain name.
+    // domain name can also have optional occurrences of dot, hyphen, or underscore, followed by one or more word characters.
+    // domain must end with a dot followed by two or three word characters.
+    const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (emailPattern.test(email)){
+      return true
+    }else{
+      throw new FieldValidationError("Invalid Email Address")
+    } 
+  }
+
+  static validatePassword(password) {
+    // must contain at least one digit.
+    if(!/\d/.test(password)){
+      throw new FieldValidationError("Password should contain at least one digit")
+    }
+    // must contain at least one lowercase letter.
+    if(!/[a-z]/.test(password)){
+      throw new FieldValidationError("Password should contain at least one lowercase character")
+    }
+    // must contain at least one uppercase letter.
+    if(!/[A-Z]/.test(password)){
+      throw new FieldValidationError("Password should contain at least one uppercase character")
+    }
+    // must be a minimum of 8 characters long.
+    if(password.length < 8){
+      throw new FieldValidationError("Password should be at least 8 characters long")
+    }
+    return true
   }
 }
 
-module.exports = User;
+module.exports = User
