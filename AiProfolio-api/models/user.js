@@ -34,7 +34,7 @@ class User {
       first_name : user.first_name,
       email : user.email
     }
-    let token = jwt.sign(payload, secretKey, { expiresIn: "3s" })
+    let token = jwt.sign(payload, secretKey, { expiresIn: "3d" })
     return token
   }
 
@@ -109,7 +109,7 @@ class User {
 
   static validateEmail(email) {
     // must start with one or more word characters.
-    // can be zero or more occurrences of a dot, hyphen, or underscore, followed by one or more word characters.
+    // can be zero or more occurrences of a dot, hyphen, or underscore, followed by one or more characters.
     // after the @ symbol, there must be one or more word characters for the domain name.
     // domain name can also have optional occurrences of dot, hyphen, or underscore, followed by one or more word characters.
     // domain must end with a dot followed by two or three word characters.
