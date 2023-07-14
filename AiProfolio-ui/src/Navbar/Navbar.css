@@ -1,0 +1,21 @@
+ .navbar{
+    margin: 0%;
+    padding: 0%;
+ } 
+  .profileImage img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 70%;
+  }
+
+  .profile ul {
+    list-style: none;
+    text-decoration: none;
+  }
+
+  .profile li {
+    list-style: none;
+    text-decoration: none;
+  }
+  
