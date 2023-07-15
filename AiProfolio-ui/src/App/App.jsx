@@ -3,7 +3,7 @@ import './App.css'
 import Hero from '../Hero/Hero'
 import Navbar from '../Navbar/Navbar'
 import LandingNavbar from '../LandingNavbar/LandingNavbar'
-import { BrowserRouter as Route, BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Fixed import statement for Route
 import Register from '../Register/Register'
 
 function App() {
@@ -11,11 +11,23 @@ function App() {
 
   return (
     <>
-      <LandingNavbar />
-      <Hero />
-
+      <BrowserRouter>
+        <LandingNavbar />
+        <Routes>
+          <Route path="/Register" element={
+            <main>
+              <Register />
+            </main>
+          } />
+          <Route path="/" element={
+            <main>
+              <Hero />
+            </main>
+          } />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;
