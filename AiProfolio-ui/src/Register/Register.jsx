@@ -1,4 +1,8 @@
 import "./Register.css"
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import axios from 'axios'; 
+import './Register.css';
 
 export default function Register() {
     const navigate = useNavigate()
@@ -41,7 +45,7 @@ export default function Register() {
     }
 
     return (
-        <div className="Register">
+        <div className="register">
         <h1>Register</h1>
         <div className="regForm">
             <form>
