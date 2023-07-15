@@ -75,7 +75,7 @@ class User {
     try {
       await pool.query(`DELETE FROM users WHERE email=$1`,[email])
     } catch {
-      throw InternalServerError("Error Deleting User")
+      throw new InternalServerError("Error Deleting User")
     }
   }
 

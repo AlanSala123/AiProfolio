@@ -8,7 +8,7 @@ CREATE TABLE users (
 CREATE TABLE templates (
     template_id Varchar(255),
     code Varchar,
-    most_likes Varchar
+    likes INTEGER
 );
 
 CREATE TABLE portfolios (
