@@ -1,34 +1,29 @@
 import "./LandingNavbar.css"
+import { Link } from 'react-router-dom';
 
+//Landing Page Navbar
 export default function LandingNavbar() {
     return (
-        <div className="box">
-        <div className="navbar-wrapper">
-          <div className="navbar">
-            <div className="text-wrapper">Testimonials</div>
-            <div className="div">Contact</div>
-            <div className="text-wrapper-2">Home</div>
-            <div className="text-wrapper-3">About</div>
-            <div className="text-wrapper-4">Services</div>
-            <div className="ai-profolio">
-              <span className="span">Ai</span>
-              <span className="text-wrapper-5">Profolio</span>
-            </div>
-            <div className="overlap">
-            <a href="/Register">
-            <div className="rectangle" />
-              <div className="text-wrapper-6">Register</div> 
-            </a>
-            </div>
-            <div className="overlap-group">
-            <div className="rectangle" />
-              <div className="sign-in">
-                <span className="text-wrapper-7">Sign</span>
-                <span className="text-wrapper-8">{" "}In<br /></span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <nav className="navbar">
+      <div className="navbar-left">
+        <Link to="/" className="navbar-brand">
+          <span className="Ai">Ai</span>
+          <span>Profolio</span>
+        </Link>
       </div>
+      <div className="navbar-center">
+        <ul className="navbar-items">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/testimonials">Testimonials</Link></li>
+        </ul>
+      </div>
+      <div className="navbar-right">
+        <Link to="/login" className="navbar-SignIn">Sign In</Link>
+        <Link to="/register" className="navbar-Register">Register</Link>
+      </div>
+    </nav>
     )
 } 
