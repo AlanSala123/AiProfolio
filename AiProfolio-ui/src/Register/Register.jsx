@@ -1,7 +1,7 @@
 import "./Register.css"
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import axios from 'axios'; 
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Register.css';
 
 export default function Register() {
@@ -46,26 +46,59 @@ export default function Register() {
     }
 
     return (
+        <>
         <div className="register">
-        <h1>Welcome</h1>
-        <p>Join the AiProfolio Community</p>
-        <div className="regForm">
-            <form>
-                <label for="firstName">First Name</label><br />
-                <input type="text" placeholder="Add your first name here!" id="name_input" name="firstName" value={form.firstName}
-                    onChange={handleOnInputChange} /><br /><br />
-                <label for="email">Email</label><br />
-                <input type="email" placeholder="Add your email here!" id="email" name="email" value={form.email}
-                    onChange={handleOnInputChange} /><br /><br />
-                <label for="password">Password</label><br />
-                <input type="password" placeholder="Add your secret password here" id="password" name="password" value={form.password}
-                    onChange={handleOnInputChange} /><br /><br />
-                <button className="SignButton" onClick={handleOnSubmit}> Sign up </button>
-            </form>
-            {
-                error?.length > 0 ? <h2 style={{ color: 'red' }}>{error}</h2> : null
-            }
+            <h1>Welcome</h1>
+            <p>Join the AiProfolio Community</p>
+            <button className="GoogleButton">Continue with Google</button>
+            <div className="separator">
+                <div className="line"></div>
+                <span>or</span>
+                <div className="line"></div>
+            </div>
+            <div className="regForm">
+                <form>
+                    <label htmlFor="firstName"></label>
+                    <br />
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        id="name_input"
+                        name="firstName"
+                        value={form.firstName}
+                        onChange={handleOnInputChange}
+                    />
+                    <br />
+                    <label htmlFor="email"></label>
+                    <br />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        id="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleOnInputChange}
+                    />
+                    <br />
+                    <label htmlFor="password"></label>
+                    <br />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        id="password"
+                        name="password"
+                        value={form.password}
+                        onChange={handleOnInputChange}
+                    />
+                    <br />
+                    {error?.length > 0 ? <h2 style={{ color: 'red' }}>{error}</h2> : null}
+                    <button className="SignButton" onClick={handleOnSubmit}>
+                        Register
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
+         <div className="footer"> </div>
+     </>
     )
 }
