@@ -27,8 +27,9 @@ export default function Register() {
     const handleOnSubmit = async (event) => {
         event.preventDefault()
         setError(null)
+        console.log(form) //Leave here for testing purposes
         try {
-            const res = await axios.post("https://lifetrack-backend.onrender.com/auth/register", {
+            const res = await axios.post("localhost5173/register", {
                 firstName: form.firstName,
                 email: form.email,
                 password: form.password
@@ -46,7 +47,8 @@ export default function Register() {
 
     return (
         <div className="register">
-        <h1>Register</h1>
+        <h1>Welcome</h1>
+        <p>Join the AiProfolio Community</p>
         <div className="regForm">
             <form>
                 <label for="firstName">First Name</label><br />
