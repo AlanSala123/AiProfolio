@@ -1,147 +1,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
 
+#particles-js{
+    z-index: inherit;
+}
+
 #hero{
     height: 100vh;
     width: 100vw;
-    background-color: rgb(56, 56, 56);
     font-family: "Outfit" ;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: -1;
 }
 
-
-#hero h1, h2{
-    display: inline;
-    text-align: center;
+#hero-title {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25vh;
+    user-select: none;
 }
 
-#hero h1 {
-    position: absolute;
+#hero-title h1,
+#hero-title p {
+    display: inline; 
+    position: relative;
+    z-index: 10;
+}
+
+#hero-title h1:first-child {
+    margin-right: 10px; 
+}
+
+#hero-title h1{
+    font-size: 7.5rem;
     color: white;
-    font-size: 7rem;
-    -webkit-text-stroke-color: black;
+    margin: 0;
 }
 
-#hero h2{
-    color: #58ad70;
-    font-size: 4.5rem;
-    padding-right: 5px;
+#hero-title p{
+    font-size: 2.5rem;
+    color: rgb(183, 183, 183);
+    margin: 0 auto;
+    overflow: hidden;
+    border-right: .15rem solid white;
+    white-space: nowrap;
+    letter-spacing: .15rem;
+    animation:
+        typing 3.5s steps(40, end),
+        blink .75s step-end infinite;
 }
 
-#ai-1{
-    position: absolute;
-    /* animation: ai-glow 1.5s infinite ease-in alternate-reverse;  */
-    animation: ai-orbit-1 2s infinite ease-in-out;
+#hero-title #hero-ai{
+    color: #4d935d;
 }
 
-#ai-2{
-    position: absolute;
-    /* animation: ai-glow 1.5s infinite ease-in alternate-reverse;  */
-    animation: ai-orbit-2 2.01s infinite ease-in-out;
+@keyframes typing {
+    from {width: 0}
+    to {width: 100%}
 }
 
-#ai-3{
-    position: absolute;
-    /* animation: ai-glow 1.5s infinite ease-in alternate-reverse;  */
-    animation: ai-orbit-3 2.02s infinite ease-in-out;
+@keyframes blink {
+    from, to {border-color: transparent;}
+    50%{ border-color: white;}
 }
-
-
-
-
-@keyframes ai-glow{
-    from {text-shadow: none;
-        }
-    to {text-shadow: 0px 0px 7.5px #a5ffa5;
-       }
-}
- 
-@keyframes ai-orbit-1 {
-    0% {
-        transform: translateX(-250px) translateY(-100px);
-        z-index: 100;
-        scale: 1.1;
-        text-shadow: 0px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    25% {
-        scale: 1.5;
-        text-shadow:  -10px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    50% {
-        transform: translateX(250px) translateY(100px);
-        scale: 0.9;
-        z-index: 0;
-        text-shadow: 0 0 10px rgba(75, 255, 84, 0.5);
-    }
-    75% {
-        scale: 0.5;
-        text-shadow: 10px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    100% {
-        transform: translateX(-250px) translateY(-100px);
-        z-index: 0;
-        scale: 1.1;
-        text-shadow: 0 0 10px rgba(75, 255, 84, 0.5);
-    }
-}
-
-
-@keyframes ai-orbit-2 {
-    0% {
-        transform: translateX(-100px) translateY(-250px);
-        z-index: 100;
-        scale: 1.1;
-        text-shadow: 0px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    25% {
-        scale: 1.5;
-        text-shadow:  -10px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    50% {
-        transform: translateX(100px) translateY(250px);
-        scale: 0.9;
-        z-index: 0;
-        text-shadow: 0 0 10px rgba(75, 255, 84, 0.5);
-    }
-    75% {
-        scale: 0.5;
-        text-shadow: 10px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    100% {
-        transform: translateX(-100px) translateY(-250px);
-        z-index: 0;
-        scale: 1.1;
-        text-shadow: 0 0 10px rgba(75, 255, 84, 0.5);
-    }
-}
-
-@keyframes ai-orbit-3 {
-    0% {
-        transform: translateX(-250px) translateY(100px);
-        z-index: 100;
-        scale: 1.1;
-        text-shadow: 0px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    25% {
-        scale: 1.5;
-        text-shadow:  -10px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    50% {
-        transform: translateX(250px) translateY(-100px);
-        scale: 0.9;
-        z-index: 0;
-        text-shadow: 0 0 10px rgba(75, 255, 84, 0.5);
-    }
-    75% {
-        scale: 0.5;
-        text-shadow: 10px 0 10px rgba(75, 255, 84, 0.5);
-    }
-    100% {
-        transform: translateX(-250px) translateY(100px);
-        z-index: 0;
-        scale: 1.1;
-        text-shadow: 0 0 10px rgba(75, 255, 84, 0.5);
-    }
-}
-

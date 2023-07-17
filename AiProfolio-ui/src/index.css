@@ -1,9 +1,11 @@
 body{
-  margin: auto;
-  border: 0;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
+
+
 html {
-  margin: auto;
+  margin: 0;
 }
