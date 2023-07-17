@@ -50,29 +50,6 @@ describe("fetch portfolio", () => {
       expect(error instanceof NotFoundError).toBeTruthy();
     }
   })
-
-  test("the fetch name should return portfolio by name", async () => {
-    const name = "test-name";
-    const result = await Portfolio.getByName(name);
-    expect(result).toStrictEqual({
-      id: "1",
-      name: "test-name",
-      user_id: "test-userid",
-      template_id: "test-templateid",
-      code: "test-code",
-      created_at: "test-created-at",
-    })
-  })
-
-  test("The fetch should return a Not Found Error if the name is not found", async () => {
-    const TestTempid = "namenotfound";
-    try {
-      await Portfolio.fetchPortfolio(TestTempid);
-      fail();
-    } catch (error) {
-      expect(error instanceof NotFoundError).toBeTruthy();
-    }
-  })
 })
 
 describe("Create", () => {

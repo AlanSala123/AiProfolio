@@ -39,23 +39,7 @@ class Portfolio {
     }
   }
 
-  //fetching by name
-  static async getByName(name) {
-    try {
-      const result = await pool.query(
-        `SELECT * FROM portfolios WHERE name=$1`,
-        [name]
-      );
-      if (result.rows.length === 0) {
-        throw error;
-      }
-      return result.rows[0];
-    } catch (error) {
-      throw new NotFoundError("Not Found");
-    }
-  }
-
-  //Createing portfolio
+  //Creating portfolio
   static async createPortfolio(portfolioData) {
     try {
       const { id, name, user_id, template_id, code, created_at } = portfolioData;

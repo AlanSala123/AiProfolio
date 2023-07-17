@@ -13,4 +13,4 @@ VALUES
 INSERT INTO portfolios 
 (id, name, user_id, template_id, code, created_at)
 VALUES
-('test-id', 'test-name', 'test-userid', 'test-templateid', 'test-code', 'test-created-at')
+('1', 'test-name', 'test-userid', 'test-templateid', 'test-code', 'test-created-at')
