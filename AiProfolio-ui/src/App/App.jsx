@@ -6,6 +6,7 @@ import LandingNavbar from '../LandingNavbar/LandingNavbar'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'; 
 import Register from '../Register/Register'
 import axios from 'axios'
+import OurServices from '../OurServices/OurServices'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -58,6 +59,7 @@ function App() {
           <Route path="/" element={
             <main>
               <Hero />
+              <OurServices />
             </main>
           } />
         </Routes>
