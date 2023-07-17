@@ -1,0 +1,127 @@
+.login {
+    background-color: #5cab72;
+    padding: 30px;
+    border-radius: 10px;
+    width: 600px;
+    height: 81vh;
+    margin: 0 auto;
+    margin-top: 2%;
+    text-align: center;
+    font-family: outfit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login h1 {
+    font-size: 70px;
+    margin-bottom: 10px;
+    color: white;
+    font-family: outfit;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .loginForm label {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .loginForm input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .loginButton {
+    background-color: white;
+    color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 200px; /* Adjust the width as desired */
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 100px;
+  }
+  
+  .loginButton:hover {
+    background-color: #4d935d;
+  }
+  
+  .login #error-message,
+  .login #error-message-short,
+  .login #error-message-long {
+    color: rgb(136, 0, 0);
+    font-weight: 1000;
+    font-size: 16px;
+    margin-top: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-right: 0.15rem solid rgb(136, 0, 0);
+    white-space: nowrap;
+    letter-spacing: 0.1rem;
+    animation: typing-medium 1s steps(40, end), blink-red 0.75s step-end infinite;
+  }
+  
+  .login #error-message-short {
+    animation: typing-short 1s steps(40, end), blink-red 0.75s step-end infinite;
+  }
+  
+  .login #error-message-long {
+    animation: typing-long 1s steps(40, end), blink-red 0.75s step-end infinite;
+  }
+  
+  @keyframes blink-red {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: rgb(136, 0, 0);
+    }
+  }
+  
+  @keyframes typing-short {
+    from {
+      width: 0;
+    }
+    to {
+      width: 225px;
+    }
+  }
+  
+  @keyframes typing-medium {
+    from {
+      width: 0;
+    }
+    to {
+      width: 375px;
+    }
+  }
+  
+  @keyframes typing-long {
+    from {
+      width: 0;
+    }
+    to {
+      width: 475px;
+    }
+  }
+  

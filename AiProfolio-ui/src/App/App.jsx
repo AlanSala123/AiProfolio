@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Register from '../Register/Register'
 import axios from 'axios'
 import OurServices from '../OurServices/OurServices'
+import Login from '../Login/Login'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -44,9 +45,6 @@ function App() {
     setToken(null);
     navigate('/');
   }
-  
-
-
   return (
     <>
         <LandingNavbar />
@@ -54,6 +52,11 @@ function App() {
           <Route path="/Register" element={
             <main>
               <Register setUser={setUser} setToken={setToken}/>
+            </main>
+          } />
+          <Route path="/Login" element={
+            <main>
+              <Login setUser={setUser} setToken={setToken}/>
             </main>
           } />
           <Route path="/" element={
