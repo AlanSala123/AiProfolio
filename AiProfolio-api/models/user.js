@@ -37,7 +37,7 @@ class User {
     return token
   }
 
-  // Fetch User by any specified column and value
+  // Fetch User by any email or id
   static async fetch(column, value){
     if (!(column.toLowerCase() === "email") && !(column.toLowerCase() === "id")) {
       throw new FieldValidationError("Invalid Column Specified in User Fetch")
@@ -58,6 +58,15 @@ class User {
   static async create({password, email, first_name}){
     this.validateEmail(email)
     this.validatePassword(password)
+
+    let user
+
+    try {
+      user = await User.fetch("email", email)
+    } catch{}
+    if (user)
+      throw new InternalServerError("Email already exists")
+    
     try {
       const result = await pool.query(`INSERT INTO users(id, password, first_name, email) VALUES($1,$2,$3,$4) RETURNING email`,[
         crypto.randomBytes(8).toString('hex'),
@@ -88,11 +97,21 @@ class User {
     return {user, token}
   }
 
-  static async login(loginForm, token){
+  static async login({loginForm, token}){
+    console.log(token)
+    console.log(loginForm)
     try {
-      const password = loginForm?.password
+      const password = loginForm?.password 
       const email = token ? this.verifyToken(token).email : loginForm.email
+
       const user = await this.fetch("email", email)
+
+      if (token){
+        if(this.verifyToken(token)){
+          const newToken = this.generateAuthToken(user)
+          return {user, newToken}
+        }
+      }
 
       if(bcrypt.compareSync(password, user.password)){
         const newToken = this.generateAuthToken(user)
