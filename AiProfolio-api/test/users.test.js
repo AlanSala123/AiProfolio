@@ -219,7 +219,7 @@ describe("Login", ()=>{
             email: email,
             password: password
         }
-        const {user, token} = await User.login(loginForm, "")
+        const {user, token} = await User.login({loginForm})
         expect(user.email).toStrictEqual(email)
     })
 
@@ -246,7 +246,7 @@ describe("Login", ()=>{
             password: password
         }
         try {
-            await User.login(loginForm, "")
+            await User.login({loginForm})
             fail()
         } catch (error) {
             expect(error instanceof InvalidCredentialsError).toBeTruthy()
