@@ -8,7 +8,8 @@ body {
     background-color: #5cab72;
     padding: 30px;
     border-radius: 10px;
-    width: 400px;
+    width: 600px;
+    height: 81vh;
     margin: 0 auto;
     margin-top: 2%;
     text-align: center;
@@ -28,9 +29,55 @@ body {
     color: #777;
     margin-bottom: 50px;
     color:white;
+    width: 100%;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
   }
   
+  .register #error-message {
+    color: rgb(136, 0, 0);
+    font-weight: 1000;
+    font-size: 16px;
+    margin-top: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-right: .15rem solid rgb(136, 0, 0);
+    white-space: nowrap;
+    letter-spacing: .1rem;
+    animation:
+        typing-medium 1s steps(40, end),
+        blink-red .75s step-end infinite;
+  }
+
+  .register #error-message-short {
+    color: rgb(136, 0, 0);
+    font-weight: 1000;
+    font-size: 16px;
+    margin-top: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-right: .15rem solid rgb(136, 0, 0);
+    white-space: nowrap;
+    letter-spacing: .1rem;
+    animation:
+        typing-short 1s steps(40, end),
+        blink-red .75s step-end infinite;
+  }
+
+  .register #error-message-long {
+    color: rgb(136, 0, 0);
+    font-weight: 1000;
+    font-size: 16px;
+    margin-top: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-right: .15rem solid rgb(136, 0, 0);
+    white-space: nowrap;
+    letter-spacing: .1rem;
+    animation:
+        typing-long 1s steps(40, end),
+        blink-red .75s step-end infinite;
+  }
+
   .GoogleButton {
     background-color: #4285f4;
     color: white;
@@ -100,15 +147,28 @@ body {
   .SignButton:hover {
     background-color: #4d935d;
   }
-  
-  .regForm h2 {
-    color: red;
-    font-size: 16px;
-    margin-top: 10px;
-  }
 
   .footer {
     background-color: #333;
     height: 135px;
   }
   
+@keyframes blink-red {
+    from, to {border-color: transparent;}
+    50%{ border-color: rgb(136, 0, 0);}
+}
+
+@keyframes typing-short {
+  from {width: 0}
+  to {width: 225px;}
+}
+
+@keyframes typing-medium {
+  from {width: 0}
+  to {width: 375px;}
+}
+
+@keyframes typing-long {
+  from {width: 0;}
+  to {width: 475px;}
+}

@@ -1,11 +1,9 @@
 import "./Register.css"
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Register.css';
 
-export default function Register() {
-    const navigate = useNavigate()
+export default function Register({setUser, setToken}) {
     const [error, setError] = useState('')
     const [form, setForm] = useState({
         firstName: "",
@@ -14,35 +12,33 @@ export default function Register() {
     })
 
     const handleOnInputChange = (event) => {
-        if (event.target.name === "email") {
-            if (event.target.value.indexOf("@") === -1) {
-                setError("Please enter a valid email.")
-            } else {
-                setError(null)
-            }
-        }
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
     }
 
     const handleOnSubmit = async (event) => {
         event.preventDefault()
         setError(null)
-        console.log(form) //Leave here for testing purposes
-        try {
-            const res = await axios.post("localhost5173/register", {
-                firstName: form.firstName,
+            try {
+                const res = await axios.post("http://localhost:3001/auth/register", {
+                first_name: form.firstName,
                 email: form.email,
                 password: form.password
             })
+
             if (res?.data?.user) {
-                navigate("/login")
-            } else {
-                setError("That email is already in use")
+                const user = res?.data?.user
+                const token = res?.data?.token
+                setUser(user)
+                setToken(token)
+                localStorage.setItem("token", token)
             }
-        } catch (err) {
-            const message = err?.response?.data?.error?.message
-            setError({ message })
-        }
+            } catch(err) {
+                if(err?.response?.data?.error) {
+                    const message = err?.response?.data?.error
+                    setError(message)
+                }
+            }
+            
     }
 
     return (
@@ -57,6 +53,7 @@ export default function Register() {
                 <div className="line"></div>
             </div>
             <div className="regForm">
+                {error ? (<h2 id={error.length >= 22 ? (error.length > 43 ? "error-message-long" : "error-message" ) : "error-message-short"}>{error}</h2>) : (<></>)}
                 <form>
                     <label htmlFor="firstName"></label>
                     <br />
@@ -91,8 +88,15 @@ export default function Register() {
                         onChange={handleOnInputChange}
                     />
                     <br />
-                    {error?.length > 0 ? <h2 style={{ color: 'red' }}>{error}</h2> : null}
-                    <button className="SignButton" onClick={handleOnSubmit}>
+                    <button 
+                        disabled = {!(form.email && form.firstName && form.password)}
+                        style={{
+                            "cursor" : !(form.email && form.firstName && form.password) ? "default" : "pointer",
+                            "backgroundColor" : !(form.email && form.firstName && form.password) ? "#4d935d" : "",
+                            "filter" : !(form.email && form.firstName && form.password) ? "contrast(0.75)" : ""
+                        
+                        }}
+                        className="SignButton" onClick={handleOnSubmit}>
                         Register
                     </button>
                 </form>
