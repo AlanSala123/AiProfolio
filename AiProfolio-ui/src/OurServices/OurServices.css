@@ -1,0 +1,42 @@
+/* OurServices.css */
+.our-services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 500px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .services-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    max-width: 800px; /* Limit the width of the services container */
+  }
+  
+  .service {
+    flex: 1;
+    margin: 10 100px; /* Add some horizontal spacing between services */
+  }
+  
+  .service img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .service p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  
