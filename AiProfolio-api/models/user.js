@@ -100,8 +100,7 @@ class User {
   static async login({loginForm, token}){
     try {
       const password = loginForm?.password 
-      const email = token ? this.verifyToken(token).email : loginForm.email
-
+      const email = token ? this.verifyToken(token)?.email : loginForm?.email
       const user = await this.fetch("email", email)
 
       if (token){
