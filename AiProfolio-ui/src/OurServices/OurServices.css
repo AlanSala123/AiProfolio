@@ -13,12 +13,14 @@
     font-weight: bold;
     color: #5CAB72;
     margin-bottom: 10px;
+    font-family: outfit;
   }
   
   .section-heading {
     font-size: 40px;
     color: #333;
     margin-bottom: 30px;
+    font-family: outfit;
   }
   
   .services-container {
@@ -34,6 +36,11 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.8s ease;
+  }
+
+  .service:hover {
+    scale: 1.1;
   }
   
   .service svg {
@@ -45,14 +52,16 @@
   }
   
   .service-heading {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: black;
     margin-bottom: 10px;
+    font-family: outfit;
   }
   
-  .service p {
+  .service-p {
     font-size: 16px;
     color: #666;
+    font-family: outfit;
   }
   

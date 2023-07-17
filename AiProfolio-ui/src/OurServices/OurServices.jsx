@@ -14,17 +14,17 @@ export default function OurServices() {
           <div className="service">
             {computer}
             <p className="service-heading">Create</p>
-            <p>All you need to do is drag and drop your resume and we will generate a personal portfolio website</p>
+            <p className="service-p">All you need to do is drag and drop your resume and we will generate a personal portfolio website</p>
           </div>
           <div className="service">
           {IconSVG}
             <p className="service-heading">Share</p>
-            <p>Once your portfolio is generated you can share the link with others to view your portfolio</p>
+            <p className="service-p">Once your portfolio is generated you can share the link with others to view your portfolio</p>
           </div>
           <div className="service">
             {Customize}
             <p className="service-heading">Customize</p>
-            <p>You can update anything else in your portfolio that you would like with a simple click of a button</p>
+            <p className="service-p">You can update anything in your portfolio with a simple click of a button</p>
           </div>
         </div>
       </div>
