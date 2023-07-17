@@ -25,32 +25,42 @@ export default function Login({ setUser, setToken }) {
       }
     }
   }
+  const isLoginButtonDisabled = !(email && password);
+  const loginButtonStyles = {
+    cursor: isLoginButtonDisabled ? 'default' : 'pointer',
+    backgroundColor: isLoginButtonDisabled ? '#4d935d' : '',
+    filter: isLoginButtonDisabled ? 'contrast(0.75)' : '',
+  }
 
   return (
     <div className="login">
       <h1>Login</h1>
       <form onSubmit={handleLogin} className="loginForm">
         <label>
-          Email:
           <input
             type="email"
             value={email}
+            placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
         <br />
         <label>
-          Password:
           <input
             type="password"
             value={password}
+            placeholder='Password'
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
         <br />
-        <button type="submit" className="loginButton">
+        <button 
+        type="submit"
+        className="loginButton"
+        disabled={isLoginButtonDisabled}
+        style={loginButtonStyles}>
           Login
         </button>
       </form>
