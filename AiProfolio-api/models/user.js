@@ -98,8 +98,6 @@ class User {
   }
 
   static async login({loginForm, token}){
-    console.log(token)
-    console.log(loginForm)
     try {
       const password = loginForm?.password 
       const email = token ? this.verifyToken(token).email : loginForm.email
