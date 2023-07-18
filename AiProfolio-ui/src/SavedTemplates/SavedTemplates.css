@@ -1,0 +1,90 @@
+/* YourComponent.css */
+
+/* Entire Saved Container */
+.entire-saved {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Top Buttons */
+  .top-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    margin-top: 100px;
+  }
+  
+  /* Saved and Popular Buttons */
+  .saved-button,
+  .popular-button {
+    flex: 1;
+  }
+
+/* Saved and Popular Buttons */
+.saved-button button,
+.popular-button button {
+  background-color: #393e46;
+  color: white;
+  border: none;
+  padding: 15px 30px; /* Increase the padding to make the buttons bigger */
+  font-size: 18px; /* Increase the font size for better visibility */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+.saved-button button:hover,
+.popular-button button:hover {
+  background-color: #347474; /* Slightly darker shade on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+  
+  /* Search with Create and Delete Buttons */
+  .search-with-create-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .searchbar {
+    flex: 2;
+  }
+  
+  .searchbar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .createNew,
+  .delete {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  .createNew button,
+  .delete button {
+    background-color: #5CAB72;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Template Grid */
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* Add additional styles as needed */
+  
