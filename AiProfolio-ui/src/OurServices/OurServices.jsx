@@ -23,7 +23,7 @@ export default function OurServices() {
   }, []);
 
   return (
-    <div className="our-services">
+    <div id="our-services">
       <h2 className="section-title"> Services</h2>
       <h2 className="section-heading">Taking your career to the next level</h2>
       <div className={`services-container ${animate ? 'animate' : ''}`}>
