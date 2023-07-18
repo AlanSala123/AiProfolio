@@ -9,6 +9,7 @@ import axios from 'axios'
 import OurServices from '../OurServices/OurServices'
 import Login from '../Login/Login'
 import ContactUs from '../Contact/Contact'
+import Footer from '../Footer/Footer'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -65,6 +66,7 @@ function App() {
               <Hero />
               <OurServices />
               <ContactUs/>
+              <Footer />
             </main>
           } />
         </Routes>
