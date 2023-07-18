@@ -3,7 +3,7 @@ import './Contact.css';
 
 export default function ContactUs() {
   return (
-    <div className="container">
+    <div className="contact-container">
       <div className="text">
         Contact Us
       </div>
@@ -42,5 +42,5 @@ export default function ContactUs() {
         </div>
       </form>
     </div>
-  );
+  )
 }
