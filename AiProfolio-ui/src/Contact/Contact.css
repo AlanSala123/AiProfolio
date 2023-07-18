@@ -14,6 +14,7 @@
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   background: -webkit-linear-gradient(right, black, #5cab72, black, #5cab72);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
