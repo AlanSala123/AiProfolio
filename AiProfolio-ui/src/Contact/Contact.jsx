@@ -10,28 +10,24 @@ export default function ContactUs() {
       <form action="#">
         <div className="form-row">
           <div className="input-data">
-            <input type="text" required />
+            <input type="text" placeholder="First Name" required />
             <div className="underline"></div>
-            <label>First Name</label>
           </div>
           <div className="input-data">
-            <input type="text" required />
+            <input type="text" placeholder="Last Name" required />
             <div className="underline"></div>
-            <label>Last Name</label>
           </div>
         </div>
         <div className="form-row">
           <div className="input-data">
-            <input type="text" required />
+            <input type="text" placeholder="Email Address" required />
             <div className="underline"></div>
-            <label>Email Address</label>
           </div>
         </div>
         <div className="form-row">
           <div className="input-data textarea">
-            <textarea rows="8" cols="80" required></textarea>
+            <textarea rows="8" cols="80" placeholder="Write your message" required></textarea>
             <div className="underline"></div>
-            <label>Write your message</label>
           </div>
         </div>
         <div className="form-row submit-btn">
@@ -42,5 +38,5 @@ export default function ContactUs() {
         </div>
       </form>
     </div>
-  )
+  );
 }
