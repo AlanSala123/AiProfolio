@@ -3,6 +3,7 @@ import './Contact.css';
 
 export default function ContactUs() {
   return (
+    <div id="entire-container">
     <div className="contact-container">
       <div className="text">
         Contact Us
@@ -37,6 +38,7 @@ export default function ContactUs() {
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 }

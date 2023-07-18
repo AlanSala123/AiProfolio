@@ -6,18 +6,17 @@ export default function LandingNavbar() {
     return (
       <nav className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="navbar-brand">
+        <Link to="/#hero" className="navbar-brand">
           <span className="Ai">Ai</span>
           <span>Profolio</span>
         </Link>
       </div>
       <div className="navbar-center">
         <ul className="navbar-items">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/services">Services</Link></li>
+          <li><a href="/#hero">Home</a></li>
+          <li><a href="/#our-services">Services</a></li>
           <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/testimonials">Testimonials</Link></li>
+          <li><a href="#entire-container">Contact</a></li>
         </ul>
       </div>
       <div className="navbar-right">
