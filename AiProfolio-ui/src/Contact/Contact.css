@@ -48,20 +48,7 @@
   border: none;
   font-size: 17px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-}
-
-.contact-container input:focus ~ label,
-.contact-container textarea:focus ~ label,
-.contact-container input:valid ~ label,
-.contact-container textarea:valid ~ label {
-  transform: translateY(-20px);
-  font-size: 14px;
-  color: #3498db;
-}
-
-.contact-container textarea {
-  resize: none;
-  padding-top: 10px;
+  outline: none; /* Remove outline when in focus */
 }
 
 .contact-container label {
