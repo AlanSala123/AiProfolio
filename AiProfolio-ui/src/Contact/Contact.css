@@ -1,31 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  outline: none;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 10px;
-  background: linear-gradient(115deg, black 10%, #5cab72 90%);
-}
-
-.container {
+.contact-container {
   max-width: 100%;
-  margin: 0 auto; /* Add auto margin to center the container */
+  margin: 0 auto;
   background: #fff;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container .text {
+.contact-container .text {
   text-align: center;
   font-size: 41px;
   font-weight: 600;
@@ -35,30 +18,30 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.container form {
+.contact-container form {
   padding: 30px 0 0 0;
-  margin: 0 auto; /* Add auto margin to center the form */
-  max-width: 400px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+  max-width: 400px;
 }
 
-.container form .form-row {
+.contact-container form .form-row {
   display: block;
   margin-bottom: 32px;
 }
 
-form .form-row .input-data {
+.contact-container .input-data {
   width: 100%;
   height: 40px;
   position: relative;
   margin-bottom: 20px;
 }
 
-form .form-row .textarea {
+.contact-container .textarea {
   height: 70px;
 }
 
-.input-data input,
-.textarea textarea {
+.contact-container input,
+.contact-container textarea {
   display: block;
   width: 100%;
   height: 100%;
@@ -67,21 +50,21 @@ form .form-row .textarea {
   border-bottom: 2px solid rgba(0, 0, 0, 0.12);
 }
 
-.input-data input:focus ~ label,
-.textarea textarea:focus ~ label,
-.input-data input:valid ~ label,
-.textarea textarea:valid ~ label {
+.contact-container input:focus ~ label,
+.contact-container textarea:focus ~ label,
+.contact-container input:valid ~ label,
+.contact-container textarea:valid ~ label {
   transform: translateY(-20px);
   font-size: 14px;
   color: #3498db;
 }
 
-.textarea textarea {
+.contact-container textarea {
   resize: none;
   padding-top: 10px;
 }
 
-.input-data label {
+.contact-container label {
   position: absolute;
   pointer-events: none;
   bottom: 10px;
@@ -89,20 +72,14 @@ form .form-row .textarea {
   transition: all 0.3s ease;
 }
 
-.textarea label {
-  width: 100%;
-  bottom: 40px;
-  background: #fff;
-}
-
-.input-data .underline {
+.contact-container .underline {
   position: absolute;
   bottom: 0;
   height: 2px;
   width: 100%;
 }
 
-.input-data .underline:before {
+.contact-container .underline:before {
   position: absolute;
   content: "";
   height: 2px;
@@ -113,25 +90,25 @@ form .form-row .textarea {
   transition: transform 0.3s ease;
 }
 
-.input-data input:focus ~ .underline:before,
-.input-data input:valid ~ .underline:before,
-.textarea textarea:focus ~ .underline:before,
-.textarea textarea:valid ~ .underline:before {
+.contact-container input:focus ~ .underline:before,
+.contact-container input:valid ~ .underline:before,
+.contact-container textarea:focus ~ .underline:before,
+.contact-container textarea:valid ~ .underline:before {
   transform: scale(1);
 }
 
-.submit-btn {
+.contact-container .submit-btn {
   display: flex;
   justify-content: center;
 }
 
-.submit-btn .input-data {
+.contact-container .submit-btn .input-data {
   overflow: hidden;
   height: 45px !important;
   width: 25% !important;
 }
 
-.submit-btn .input-data .inner {
+.contact-container .submit-btn .input-data .inner {
   height: 100%;
   width: 300%;
   position: absolute;
@@ -140,11 +117,11 @@ form .form-row .textarea {
   transition: all 0.4s;
 }
 
-.submit-btn .input-data:hover .inner {
+.contact-container .submit-btn .input-data:hover .inner {
   left: 0;
 }
 
-.submit-btn .input-data input {
+.contact-container .submit-btn .input-data input {
   background: none;
   border: none;
   color: #fff;
@@ -158,19 +135,19 @@ form .form-row .textarea {
 }
 
 @media (max-width: 700px) {
-  .container .text {
+  .contact-container .text {
     font-size: 30px;
   }
-  .container form {
+  .contact-container form {
     padding: 10px 0 0 0;
   }
-  .container form .form-row {
+  .contact-container form .form-row {
     display: block;
   }
-  form .form-row .input-data {
+  .contact-container .input-data {
     margin: 35px 0 !important;
   }
-  .submit-btn .input-data {
+  .contact-container .submit-btn .input-data {
     width: 40% !important;
   }
 }
