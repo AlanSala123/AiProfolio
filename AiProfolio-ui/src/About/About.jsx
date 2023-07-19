@@ -6,7 +6,7 @@ export default function AboutUs() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const servicesElement = document.querySelector('.about-us-container');
+      const servicesElement = document.querySelector('#about-us-container');
       const bounding = servicesElement.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
@@ -20,7 +20,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="about-us-container">
+    <div id="about-us-container">
         <h1 className='about-header'>About Us</h1>
       <div className="about-box" style={{ display: animate ? 'block' : 'none' }}>
         <img
