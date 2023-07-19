@@ -46,7 +46,6 @@ export default function Register({ setUser, setToken }) {
                 setError(message)
             }
         }
-
     }
 
     return (
