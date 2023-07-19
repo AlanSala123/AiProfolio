@@ -11,6 +11,7 @@ import Login from '../Login/Login'
 import ContactUs from '../Contact/Contact'
 import Footer from '../Footer/Footer'
 import AboutUs from '../About/About'
+import SavedTemplates from '../SavedTemplates/SavedTemplates'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -69,6 +70,11 @@ function App() {
               <AboutUs/>
               <ContactUs/>
               <Footer />
+            </main>
+          } />
+          <Route path="/saved-templates" element={
+            <main>
+              <SavedTemplates user={user} token={token}/>
             </main>
           } />
         </Routes>
