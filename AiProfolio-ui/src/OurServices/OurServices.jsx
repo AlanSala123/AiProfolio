@@ -17,7 +17,7 @@ export default function OurServices() {
         setAnimate(true);
       }
     };
-
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

@@ -1,11 +1,12 @@
 import "./SavedTemplates.css"
+import { Link } from 'react-router-dom'
 
 export default function SavedTemplates({user, token}) {
     return (
         <div className="entire-saved">
             <div className="top-buttons">
                 <div className="saved-button">
-                    <button> My Saved Templates </button>
+                    <Link to="/popular-templates" className="saved"> My Saved Templates </Link>
                 </div>
                 <div className="popular-button">
                     <button> Popular Templates </button>

@@ -15,7 +15,7 @@ export default function LandingNavbar() {
         <ul className="navbar-items">
           <li><a href="/#hero">Home</a></li>
           <li><a href="/#our-services">Services</a></li>
-          <li><Link to="/about">About</Link></li>
+          <li><a href="#about-us-container">About</a></li>
           <li><a href="#entire-container">Contact</a></li>
         </ul>
       </div>
