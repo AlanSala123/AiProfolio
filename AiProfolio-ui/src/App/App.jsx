@@ -10,6 +10,7 @@ import OurServices from '../OurServices/OurServices'
 import Login from '../Login/Login'
 import ContactUs from '../Contact/Contact'
 import Footer from '../Footer/Footer'
+import AboutUs from '../About/About'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -65,6 +66,7 @@ function App() {
             <main>
               <Hero />
               <OurServices />
+              <AboutUs/>
               <ContactUs/>
               <Footer />
             </main>
