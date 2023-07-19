@@ -1,0 +1,82 @@
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-box {
+    flex: 0 0 calc(20% - 40px); /* Adjust the width of the container with margin space */
+    margin: 80px;
+    padding: 20px;
+    border-radius: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Replace with your desired solid color */
+    opacity: 0;
+    animation: scaleIn 1s ease-out forwards;
+    display: flex; /* Added to make the container adjust its width to fit the content */
+    flex-direction: column; /* Added to stack the content vertically */
+    align-items: center; /* Added to vertically center the content */
+    text-align: center; /* Added to center the text horizontally */
+    transform: scaleY(1.2); /* Added to create an egg-shaped appearance */
+  }
+  
+  .about-box:nth-child(1) {
+    animation-delay: 0.4s;
+  }
+  
+  .about-box:nth-child(2) {
+    animation-delay: 0.8s;
+  }
+  
+  .about-box:nth-child(3) {
+    animation-delay: 1.2s;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .about-image {
+    width: 300px;
+    height: auto;
+    border-radius: 200px;
+  }
+  
+  .about-name {
+    margin-top: 10px;
+    font-size: 18px;
+    word-wrap: break-word; /* Allow the text to wrap within the container */
+    font-family: "Outfit";
+  }
+  
+  .about-description {
+    margin-top: 5px;
+    font-size: 14px;
+    word-wrap: break-word; /* Allow the text to wrap within the container */
+    font-family: "Outfit";
+  }
+
+  .about-header {
+    font-family: "Outfit"; 
+    font-size: 44px;
+    font-weight: bold;
+    color:#5CAB72;
+    text-align: center;
+    margin-bottom: 550px; 
+    position: absolute;
+    z-index: 2;
+    
+  }
+  
+  
+  
