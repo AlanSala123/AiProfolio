@@ -5,6 +5,7 @@
     padding: 20px;
     justify-content: center;
     align-items: center;
+    position: relative; /* Add this line to establish a positioning context */
   }
   
   .about-box {
@@ -67,15 +68,17 @@
   }
 
   .about-header {
-    font-family: "Outfit"; 
+    font-family: "Outfit";
     font-size: 44px;
     font-weight: bold;
-    color:#5CAB72;
+    color: #5CAB72;
     text-align: center;
-    margin-bottom: 550px; 
-    position: absolute;
+    margin: 0 auto;
     z-index: 2;
-    
+    position: absolute;
+    top: 20px; /* Adjust the top positioning as needed */
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   
