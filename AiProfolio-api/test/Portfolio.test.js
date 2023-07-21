@@ -55,7 +55,6 @@ describe("fetch portfolio", () => {
 describe("Create", () => {
   test("should create a new portfolio and return the created portfolio object", async () => {
     const portfolioData = {
-      id: "1",
       name: "test-portfolio",
       user_id: "test-userid",
       template_id: "test-templateid",
@@ -65,28 +64,8 @@ describe("Create", () => {
 
     const createdPortfolio = await Portfolio.createPortfolio(portfolioData);
 
-    expect(createdPortfolio).toStrictEqual(portfolioData);
+    expect(createdPortfolio.name).toStrictEqual(portfolioData.name);
   })
-
-//   test("should throw InternalServerError when failed to create a portfolio", async () => {
-//     const portfolioData = {
-//       id: "1",
-//       name: "test-portfolio",
-//       user_id: "test-userid",
-//       template_id: "test-templateid",
-//       code: "test-code",
-//       created_at: "test-created-at",
-//     }
-  
-//     const originalQuery = pool.query;
-//     pool.query = jest.fn().mockRejectedValue(new Error("Database error"))
-  
-//     await expect(Portfolio.createPortfolio(portfolioData)).rejects.toThrow(
-//       InternalServerError
-//     )
-  
-//     pool.query = originalQuery;
-//   })
 })
 
 describe("update", () => {

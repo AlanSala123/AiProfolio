@@ -15,8 +15,10 @@ export default function Login({ setUser, setToken }) {
     try {
       // Send a POST request to the login endpoint with email and password
       const response = await axios.post('http://localhost:3001/auth/login', {
-        email,
-        password,
+        loginForm: {
+          email:email,
+          password: password
+        }
       });
 
       // Extract user and token from the response data
