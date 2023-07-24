@@ -1,15 +1,18 @@
 import "./SavedTemplates.css"
 import { Link } from 'react-router-dom'
+import { Typography, CssBaseline, Card, CardActions, CardContent, CardMedia, Grid, Container, Button } from '@mui/material'
 
-export default function SavedTemplates({user, token}) {
+
+export default function SavedTemplates({ user, token }) {
+
     return (
         <div className="entire-saved">
             <div className="top-buttons">
                 <div className="saved-button">
-                    <Link to="/popular-templates" className="saved"> My Saved Templates </Link>
+                    <Link to="/saved-templates" className="saved"> My Saved Templates </Link>
                 </div>
                 <div className="popular-button">
-                    <button> Popular Templates </button>
+                <Link to="/popular-templates" className="popular"> Popular Templates </Link>
                 </div>
             </div>
             <div className="search-with-create-delete">
@@ -24,7 +27,37 @@ export default function SavedTemplates({user, token}) {
                 </div>
             </div>
             <div className="template-grid">
-                {/* we need to fetch the user by their specific template in this section */}
+                <Container className="classesContainer" maxWidth="md">
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Card className="classesCard">
+                                <CardMedia
+                                    className="classesMedia"
+                                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWy7sgEpvc86GGVJpLnyIN-LciOQ0udRjL3BX1cEAsFQ&s"
+                                    title="Image title"
+                                />
+                                <CardContent className="classesContent">
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        Heading
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        This is a Portfolio, and here the portfolio will be displayed.
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button size="small" color="primary">
+                                        View
+                                    </Button>
+                                    <Button size="small" color="primary">
+                                        Edit
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                        {/* Add more Grid items for additional cards if needed */}
+                    </Grid>
+                </Container>
+
             </div>
         </div>
     )
