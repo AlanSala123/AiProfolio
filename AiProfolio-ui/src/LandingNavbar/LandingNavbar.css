@@ -87,3 +87,21 @@ html {
   color: #333;
   text-shadow: none;
 }
+
+.navbar-SignOut {
+  background-color: #5CAB72;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  color: white;
+  padding: 10px 25px;
+  text-decoration: none;
+  margin-left: 10px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-family: outfit;
+}
+
+.navbar-SignOut:hover {
+  background-color: #fff;
+  text-shadow: none;
+  color: #333;
+}

@@ -33,7 +33,7 @@ function App() {
           localStorage.setItem("token", newToken);
   
           if(newToken) { 
-            navigate('/home');
+            navigate('/saved-templates');
           }
         } catch (error) {
           console.log(error)
@@ -51,7 +51,7 @@ function App() {
   }
   return (
     <>
-        <LandingNavbar />
+        <LandingNavbar  token={token} handleLogout={handleLogout}/>
         <Routes>
           <Route path="/Register" element={
             <main>

@@ -2,6 +2,7 @@ import "./Register.css"
 import { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
+import { useNavigate } from 'react-router-dom';
 
 //function that Registers the user
 export default function Register({ setUser, setToken }) {
@@ -12,6 +13,8 @@ export default function Register({ setUser, setToken }) {
         email: "",
         password: ""
     })
+
+    const navigate = useNavigate();
 
     //everytime the form changes then the useState for that input is being updated with that value
     const handleOnInputChange = (event) => {
@@ -36,6 +39,7 @@ export default function Register({ setUser, setToken }) {
                 const token = res?.data?.token
                 setUser(user)
                 setToken(token)
+               navigate("/saved-templates")
                 //store the token in localStorage
                 localStorage.setItem("token", token)
             }

@@ -19,7 +19,7 @@ export default function OurServices() {
       const windowHeight = window.innerHeight;
     
       //check to see if the top of the services container is in the viewport
-      if (bounding.top < windowHeight) {
+      if (bounding.top < windowHeight / 1.2) {
         setAnimate(true);
       }
     };

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './login.css'; 
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({ setUser, setToken }) {
   // State variables for email, password, and error message
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   // Function to handle login form submission
   const handleLogin = async (e) => {
@@ -27,6 +30,8 @@ export default function Login({ setUser, setToken }) {
       // Update the user and token in the parent component
       setUser(user);
       setToken(token);
+
+      navigate("/saved-templates")
 
       // Store the token in localStorage for future use
       localStorage.setItem('token', token);

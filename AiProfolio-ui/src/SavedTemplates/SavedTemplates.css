@@ -38,6 +38,18 @@
     transition: all 0.3s ease;
     font-family: outfit;
   }
+
+  .popular{
+    background-color: white;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin-left: 10px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-family: outfit;
+  }
   /* Search with Create and Delete Buttons */
   .search-with-create-delete {
     display: flex;
@@ -76,11 +88,59 @@
   }
   
   /* Template Grid */
-  .template-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  .classesContainer {
+    padding: 20px;
+    border-radius: 50%;
   }
   
-  /* Add additional styles as needed */
+  .classesCard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .classesMedia {
+    padding-top: 56.25%; /* Maintain aspect ratio for the image */
+    background-size: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .classesContent {
+    flex: 1;
+    padding: 16px;
+  }
+  
+  .classesContent h2 {
+    margin-bottom: 8px;
+  }
+  
+  .classesContent p {
+    color: #444;
+  }
+  
+  .CardActions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 16px;
+  }
+  
+  .Button {
+    margin-left: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    /* Adjust the card layout for smaller screens */
+    .classesCard {
+      width: 100%;
+    }
+  }
+  
+
+
+
+
+
   
