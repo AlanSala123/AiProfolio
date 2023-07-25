@@ -1,0 +1,331 @@
+{
+    "portfolio" : {
+            "navbar": {
+                "display": "default = flex",
+                "dimensions": {
+                    "height": "default = 60px",
+                    "width": "default = 100vw"
+                },
+                "background": {
+                    "color": "default = #333",
+                    "image": "none"
+                },
+                "items": {
+                    "alignment": {
+                        "textAlign": "default = center",
+                        "verticalAlign": "default = middle"
+                    },
+                    "spacing": "default = 20px",
+                    "style": {
+                        "fontSize": "default = 1rem",
+                        "fontColor": "default = #ffffff",
+                        "fontFamily": "default = Arial",
+                        "hover": {
+                            "fontColor": "default = #eee",
+                            "backgroundColor": "default = #555"
+                        }
+                    },
+                    "defaultItems": ["Home", "About", "Services", "Contact"]
+                }
+            },         
+        "header" : {
+            "display" : "default = none",
+            "dimensions" : {
+                "height" : "default = 100vh",
+                "width" : "default = 100vw"
+            },
+            "background" : {
+                "color" : "default = transparent",
+                "image" : {
+                    "url" : "images/example.jpg",
+                    "dimensions" : {
+                        "height" : "default = 100vh",
+                        "width" : "default = 100vw"
+                    } 
+                }
+            },
+            "foreground" : {
+                "image" : {
+                    "url" : "images/example.jpg",
+                    "dimensions" : {
+                        "height" : "default = 100vh",
+                        "width" : "default = 100vw"
+                    } 
+                },
+                "title" : {
+                    "fontSize" : "default = 2rem",
+                    "fontColor" : "default = #ffffff",
+                    "fontFanily" : "default = Arial"
+                },
+                "subtitle" : {
+                    "fontSize" : "default = 1.5rem",
+                    "fontColor" : "default = #ffffff",
+                    "fontFanily" : "default = Arial"
+                },
+                "alignment" : {
+                    "textAlign": "default = left",
+                    "verticalAlign": "default = top"
+                  }
+            }
+        },
+        "experiences": {
+            "display": "default = block",
+            "dimensions": {
+                "width": "default = 100vw",
+                "minHeight": "default = 100vh"
+            },
+            "background": {
+                "color": "default = #f3f3f3",
+                "image": "none"
+            },
+            "experienceItem": {
+                "alignment": {
+                    "textAlign": "default = left",
+                    "verticalAlign": "default = middle"
+                },
+                "spacing": "default = 20px",
+                "style": {
+                    "title": {
+                        "fontSize": "default = 1.5rem",
+                        "fontColor": "default = #333",
+                        "fontFamily": "default = Arial"
+                    },
+                    "description": {
+                        "fontSize": "default = 1rem",
+                        "fontColor": "default = #666",
+                        "fontFamily": "default = Arial"
+                    },
+                    "date": {
+                        "fontSize": "default = 1rem",
+                        "fontColor": "default = #999",
+                        "fontFamily": "default = Arial"
+                    }
+                }
+            },
+            "Items": [
+                {
+                    "title": "",
+                    "company": "",
+                    "date": "",
+                    "description": ""
+                }
+            ]
+        },
+        "skills": {
+            "display": "default = grid",
+            "dimensions": {
+                "width": "default = 100vw",
+                "minHeight": "default = 100vh"
+            },
+            "background": {
+                "color": "default = #f9f9f9",
+                "image": "none"
+            },
+            "skillItem": {
+                "alignment": {
+                    "textAlign": "default = center",
+                    "verticalAlign": "default = middle"
+                },
+                "spacing": "default = 20px",
+                "style": {
+                    "name": {
+                        "fontSize": "default = 1.2rem",
+                        "fontColor": "default = #333",
+                        "fontFamily": "default = Arial"
+                    },
+                    "progressBar": {
+                        "color": "default = #4caf50",
+                        "backgroundColor": "default = #ddd"
+                    },
+                    "level": {
+                        "fontSize": "default = 1rem",
+                        "fontColor": "default = #666",
+                        "fontFamily": "default = Arial"
+                    }
+                }
+            },
+            "defaultItems": [
+                {
+                    "name": "",
+                    "level": "",
+                    "progress": ""
+                }
+                
+            ]
+        }
+    
+    }
+}
+
+{
+    "portfolio": {
+        "navbar": {
+            "display": "flex",
+            "dimensions": {
+                "height": "60px",
+                "width": "100vw"
+            },
+            "background": {
+                "color": "#333",
+                "image": "none"
+            },
+            "items": {
+                "alignment": {
+                    "textAlign": "center",
+                    "verticalAlign": "middle"
+                },
+                "spacing": "20px",
+                "style": {
+                    "fontSize": "1rem",
+                    "fontColor": "#ffffff",
+                    "fontFamily": "Arial",
+                    "hover": {
+                        "fontColor": "#eee",
+                        "backgroundColor": "#555"
+                    }
+                },
+                "defaultItems": ["Home", "Portfolio", "About", "Contact"]
+            }
+        },
+        "header": {
+            "display": "none",
+            "dimensions": {
+                "height": "100vh",
+                "width": "100vw"
+            },
+            "background": {
+                "color": "transparent",
+                "image": {
+                    "url": "images/header-background.jpg",
+                    "dimensions": {
+                        "height": "100vh",
+                        "width": "100vw"
+                    }
+                }
+            },
+            "foreground": {
+                "image": {
+                    "url": "images/profile.jpg",
+                    "dimensions": {
+                        "height": "100vh",
+                        "width": "100vw"
+                    }
+                },
+                "title": {
+                    "fontSize": "2rem",
+                    "fontColor": "#ffffff",
+                    "fontFamily": "Arial"
+                },
+                "subtitle": {
+                    "fontSize": "1.5rem",
+                    "fontColor": "#ffffff",
+                    "fontFamily": "Arial"
+                },
+                "alignment": {
+                    "textAlign": "left",
+                    "verticalAlign": "top"
+                }
+            }
+        },
+        "experiences": {
+            "display": "block",
+            "dimensions": {
+                "width": "100vw",
+                "minHeight": "100vh"
+            },
+            "background": {
+                "color": "#f3f3f3",
+                "image": "none"
+            },
+            "experienceItem": {
+                "alignment": {
+                    "textAlign": "left",
+                    "verticalAlign": "middle"
+                },
+                "spacing": "20px",
+                "style": {
+                    "title": {
+                        "fontSize": "1.5rem",
+                        "fontColor": "#333",
+                        "fontFamily": "Arial"
+                    },
+                    "description": {
+                        "fontSize": "1rem",
+                        "fontColor": "#666",
+                        "fontFamily": "Arial"
+                    },
+                    "date": {
+                        "fontSize": "1rem",
+                        "fontColor": "#999",
+                        "fontFamily": "Arial"
+                    }
+                }
+            },
+            "Items": [
+                {
+                    "title": "Senior Software Developer",
+                    "company": "Software Solutions LLC",
+                    "date": "2019 - Present",
+                    "description": "Developed innovative solutions for complex applications."
+                },
+                {
+                    "title": "Junior Software Developer",
+                    "company": "Web Development Corp",
+                    "date": "2017 - 2019",
+                    "description": "Focused on front-end development with React and Vue."
+                }
+            ]
+        },
+        "skills": {
+            "display": "grid",
+            "dimensions": {
+                "width": "100vw",
+                "minHeight": "100vh"
+            },
+            "background": {
+                "color": "#f9f9f9",
+                "image": "none"
+            },
+            "skillItem": {
+                "alignment": {
+                    "textAlign": "center",
+                    "verticalAlign": "middle"
+                },
+                "spacing": "20px",
+                "style": {
+                    "name": {
+                        "fontSize": "1.2rem",
+                        "fontColor": "#333",
+                        "fontFamily": "Arial"
+                    },
+                    "progressBar": {
+                        "color": "#4caf50",
+                        "backgroundColor": "#ddd"
+                    },
+                    "level": {
+                        "fontSize": "1rem",
+                        "fontColor": "#666",
+                        "fontFamily": "Arial"
+                    }
+                }
+            },
+            "defaultItems": [
+                {
+                    "name": "JavaScript",
+                    "level": "Expert",
+                    "progress": "90"
+                },
+                {
+                    "name": "Python",
+                    "level": "Intermediate",
+                    "progress": "70"
+                },
+                {
+                    "name": "C++",
+                    "level": "Beginner",
+                    "progress": "40"
+                }
+            ]
+        }
+    }
+}
