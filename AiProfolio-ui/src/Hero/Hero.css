@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: -1;
+    z-index: 0;
     background-color: #383838;
 }
 
@@ -22,7 +22,7 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    margin-bottom: 25vh;
+    margin-bottom: 20vh;
     user-select: none;
 }
 
@@ -58,6 +58,32 @@
 
 #hero-title #hero-ai{
     color: #4d935d;
+}
+
+.get-started-button {
+    padding: 16px 32px;
+    font-size: 1.5rem;
+    font-family: outfit;
+    background-color: #4d935d;
+    color: #fff;
+    border: 0.5px solid;
+    border-color: #000000;
+    border-radius: 50px;
+    position: relative;
+    z-index: 100;
+    opacity: 0;
+    box-shadow: 0px 4px 8px #ffffff;
+    animation: appear 3s 3s forwards;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  }
+
+  .get-started-button:hover{
+    cursor: pointer;
+  }
+  
+@keyframes appear {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 @keyframes typing {

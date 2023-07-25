@@ -6,45 +6,36 @@ import { useNavigate } from 'react-router-dom';
 
 //function that Registers the user
 export default function Register({ setUser, setToken }) {
-    //useState for error handling and the form state
     const [error, setError] = useState('')
     const [form, setForm] = useState({
         firstName: "",
         email: "",
         password: ""
     })
-
     const navigate = useNavigate();
 
-    //everytime the form changes then the useState for that input is being updated with that value
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
     }
 
-    //function that handles when a user submits
     const handleOnSubmit = async (event) => {
         event.preventDefault()
         setError(null)
         try {
-            //make a post request to the backend register endpoint
             const res = await axios.post("http://localhost:3001/auth/register", {
                 first_name: form.firstName,
                 email: form.email,
                 password: form.password
             })
-            //if there are no errors
             if (res?.data?.user) {
-                //put the user and token inside the usestate
                 const user = res?.data?.user
                 const token = res?.data?.token
                 setUser(user)
                 setToken(token)
-               navigate("/saved-templates")
-                //store the token in localStorage
+                navigate("/saved-templates")
                 localStorage.setItem("token", token)
             }
         } catch (err) {
-            //if there are errors (invalid password, invalid email, etc)
             if (err?.response?.data?.error) {
                 const message = err?.response?.data?.error
                 setError(message)
@@ -99,6 +90,7 @@ export default function Register({ setUser, setToken }) {
                             onChange={handleOnInputChange}
                         />
                         <br />
+                        <br />
                         <button
                             disabled={!(form.email && form.firstName && form.password)}
                             style={{
@@ -113,7 +105,6 @@ export default function Register({ setUser, setToken }) {
                     </form>
                 </div>
             </div>
-            <div className="footer"> </div>
         </>
     )
 }
