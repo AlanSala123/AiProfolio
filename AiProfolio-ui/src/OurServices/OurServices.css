@@ -6,6 +6,8 @@
     align-items: center;
     background-color: white;
     height: 70vh;
+    position: relative;
+    z-index: 2;
   }
   
   .section-title {

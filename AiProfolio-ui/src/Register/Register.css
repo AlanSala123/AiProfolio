@@ -8,7 +8,7 @@ body {
     width: 600px;
     height: 81vh;
     margin: 0 auto;
-    margin-top: 2%;
+    margin-top: 5%;
     text-align: center;
     font-family: outfit;
   }
@@ -135,7 +135,7 @@ body {
     border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     margin-top: 10px;
     transition: background-color 0.3s ease;
     margin-bottom: 100px;
@@ -143,11 +143,6 @@ body {
   
   .SignButton:hover {
     background-color: #4d935d;
-  }
-
-  .footer {
-    background-color: #333;
-    height: 135px;
   }
   
 @keyframes blink-red {
