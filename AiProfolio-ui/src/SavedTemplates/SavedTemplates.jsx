@@ -24,7 +24,8 @@ export default function SavedTemplates({ user, token }) {
   };
 
   return (
-    <div className="entire-saved">
+    token ?
+    (<div className="entire-saved">
       <div className="top-buttons">
         <div className={`saved-button ${activeTab === 'saved' ? 'active' : ''}`} onClick={() => handleTabClick('saved')}>
           <Link to="/saved-templates" className="saved">
@@ -83,6 +84,6 @@ export default function SavedTemplates({ user, token }) {
           </Grid>
         </Container>
       </div>
-    </div>
+    </div>) : (<></>)
   );
 }
