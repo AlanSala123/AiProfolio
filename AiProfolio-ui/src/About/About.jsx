@@ -5,6 +5,7 @@ export default function AboutUs() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
+    //when section comes into view animation starts
     const handleScroll = () => {
       const servicesElement = document.querySelector('#about-us-container');
       const bounding = servicesElement.getBoundingClientRect();

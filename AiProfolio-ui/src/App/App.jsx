@@ -53,6 +53,9 @@ function App() {
     <>
         <LandingNavbar  token={token} handleLogout={handleLogout}/>
         <Routes>
+          <Route path='/:id' element={
+            <> TODO: Portfolio Viewer </>
+          }/>
           <Route path="/Register" element={
             <main>
               <Register setUser={setUser} setToken={setToken}/>
