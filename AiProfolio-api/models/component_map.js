@@ -2,43 +2,50 @@ const portfolioJsonTemplate  =  `{
     "portfolio" : {
             "navbar": {
                 "dimensions": {
-                    "height": "default = 60px",
-                    "width": "default = 100vw"
+                    "height": "",
+                    "width": ""
                 },
                 "background": {
-                    "color": "default = #333",
-                    "image": "none"
+                    "color": "",
+                    "imageSRC": ""
                 },
                 "items": {
                     "alignment": {
-                        "textAlign": "default = center",
-                        "verticalAlign": "default = middle"
+                        "textAlign": "",
+                        "verticalAlign": ""
                     },
-                    "spacing": "default = 20px",
+                    "spacing": "",
                     "style": {
-                        "fontSize": "default = 1rem",
-                        "fontColor": "default = #ffffff",
-                        "fontFamily": "default = Arial",
-                        "hover": {
-                            "fontColor": "default = #eee",
-                            "backgroundColor": "default = #555"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": "",
+                        "hover": { 
+                            "fontColor": "",
+                            "backgroundColor": "",
+                            "transform": "",
+                            "transition": ""
+                          },
+                          "animation": {
+                            "name": "",
+                            "duration": "",
+                            "timingFunction": "",
+                            "delay": ""
                         }
-                    },
-                    "navigationItems": []
+                    }
                 }
             },         
         "header" : {
             "dimensions" : {
-                "height" : "default = 100vh",
-                "width" : "default = 100vw"
+                "height" : "",
+                "width" : ""
             },
             "background" : {
-                "color" : "default = transparent",
+                "color" : "",
                 "image" : {
                     "url" : "",
                     "dimensions" : {
-                        "height" : "default = 100vh",
-                        "width" : "default = 100vw"
+                        "height" : "",
+                        "width" : ""
                     } 
                 }
             },
@@ -46,232 +53,294 @@ const portfolioJsonTemplate  =  `{
                 "image" : {
                     "url" : "",
                     "dimensions" : {
-                        "height" : "default = 100vh",
-                        "width" : "default = 100vw"
+                        "height" : "",
+                        "width" : ""
                     } 
                 },
                 "title" : {
-                    "fontSize" : "default = 2rem",
-                    "fontColor" : "default = #ffffff",
-                    "fontFanily" : "default = Arial"
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFanily" : ""
                 },
                 "subtitle" : {
-                    "fontSize" : "default = 1.5rem",
-                    "fontColor" : "default = #ffffff",
-                    "fontFanily" : "default = Arial"
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFanily" : ""
                 },
                 "alignment" : {
-                    "textAlign": "default = left",
-                    "verticalAlign": "default = top"
+                    "textAlign": "",
+                    "verticalAlign": ""
                   }
             }
         },
         "experiences": {
             "dimensions": {
-                "width": "default = 100vw",
-                "minHeight": "default = 100vh"
+                "width": "",
+                "minHeight": ""
             },
             "background": {
-                "color": "default = #f3f3f3",
-                "image": "none"
+                "color": "",
+                "image": ""
             },
             "experienceItem": {
                 "alignment": {
-                    "textAlign": "default = left",
-                    "verticalAlign": "default = middle"
+                    "textAlign": "",
+                    "verticalAlign": ""
                 },
-                "spacing": "default = 20px",
+                "spacing": "",
                 "style": {
+                    boxShadow : "",
+                    "border" : {
+                        borderStyle : "",
+                        borderRadius : "",
+                        borderWidth : "",
+                        borderColor : ""
+                    },
                     "title": {
-                        "fontSize": "default = 1.5rem",
-                        "fontColor": "default = #333",
-                        "fontFamily": "default = Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "description": {
-                        "fontSize": "default = 1rem",
-                        "fontColor": "default = #666",
-                        "fontFamily": "default = Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "date": {
-                        "fontSize": "default = 1rem",
-                        "fontColor": "default = #999",
-                        "fontFamily": "default = Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
+                    },
+                    "hover": { 
+                        "fontColor": "",
+                        "backgroundColor": "",
+                        "transform": "",
+                        "transition": ""
+                      },
+                      "animation": {
+                        "name": "",
+                        "duration": "",
+                        "timingFunction": "",
+                        "delay": ""
                     }
                 }
-            },
-            "Items": [
-                {
-                    "title": "",
-                    "company": "",
-                    "date": "",
-                    "description": ""
-                }
-            ]
+            }
         },
         "skills": {
             "dimensions": {
-                "width": "default = 100vw",
-                "minHeight": "default = 100vh"
+                "width": "",
+                "minHeight": ""
             },
             "background": {
-                "color": "default = #f9f9f9",
-                "image": "none"
+                "color": "",
+                "image": ""
             },
             "skillItem": {
                 "alignment": {
-                    "textAlign": "default = center",
-                    "verticalAlign": "default = middle"
+                    "textAlign": "",
+                    "verticalAlign": ""
                 },
-                "spacing": "default = 20px",
+                "spacing": "",
                 "style": {
+                    boxShadow : "",
+                    "border" : {
+                        borderStyle : "",
+                        borderRadius : "",
+                        borderWidth : "",
+                        borderColor : ""
+                    },
                     "name": {
-                        "fontSize": "default = 1.2rem",
-                        "fontColor": "default = #333",
-                        "fontFamily": "default = Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "progressBar": {
-                        "color": "default = #4caf50",
-                        "backgroundColor": "default = #ddd"
+                        "color": "",
+                        "backgroundColor": ""
                     },
                     "level": {
-                        "fontSize": "default = 1rem",
-                        "fontColor": "default = #666",
-                        "fontFamily": "default = Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
+                    },
+                    "hover": { 
+                        "fontColor": "",
+                        "backgroundColor": "",
+                        "transform": "",
+                        "transition": ""
+                      },
+                      "animation": {
+                        "name": "",
+                        "duration": "",
+                        "timingFunction": "",
+                        "delay": ""
                     }
                 }
-            },
-            "defaultItems": [
-                {
-                    "name": "",
-                    "level": "",
-                    "progress": ""
-                }
-                
-            ]
+            }
         },
         "projects": {
             "dimensions": {
-                "width": "100vw",
-                "minHeight": "default = 100vh"
+                "width": "",
+                "minHeight": ""
             },
             "background": {
-                "color": "#f9f9f9",
-                "image": "none"
+                "color": "",
+                "image": ""
             },
             "projectItem": {
                 "alignment": {
-                    "textAlign": "center",
-                    "verticalAlign": "middle"
+                    "textAlign": "",
+                    "verticalAlign": ""
                 },
-                "spacing": "20px",
+                "spacing": "",
                 "style": {
+                    boxShadow : "",
+                    "border" : {
+                        borderStyle : "",
+                        borderRadius : "",
+                        borderWidth : "",
+                        borderColor : ""
+                    },
                     "title": {
-                        "fontSize": "1.2rem",
-                        "fontColor": "#333",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "description": {
-                        "fontSize": "1rem",
-                        "fontColor": "#666",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "technologies": {
-                        "fontSize": "1rem",
-                        "fontColor": "#999",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
+                    },
+                    "hover": { 
+                        "fontColor": "",
+                        "backgroundColor": "",
+                        "transform": "",
+                        "transition": ""
+                      },
+                      "animation": {
+                        "name": "",
+                        "duration": "",
+                        "timingFunction": "",
+                        "delay": ""
                     }
                 }
-            },
-            "Items": [
-                {
-                    "title": "",
-                    "description": "",
-                    "technologies": [],
-                    "link": ""
-                }
-            ]
+            }
         },
         "achievements": {
             "dimensions": {
-                "width": "100vw",
-                "minHeight": "default = 100vh"
+                "width": "",
+                "minHeight": ""
             },
             "background": {
-                "color": "#f3f3f3",
-                "image": "none"
+                "color": "",
+                "image": ""
             },
             "achievementItem": {
                 "alignment": {
-                    "textAlign": "left",
-                    "verticalAlign": "middle"
+                    "textAlign": "",
+                    "verticalAlign": ""
                 },
-                "spacing": "20px",
+                "spacing": "",
                 "style": {
+                    boxShadow : "",
+                    "border" : {
+                        borderStyle : "",
+                        borderRadius : "",
+                        borderWidth : "",
+                        borderColor : ""
+                    },
                     "title": {
-                        "fontSize": "1.5rem",
-                        "fontColor": "#333",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "date": {
-                        "fontSize": "1rem",
-                        "fontColor": "#666",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "description": {
-                        "fontSize": "1rem",
-                        "fontColor": "#999",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
+                    },
+                    "hover": { 
+                        "fontColor": "",
+                        "backgroundColor": "",
+                        "transform": "",
+                        "transition": ""
+                      },
+                      "animation": {
+                        "name": "",
+                        "duration": "",
+                        "timingFunction": "",
+                        "delay": ""
                     }
                 }
-            },
-            "Items": [
-                {
-                    "title": "",
-                    "date": "",
-                    "description": ""
-                }
-            ]
+            }
         },
         "education": {
             "dimensions": {
-                "width": "100vw",
-                "minHeight": "default = 100vh"
+                "width": "",
+                "minHeight": ""
             },
             "background": {
-                "color": "#f3f3f3",
-                "image": "none"
+                "color": "",
+                "image": ""
             },
             "educationItem": {
                 "alignment": {
-                    "textAlign": "left",
-                    "verticalAlign": "middle"
+                    "textAlign": "",
+                    "verticalAlign": ""
                 },
-                "spacing": "20px",
+                "spacing": "",
                 "style": {
+                    boxShadow : "",
+                    "border" : {
+                        borderStyle : "",
+                        borderRadius : "",
+                        borderWidth : "",
+                        borderColor : ""
+                    },
                     "institution": {
-                        "fontSize": "1.5rem",
-                        "fontColor": "#333",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "degree": {
-                        "fontSize": "1.2rem",
-                        "fontColor": "#666",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
+                    },
+                    "major": {
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
                     },
                     "date": {
-                        "fontSize": "1rem",
-                        "fontColor": "#999",
-                        "fontFamily": "Arial"
+                        "fontSize": "",
+                        "fontColor": "",
+                        "fontFamily": ""
+                    },
+                    "hover": { 
+                        "fontColor": "",
+                        "backgroundColor": "",
+                        "transform": "",
+                        "transition": ""
+                      },
+                      "animation": {
+                        "name": "",
+                        "duration": "",
+                        "timingFunction": "",
+                        "delay": ""
                     }
                 }
-            },
-            "Items": [
-                {
-                    "institution": "",
-                    "degree": "",
-                    "date": ""
-                }
-            ]
+            }
         }
     
     }
