@@ -1,26 +1,32 @@
 import './Header.css'
 
-function Header(dimensions, background, font, input, imgprops){
-    <div id="Header" style={{"height" : dimensions.height || "100vh" , "width" : dimensions.width || "100vw", "margin" : dimensions.margin, "textAlign" : font.textAlign, "backgroundColor" : background.color}} >
+function Header({header}){
 
-        {imgprops.foreground && <img src={input.img_url} alt="" />}
-        {imgprops.background && <img src={input.img_url} alt="" />}
-        <h1 style={{
-            "fontFamily" : font.fontFamily,
-            "fontWeight" : font.h1.fontWeight,
-            "fontSize" : font.h1.fontSize,
-            "color" : font.h1.color,
 
-        }}>{input.title}</h1>
-        {input.subtitle && <p style={{
-            "fontFamily" : font.fontFamily,
-            "fontWeight" : font.p.fontWeight,
-            "fontSize" : font.p.fontSize,
-            "color" : font.p.color
-        }}
-        >{input.subtitle}</p>}
-
-    </div>
+        return (
+            <div id="Header" style={{
+                height: header?.dimensions?.height || "100vh",
+                width: header?.dimensions?.width || "100vw",
+                backgroundColor: header?.background?.color,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <h1 style={{
+                    fontFamily: header?.foreground?.title?.fontFamily,
+                    fontSize: header?.foreground?.title?.fontSize,
+                    color: header?.foreground?.title?.fontColor
+                }}> HEADER TITLE</h1>
+                <p style={{
+                    fontFamily: header?.foreground?.subtitle?.fontFamily,
+                    fontSize: header?.foreground?.subtitle?.fontSize,
+                    color: header?.foreground?.subtitle?.fontColor
+                }}>HEADER SUBTITLE </p>
+            </div>
+            
+            
+        )
 }
 
 export default Header
