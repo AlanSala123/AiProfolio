@@ -1,9 +1,23 @@
 import "./SavedTemplates.css"
 import { Link } from 'react-router-dom'
 import { Typography, CssBaseline, Card, CardActions, CardContent, CardMedia, Grid, Container, Button } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 
 export default function SavedTemplates({ user, token }) {
+    
+    const [portfolios, setPortfolios] = useState({});
+    const params = useParams();
+
+    //dynamic routing for the grid of portfolios
+    useEffect(() => {
+        axios.post(`localhost:5173/${params.id}`)
+            .then(response => setPortfolios(response.data.portfolio))
+    }, [])
+
+    //TODO: map through portfolios useState objects and display them in the frontend(that is going to happen down in the grid)
 
     return (
         <div className="entire-saved">
@@ -12,7 +26,7 @@ export default function SavedTemplates({ user, token }) {
                     <Link to="/saved-templates" className="saved"> My Saved Templates </Link>
                 </div>
                 <div className="popular-button">
-                <Link to="/popular-templates" className="popular"> Popular Templates </Link>
+                    <Link to="/popular-templates" className="popular"> Popular Templates </Link>
                 </div>
             </div>
             <div className="search-with-create-delete">

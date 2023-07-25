@@ -4,26 +4,19 @@ import IconSVG from '../assets/IconSVG.jsx';
 import computer from '../assets/Computer.jsx';
 import Customize from '../assets/Customize.jsx';
 
-//our services section in the webpage
 export default function OurServices() {
-//useState for animate
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    //function to track whenever the user scrolls to the services container section
+    //when section comes into view animation starts
     const handleScroll = () => {
       const servicesElement = document.querySelector('.services-container');
-      //gets the position on the services container relative to the viewport
       const bounding = servicesElement.getBoundingClientRect();
-      //gets the height of the viewport
       const windowHeight = window.innerHeight;
-    
-      //check to see if the top of the services container is in the viewport
       if (bounding.top < windowHeight / 1.2) {
         setAnimate(true);
       }
     };
-    //adds handleScroll as an event listener
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
