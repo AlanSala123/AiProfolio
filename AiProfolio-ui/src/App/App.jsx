@@ -12,6 +12,7 @@ import ContactUs from '../Contact/Contact'
 import Footer from '../Footer/Footer'
 import AboutUs from '../About/About'
 import SavedTemplates from '../SavedTemplates/SavedTemplates'
+import PopularTemplates from '../PopularTemplates/PopularTemplates'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -53,8 +54,10 @@ function App() {
     <>
         <LandingNavbar  token={token} handleLogout={handleLogout}/>
         <Routes>
-          <Route path='/:id' element={
-            <> TODO: Portfolio Viewer </>
+          <Route path='/popular-templates' element={
+            <main>
+            <PopularTemplates user={user} token={token}/>
+            </main>
           }/>
           <Route path="/Register" element={
             <main>

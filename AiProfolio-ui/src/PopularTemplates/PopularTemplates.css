@@ -1,0 +1,133 @@
+/* PopularTemplates.css */
+
+/* Entire Saved Container */
+.entire-saved {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Top Buttons */
+  .top-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  /* Saved and Popular Buttons */
+  .saved-button,
+  .popular-button {
+    flex: 1;
+  }
+  
+  /* Button Base Styles */
+  .saved,
+  .popular,
+  .createNew button,
+  .delete button {
+    background-color: #5cab72;
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin-left: 60px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-family: "Roboto", sans-serif;
+    border: 2px solid transparent; /* Add a transparent border for outline effect */
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2); /* Add MUI box-shadow effect */
+  }
+  
+  /* Darken the button on hover */
+  .saved:hover,
+  .popular:hover,
+  .createNew button:hover,
+  .delete button:hover {
+    background-color: #8fd491;
+  }
+  
+  /* Darken the button on click */
+  .saved.active,
+  .popular.active {
+    background-color: #4d965e;
+  }
+  
+  /* Search with Create and Delete Buttons */
+  .search-with-create-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .searchbar {
+    flex: 1.5;
+  }
+  
+  .searchbar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .createNew,
+  .delete {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  /* Template Grid */
+  .classesContainer {
+    padding: 20px;
+    
+  }
+  
+  .classesCard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .classesMedia {
+    padding-top: 56.25%; /* Maintain aspect ratio for the image */
+    background-size: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .classesContent {
+    flex: 1;
+    padding: 16px;
+  }
+  
+  .classesContent h2 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .classesContent p {
+    color: #666;
+  }
+  
+  .CardActions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 16px;
+  }
+  
+  .Button {
+    margin-left: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    /* Adjust the card layout for smaller screens */
+    .classesCard {
+      width: 100%;
+    }
+  }
+  
