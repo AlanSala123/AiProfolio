@@ -13,12 +13,15 @@ import Footer from '../Footer/Footer'
 import AboutUs from '../About/About'
 import SavedTemplates from '../SavedTemplates/SavedTemplates'
 import PopularTemplates from '../PopularTemplates/PopularTemplates'
+import Header from '../Components/Header/Header'
 
 function App() {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
+  const [portfolio, setPortfolio] = useState(null)
 
   const navigate = useNavigate()
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -28,17 +31,19 @@ function App() {
           const res = await axios.post("http://localhost:3001/auth/login", { token: savedToken });
           const newUser = res?.data?.user;
           const newToken = res?.data?.token;
-  
+          const res2 = await axios.get('http://localhost:3001/product/view')
+          setPortfolio(res2?.data?.portfolio)
           setUser(newUser);
           setToken(newToken); 
           localStorage.setItem("token", newToken);
-  
+          console.log("PORTFOLIO", portfolio.header)
+      
           if(newToken) { 
-            navigate('/saved-templates');
+            //navigate('/saved-templates');
           }
         } catch (error) {
           console.log(error)
-          handleLogout();
+          //handleLogout();
         }
       }
     };
@@ -54,6 +59,11 @@ function App() {
     <>
         <LandingNavbar  token={token} handleLogout={handleLogout}/>
         <Routes>
+          <Route path='/view' element={
+
+            <Header header={portfolio?.header}/>
+
+          }/>
           <Route path='/popular-templates' element={
             <main>
             <PopularTemplates user={user} token={token}/>
