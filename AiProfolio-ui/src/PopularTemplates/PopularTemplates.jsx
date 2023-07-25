@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import './SavedTemplates.css';
+import './PopularTemplates.css';
 
-export default function SavedTemplates({ user, token }) {
+export default function PopularTemplates({ user, token }) {
   // State to keep track of the active button
   const [activeTab, setActiveTab] = useState('saved');
 
@@ -15,7 +15,7 @@ export default function SavedTemplates({ user, token }) {
 
   // dynamic routing for the grid of portfolios
   useEffect(() => {
-    axios.post(`localhost:5173/${params.id}`).then((response) => setPortfolios(response.data.portfolio));
+    axios.post(`localhost:5173/popular-templates`).then((response) => setPortfolios(response.data.portfolio));
   }, []);
 
   // Function to handle tab click
@@ -44,9 +44,6 @@ export default function SavedTemplates({ user, token }) {
         <div className="createNew">
           <Button>Create New</Button>
         </div>
-        <div className="delete">
-          <Button>Delete</Button>
-        </div>
       </div>
       <div className="template-grid">
         <Container className="classesContainer" maxWidth="md">
@@ -72,9 +69,6 @@ export default function SavedTemplates({ user, token }) {
                   <CardActions>
                     <Button size="small" color="primary">
                       View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
                     </Button>
                   </CardActions>
                 </Card>
