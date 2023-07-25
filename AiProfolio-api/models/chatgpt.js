@@ -36,17 +36,54 @@ class ChatGPT{
         console.log(responseObject)
         return responseObject
     }
-    static async buildWebsite(resumeJson){
+
+
+
+
+    static async buildWebsite(){
       const response = await ChatGPT.request(`
-      Based on the given resume data:
-
-      ${JSON.stringify(resumeJson, null, 2)}
-
-      And following the structure of this JSON template:
+      Following the structure of this JSON template:
 
       ${portfolioJsonTemplate}
 
-      Generate a portfolio website skeleton in JSON format. Choose all aspects of the website, such as style, colors, and everything as per the template. If a section has enough data to be shown, represent it in the template. The output should only be the generated JSON string without any newline characters. Please follow the format strictly.
+      These are list of animation names to help you fill out any animation fields you think will fit with your styling "
+      none
+      fade-in
+      fade-out
+      slide-in-right
+      slide-in-left
+      slide-out-right
+      slide-out-left
+      grow
+      shrink
+      rotate-clockwise
+      rotate-counter-clockwise
+      bounce
+      pulse
+      flash
+      shake
+      tada
+      swing
+      wobble
+      jello
+      flip
+      flipInX
+      flipInY
+      flipOutX
+      flipOutY
+      zoomIn
+      zoomOut
+      slideInUp
+      slideInDown
+      slideOutUp
+      slideOutDown
+      rollIn
+      rollOut
+      "
+
+      Fill out all of the styling values for each component key,
+      You have complete creative control and should be creative and unique when filling out the styling values,
+      use valid css and follow the template exactly
       `, "gpt-3.5-turbo-16k")
       console.log(response);
       const responseObject = JSON.parse(response)
@@ -102,8 +139,11 @@ February 2022-June 2022
 August 2021-December 2021
  `
 
+ console.time('executionTime');
+
  ChatGPT.parseResume(luisResume).then(parsedLuisResume => {
   ChatGPT.buildWebsite(parsedLuisResume).then(website => {
+    console.timeEnd('executionTime');
     fs.writeFile('EXAMPLE.json', JSON.stringify(website), 'utf8', function (err) {
       if (err) {
           console.log("An error occured while writing JSON Object to File.");
