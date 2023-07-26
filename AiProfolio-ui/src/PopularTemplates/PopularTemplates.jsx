@@ -42,7 +42,9 @@ export default function PopularTemplates({ user, token }) {
           <input type="text" placeholder="Search..." />
         </div>
         <div className="createNew">
-          <Button>Create New</Button>
+          <Link to="/Drag-Drop">
+            <Button>Create New</Button>
+          </Link>
         </div>
       </div>
       <div className="template-grid">
