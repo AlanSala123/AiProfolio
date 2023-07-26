@@ -1,60 +1,84 @@
 import React from 'react';
 import './Education.css';
 
-function Education({ dimensions, background, font, educationData }) {
+function Education({ education }) {
+    const educationData = [
+        {
+          degree: "Bachelor of Science",
+          institution: "University of XYZ",
+          major: "Computer Science",
+          date: "2015 - 2019",
+        },
+        {
+          degree: "Master of Business Administration",
+          institution: "ABC Business School",
+          major: "Business Administration",
+          date: "2020 - 2022",
+        },
+      ];
+      
   return (
     <div
       className="EducationSection"
       style={{
-        height: dimensions.height || '100vh',
-        width: dimensions.width || '100vw',
-        margin: dimensions.margin,
-        textAlign: font.textAlign,
-        backgroundColor: background.color,
+        height: education?.dimensions?.minHeight || '100vh',
+        width: '90vw',
+        padding: '5vw',
+        textAlign: education?.educationItem?.alignment?.textAlign,
+        backgroundColor: education?.background?.color,
       }}
     >
-      <h2
-        style={{
-          fontFamily: font.fontFamily,
-          fontWeight: font.h2.fontWeight,
-          fontSize: font.h2.fontSize,
-          color: font.h2.color,
-        }}
-      >
-        Education
-      </h2>
       <ul className="education-list">
-        {educationData.map((education, index) => (
-          <li key={index}>
+
+        {educationData.map((educations, index) => (
+          <li key={index}
+          style={{
+            listStyle : "none",
+            boxShadow : education?.educationItem?.style?.boxShadow,
+            borderStyle : education?.educationItem?.style?.border?.borderStyle,
+            borderRadius : education?.educationItem?.style?.border?.borderRadius,
+            borderWidth : education?.educationItem?.style?.border?.borderWidth,
+            borderColor : education?.educationItem?.style?.border?.borderColor,
+            marginTop : "20px",
+            marginLeft : "20%",
+            textAlign : "center",
+            width : "50%"
+          }}>
             <h3
               style={{
-                fontFamily: font.fontFamily,
-                fontWeight: font.h3.fontWeight,
-                fontSize: font.h3.fontSize,
-                color: font.h3.color,
+                fontFamily: education?.institution?.fontFamily,
+                fontSize: education?.institution?.fontSize,
+                color: education?.institution?.fontColor,
               }}
             >
-              {education.degree}
+              {educations.institution}
             </h3>
             <p
               style={{
-                fontFamily: font.fontFamily,
-                fontWeight: font.p.fontWeight,
-                fontSize: font.p.fontSize,
-                color: font.p.color,
+                fontFamily: education?.degree?.fontFamily,
+                fontSize: education?.degree?.fontSize,
+                color: education?.degree?.fontColor,
               }}
             >
-              {education.school}
+              {educations.degree}
             </p>
             <p
               style={{
-                fontFamily: font.fontFamily,
-                fontWeight: font.p.fontWeight,
-                fontSize: font.p.fontSize,
-                color: font.p.color,
+                fontFamily: education?.major?.fontFamily,
+                fontSize: education?.major?.fontSize,
+                color: education?.major?.fontColor,
               }}
             >
-              {education.duration}
+              {educations.major}
+            </p>
+            <p
+              style={{
+                fontFamily: education?.date?.fontFamily,
+                fontSize: education?.date?.fontSize,
+                color: education?.date?.fontColor,
+              }}
+            >
+              {educations.date}
             </p>
           </li>
         ))}
