@@ -45,45 +45,13 @@ class ChatGPT{
       Following the structure of this JSON template:
 
       ${portfolioJsonTemplate}
+      
+      In the provided JSON template, assign distinctive and vibrant styles to each component key. The goal is to create a design that is not only eye-catching but also ensures readability and accessibility. Pay special attention to contrast, making sure that foreground items stand out clearly against their backgrounds.
 
-      These are list of animation names to help you fill out any animation fields you think will fit with your styling "
-      none
-      fade-in
-      fade-out
-      slide-in-right
-      slide-in-left
-      slide-out-right
-      slide-out-left
-      grow
-      shrink
-      rotate-clockwise
-      rotate-counter-clockwise
-      bounce
-      pulse
-      flash
-      shake
-      tada
-      swing
-      wobble
-      jello
-      flip
-      flipInX
-      flipInY
-      flipOutX
-      flipOutY
-      zoomIn
-      zoomOut
-      slideInUp
-      slideInDown
-      slideOutUp
-      slideOutDown
-      rollIn
-      rollOut
-      "
+Dare to be different and unique in your color choices and styling elements. We're seeking designs that break free from the ordinary.
 
-      Fill out all of the styling values for each component key,
-      You have complete creative control and should be creative and unique when filling out the styling values,
-      use valid css and follow the template exactly
+Your work should be strictly within the bounds of the JSON template structure. Return the final design as a JSON code. Let the components spring to life with a myriad of colors and engaging elements. Aim for a design that truly distinguishes itself in uniqueness and contrast.
+MAKE SURE TEXT COLOR AND ITEM BACKGROUND FOR EACH COMPONENT ARE DISTINCTIVE AND CONTRASTING, AND THAT THE TEXT IS READABLE AND ACCESSIBLE. AND MAKE SURE THAT THE SAME THEME IS FOLLOWED AT LEAST SOMEWHAT, AND WHILE IT SHOULD BE UNIQUE IT SHOULD ALSO BE PROFESSIONAL LOOKING
       `, "gpt-3.5-turbo-16k")
       console.log(response);
       const responseObject = JSON.parse(response)
@@ -141,8 +109,8 @@ August 2021-December 2021
 
  console.time('executionTime');
 
- ChatGPT.parseResume(luisResume).then(parsedLuisResume => {
-  ChatGPT.buildWebsite(parsedLuisResume).then(website => {
+
+  ChatGPT.buildWebsite().then(website => {
     console.timeEnd('executionTime');
     fs.writeFile('EXAMPLE.json', JSON.stringify(website), 'utf8', function (err) {
       if (err) {
@@ -153,4 +121,3 @@ August 2021-December 2021
       console.log("JSON file has been saved.");
   });
   }).catch(console.error)
-}).catch(console.error)
