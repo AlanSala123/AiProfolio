@@ -46,6 +46,17 @@ export default function PopularTemplates({ user, token }) {
             <Button>Create New</Button>
           </div>
         </div>
+
+      </div>
+      <div className="search-with-create-delete">
+        <div className="searchbar">
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div className="createNew">
+          <Link to="/Drag-Drop">
+            <Button>Create New</Button>
+          </Link>
+
         <div className="template-grid">
           <Container className="classesContainer" maxWidth="md">
             <Grid container spacing={4}>
@@ -77,6 +88,7 @@ export default function PopularTemplates({ user, token }) {
               ))}
             </Grid>
           </Container>
+
         </div>
       </div>
     ) : (
