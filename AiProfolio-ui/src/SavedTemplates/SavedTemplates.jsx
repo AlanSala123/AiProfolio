@@ -23,6 +23,7 @@ const Dashboard = () => {
   );
 
   return (
+
     <div className="MainContainer">
     <div className="dashboard">
       <div className="header">
@@ -32,6 +33,21 @@ const Dashboard = () => {
           className="logo"
         />
         <h1>Portfolio Dashboard</h1>
+
+    token ?
+    (<div className="entire-saved">
+      <div className="top-buttons">
+        <div className={`saved-button ${activeTab === 'saved' ? 'active' : ''}`} onClick={() => handleTabClick('saved')}>
+          <Link to="/saved-templates" className="saved">
+            <Button style={{ color: 'white' }}>My Saved Templates</Button>
+          </Link>
+        </div>
+        <div className={`popular-button ${activeTab === 'popular' ? 'active' : ''}`} onClick={() => handleTabClick('popular')}>
+          <Link to="/popular-templates" className="popular">
+            <Button style={{ color: 'white' }}>Popular Templates</Button>
+          </Link>
+        </div>
+
       </div>
       <div className="search-bar">
         <input
@@ -51,9 +67,13 @@ const Dashboard = () => {
         ))}
         {/* Add more cards here */}
       </div>
+
       <div className="fab">+</div>
     </div>
     </div>
+
+    </div>) : (<></>)
+
   );
 };
 

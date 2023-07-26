@@ -13,32 +13,39 @@ import Footer from '../Footer/Footer'
 import AboutUs from '../About/About'
 import SavedTemplates from '../SavedTemplates/SavedTemplates'
 import PopularTemplates from '../PopularTemplates/PopularTemplates'
+import Header from '../Components/Header/Header'
+import Skills from '../Components/Skills/Skills'
 
 function App() {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
+  const [portfolio, setPortfolio] = useState(null)
 
   const navigate = useNavigate()
+
 
   useEffect(() => {
     const fetchUser = async () => {
       const savedToken = localStorage.getItem("token");
       if (savedToken) {
         try {
+          const res2 = await axios.get('http://localhost:3001/product/view')
+          setPortfolio(res2?.data?.portfolio)
           const res = await axios.post("http://localhost:3001/auth/login", { token: savedToken });
           const newUser = res?.data?.user;
           const newToken = res?.data?.token;
-  
+          
           setUser(newUser);
           setToken(newToken); 
           localStorage.setItem("token", newToken);
-  
+          console.log("PORTFOLIO", portfolio.header)
+      
           if(newToken) { 
-            navigate('/saved-templates');
+            //navigate('/saved-templates');
           }
         } catch (error) {
           console.log(error)
-          handleLogout();
+          //handleLogout();
         }
       }
     };
@@ -54,6 +61,14 @@ function App() {
     <>
         <LandingNavbar  token={token} handleLogout={handleLogout}/>
         <Routes>
+          <Route path='/view' element={
+
+            <div>
+              <Header header={portfolio?.header}/>
+            <Skills skills={portfolio?.skills}/>
+            </div>
+
+          }/>
           <Route path='/popular-templates' element={
             <main>
             <PopularTemplates user={user} token={token}/>

@@ -31,6 +31,7 @@ const resumeTemplateJson = `{
         "school": "",
         "location": "",
         "gpa": "",
+        "degree" : "",
         "major": ""
       }
     ],
