@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Hero from '../Hero/Hero'
-import Navbar from '../Navbar/Navbar'
 import LandingNavbar from '../LandingNavbar/LandingNavbar'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'; 
 import Register from '../Register/Register'
@@ -11,10 +10,14 @@ import Login from '../Login/Login'
 import ContactUs from '../Contact/Contact'
 import Footer from '../Footer/Footer'
 import AboutUs from '../About/About'
-import SavedTemplates from '../SavedTemplates/SavedTemplates'
+import Dashboard from '../SavedTemplates/SavedTemplates'
 import PopularTemplates from '../PopularTemplates/PopularTemplates'
 import Header from '../Components/Header/Header'
 import Skills from '../Components/Skills/Skills'
+import Projects from '../Components/Projects/Projects'
+import Navbar from '../Components/Navbar/Navbar'
+import Dropzone from '../DragDrop/DragDrop';
+
 
 function App() {
   const [user, setUser] = useState(null)
@@ -22,7 +25,6 @@ function App() {
   const [portfolio, setPortfolio] = useState(null)
 
   const navigate = useNavigate()
-
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -64,11 +66,18 @@ function App() {
           <Route path='/view' element={
 
             <div>
+              <Navbar navbar={portfolio?.navbar}/>
               <Header header={portfolio?.header}/>
-            <Skills skills={portfolio?.skills}/>
+              <Skills skills={portfolio?.skills}/>
+              <Projects projects={portfolio?.projects} />
             </div>
 
           }/>
+          <Route path="/Drag-Drop" element={
+<main>
+<Dropzone/>
+</main>
+} />
           <Route path='/popular-templates' element={
             <main>
             <PopularTemplates user={user} token={token}/>
@@ -95,7 +104,7 @@ function App() {
           } />
           <Route path="/saved-templates" element={
             <main>
-              <SavedTemplates user={user} token={token}/>
+              <Dashboard user={user} token={token}/>
             </main>
           } />
         </Routes>

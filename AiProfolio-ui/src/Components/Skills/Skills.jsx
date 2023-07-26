@@ -9,10 +9,9 @@ function Skills({ skills }) {
         <div
             className="SkillsSection"
             style={{
-                minHeight: skills?.dimensions?.minHeight,
-                width: skills?.dimensions?.width || '100vw',
+                width: '90vw',
                 backgroundColor: skills?.background?.color,
-                padding : "5%"
+                padding : "5vw"
             }}
 
         >

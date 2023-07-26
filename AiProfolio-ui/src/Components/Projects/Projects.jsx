@@ -1,60 +1,88 @@
 import React from 'react';
 import './Projects.css';
 
-function Projects({ dimensions, background, font, projects }) {
+function Projects({projects}) {
+
+  const projectList = [
+    {
+      title: 'Project 1',
+      description: 'This is a description of project 1 oijsioh wsqhdinwqs wd wdhuqhwdk dbdw dwbdbsdlknk lndsakldnklsnakl dnksnlkdnksnkdnlsanadkn salkdnklasndklnklsnk dlnklasdnkldsnklw dbdoibwd  qdwi d d h wqhd h ',
+      technologies: 'React, Node, Express, MongoDB'
+    },
+    {
+      title: 'Project 2',
+      description: 'This is a descriendjlknsd s d d auis   hdha89sd adh89d d  sdhdh89h ds98h 98sption of project 2',
+      technologies: 'React, Node, Express, MongoDB'
+    },{
+      title: 'Project 3',
+      description: 'This is a description of project s, adm,andlknskd sdklansdkns das,njdsbjks3',
+      technologies: 'React, Node, Express, MongoDB'
+    },
+    {
+      title: 'Project 1',
+      description: 'This is a description of project 1 oijsioh wsqhdinwqs wd wdhuqhwdk dbdw dwbdbsdlknk lndsakldnklsnakl dnksnlkdnksnkdnlsanadkn salkdnklasndklnklsnk dlnklasdnkldsnklw dbdoibwd  qdwi d d h wqhd h ',
+      technologies: 'React, Node, Express, MongoDB'
+    }
+
+  ]
+
   return (
     <div
       className="ProjectsSection"
       style={{
-        height: dimensions.height || '100vh',
-        width: dimensions.width || '100vw',
-        margin: dimensions.margin,
-        textAlign: font.textAlign,
-        backgroundColor: background.color,
+        minHeight: projects?.dimensions?.minHeight || '100vh',
+        width: projects?.dimensions?.width || '100vw',
+        backgroundColor: projects?.background?.color,
       }}
     >
-      <h2
-        style={{
-          fontFamily: font.fontFamily,
-          fontWeight: font.h2.fontWeight,
-          fontSize: font.h2.fontSize,
-          color: font.h2.color,
-        }}
+      <div className="projects-list"
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${projects?.columns || 3}, 1fr)`,
+        gap: projects?.projectItem?.spacing,
+        margin: "0",
+        padding: "2%",
+
+      }}
       >
-        Projects
-      </h2>
-      <div className="projects-list">
-        {projects.map((project, index) => (
-          <div key={index} className="project-item">
+        {projectList.map((project, index) => (
+          <div key={index} className="project-item"
+          style={{
+            boxShadow : projects?.projectItem?.style?.boxShadow,
+            borderStyle : projects?.projectItem?.style?.border.borderStyle,
+            borderRadius : projects?.projectItem?.style?.border.borderRadius,
+            borderWidth : projects?.projectItem?.style?.border.borderWidth,
+            borderColor : projects?.projectItem?.style?.border.borderColor,
+            marginBottom: "2%",
+            padding: "2%",
+          }}
+          >
             <h3
               style={{
-                fontFamily: font.fontFamily,
-                fontWeight: font.h3.fontWeight,
-                fontSize: font.h3.fontSize,
-                color: font.h3.color,
+                fontFamily: projects?.projectItem?.style?.title?.fontFamily,
+                fontSize: projects?.projectItem?.style?.title?.fontSize,
+                color: projects?.projectItem?.style?.title?.color,
               }}
             >
-              {project.title}
+              {project?.title}
             </h3>
             <p
               style={{
-                fontFamily: font.fontFamily,
-                fontWeight: font.p.fontWeight,
-                fontSize: font.p.fontSize,
-                color: font.p.color,
+                fontFamily: projects?.projectItem?.style?.description?.fontFamily,
+                fontSize: projects?.projectItem?.style?.description?.fontSize,
+                color: projects?.projectItem?.style?.description?.color,
               }}
             >
-              {project.description}
+              {project?.description}
             </p>
             <p
               style={{
-                fontFamily: font.fontFamily,
-                fontWeight: font.p.fontWeight,
-                fontSize: font.p.fontSize,
-                color: font.p.color,
+                fontFamily: projects?.projectItem?.style?.technologies?.fontFamily,
+                fontSize: projects?.projectItem?.style?.technologies?.fontSize,
+                color: projects?.projectItem?.style?.technologies?.color,
               }}
             >
-              Tech Stack: {project.techStack}
+             {project?.technologies}
             </p>
           </div>
         ))}
