@@ -2,8 +2,7 @@ const portfolioJsonTemplate  =  `{
     "portfolio" : {
             "navbar": {
                 "dimensions": {
-                    "height": "",
-                    "width": ""
+                    "height": ""
                 },
                 "background": {
                     "color": "",
@@ -18,26 +17,13 @@ const portfolioJsonTemplate  =  `{
                     "style": {
                         "fontSize": "",
                         "fontColor": "",
-                        "fontFamily": "",
-                        "hover": { 
-                            "fontColor": "",
-                            "backgroundColor": "",
-                            "transform": "",
-                            "transition": ""
-                          },
-                          "animation": {
-                            "name": "",
-                            "duration": "",
-                            "timingFunction": "",
-                            "delay": ""
-                        }
+                        "fontFamily": ""
                     }
                 }
             },         
         "header" : {
             "dimensions" : {
-                "height" : "",
-                "width" : ""
+                "height" : ""
             },
             "background" : {
                 "color" : "",
@@ -75,7 +61,6 @@ const portfolioJsonTemplate  =  `{
         },
         "experiences": {
             "dimensions": {
-                "width": "",
                 "minHeight": ""
             },
             "background": {
@@ -110,25 +95,13 @@ const portfolioJsonTemplate  =  `{
                         "fontSize": "",
                         "fontColor": "",
                         "fontFamily": ""
-                    },
-                    "hover": { 
-                        "fontColor": "",
-                        "backgroundColor": "",
-                        "transform": "",
-                        "transition": ""
-                      },
-                      "animation": {
-                        "name": "",
-                        "duration": "",
-                        "timingFunction": "",
-                        "delay": ""
                     }
+                    
                 }
             }
         },
         "skills": {
             "dimensions": {
-                "width": "",
                 "minHeight": ""
             },
             "background": {
@@ -162,25 +135,12 @@ const portfolioJsonTemplate  =  `{
                         "fontSize": "",
                         "fontColor": "",
                         "fontFamily": ""
-                    },
-                    "hover": { 
-                        "fontColor": "",
-                        "backgroundColor": "",
-                        "transform": "",
-                        "transition": ""
-                      },
-                      "animation": {
-                        "name": "",
-                        "duration": "",
-                        "timingFunction": "",
-                        "delay": ""
                     }
                 }
             }
         },
         "projects": {
             "dimensions": {
-                "width": "",
                 "minHeight": ""
             },
             "background": {
@@ -215,25 +175,12 @@ const portfolioJsonTemplate  =  `{
                         "fontSize": "",
                         "fontColor": "",
                         "fontFamily": ""
-                    },
-                    "hover": { 
-                        "fontColor": "",
-                        "backgroundColor": "",
-                        "transform": "",
-                        "transition": ""
-                      },
-                      "animation": {
-                        "name": "",
-                        "duration": "",
-                        "timingFunction": "",
-                        "delay": ""
                     }
                 }
             }
         },
         "achievements": {
             "dimensions": {
-                "width": "",
                 "minHeight": ""
             },
             "background": {
@@ -268,25 +215,12 @@ const portfolioJsonTemplate  =  `{
                         "fontSize": "",
                         "fontColor": "",
                         "fontFamily": ""
-                    },
-                    "hover": { 
-                        "fontColor": "",
-                        "backgroundColor": "",
-                        "transform": "",
-                        "transition": ""
-                      },
-                      "animation": {
-                        "name": "",
-                        "duration": "",
-                        "timingFunction": "",
-                        "delay": ""
                     }
                 }
             }
         },
         "education": {
             "dimensions": {
-                "width": "",
                 "minHeight": ""
             },
             "background": {
@@ -326,18 +260,6 @@ const portfolioJsonTemplate  =  `{
                         "fontSize": "",
                         "fontColor": "",
                         "fontFamily": ""
-                    },
-                    "hover": { 
-                        "fontColor": "",
-                        "backgroundColor": "",
-                        "transform": "",
-                        "transition": ""
-                      },
-                      "animation": {
-                        "name": "",
-                        "duration": "",
-                        "timingFunction": "",
-                        "delay": ""
                     }
                 }
             }

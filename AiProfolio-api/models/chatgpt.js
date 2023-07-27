@@ -46,13 +46,29 @@ class ChatGPT{
 
       ${portfolioJsonTemplate}
       
-      In the provided JSON template, assign distinctive and vibrant styles to each component key. The goal is to create a design that is not only eye-catching but also ensures readability and accessibility. Pay special attention to contrast, making sure that foreground items stand out clearly against their backgrounds.
+      
+In this creative challenge, you have been given a JSON template that contains various components. 
+Your task is to infuse these components with distinctive and vibrant styles to create an eye-catching design 
+while ensuring readability and accessibility. Emphasize contrast so that foreground items stand out clearly against their backgrounds.
 
-Dare to be different and unique in your color choices and styling elements. We're seeking designs that break free from the ordinary.
+Feel free to think outside the box and be daring in your color choices and styling elements. The goal is to 
+break free from ordinary designs and produce something truly unique. However, it's essential to stay within the
+ bounds of the JSON template structure.
 
-Your work should be strictly within the bounds of the JSON template structure. Return the final design as a JSON code. Let the components spring to life with a myriad of colors and engaging elements. Aim for a design that truly distinguishes itself in uniqueness and contrast.
-MAKE SURE TEXT COLOR AND ITEM BACKGROUND FOR EACH COMPONENT ARE DISTINCTIVE AND CONTRASTING, AND THAT THE TEXT IS READABLE AND ACCESSIBLE. AND MAKE SURE THAT THE SAME THEME IS FOLLOWED AT LEAST SOMEWHAT, AND WHILE IT SHOULD BE UNIQUE IT SHOULD ALSO BE PROFESSIONAL LOOKING
-      `, "gpt-3.5-turbo-16k")
+When working on your design, remember that the text color and item background for each component must 
+be distinctive and contrasting. Additionally, the text should remain readable and accessible to all users.
+ While the design should be unique, it should also maintain a professional appearance.
+
+Finally, unleash your creativity and let your imagination run wild. Return the final design as a JSON code that brings life to the 
+components with a myriad of colors and engaging elements. Aim to create a design that truly stands out with its uniqueness and contrast 
+while maintaining a cohesive theme. Add color and personality to the template while ensuring that the design remains polished and professional.
+PLEASE DONT JUST USE BLACK AND WHITE USE COLORFUL 
+COLORS AND MAKE IT LOOK NICE, MAKE IT FOLLOW A THEME AND MAKE IT LOOK PROFESSIONAL.
+PLease make sure to make the text contrast from the background of items and make sure the text is readable and accessible to all users.
+MAKE THE CONTRAST VALUE A MINIMUM OF !
+MAKE IT LOOK PROFESSIONAL AND KEEP A THEME.
+RETURN ONLY THE GENERATED JSON STRING NOTHING ELSE, FOLLOW THIS FORMAT STRICTLY.
+      `, "gpt-4")
       console.log(response);
       const responseObject = JSON.parse(response)
       console.log(responseObject)
