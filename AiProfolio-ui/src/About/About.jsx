@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 import './About.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faLinkedin, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faCity } from '@fortawesome/free-solid-svg-icons'
 
 function Tilt(props) {
@@ -35,9 +35,9 @@ export default function AboutUs() {
               </div>
             </div>
             <ul className="sci">
-              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
-              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
-              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
+              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faLinkedin} /></a></li>
+              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
             </ul>
           </div>
           <div className="card">
@@ -49,9 +49,9 @@ export default function AboutUs() {
               </div>
             </div>
             <ul className="sci">
-              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
-              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
-              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+            <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
+              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faLinkedin} /></a></li>
+              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
             </ul>
           </div>
           <div className="card">
@@ -63,9 +63,9 @@ export default function AboutUs() {
               </div>
             </div>
             <ul className="sci">
-              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
-              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
-              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+            <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
+              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faLinkedin} /></a></li>
+              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
             </ul>
           </div>
         </div>
