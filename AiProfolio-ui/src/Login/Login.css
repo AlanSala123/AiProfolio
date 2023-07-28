@@ -7,7 +7,6 @@
   border-radius: 10px;
   width: 80%; /* Adjust the width as desired */
   margin: 0 auto;
-  margin-top: 10vh; /* Adjust the top margin to center the container vertically */
   display: flex;
   backdrop-filter: blur(3.5px);
 }
@@ -193,9 +192,10 @@ p {
   background-color: #f0f0f0;
   border-radius: 10px;
   animation: slideshow 12s infinite;
-  background-size: cover;
+  background-size: contain; /* Changed from cover to contain */
   background-position: center;
 }
+
 
 /* Keyframes for the slideshow effect */
 @keyframes slideshow {
@@ -206,7 +206,7 @@ p {
     background-image: url('https://i.gyazo.com/db900cf5314b6b09a267621c76318a38.jpg');
   }
   66% {
-    background-image: url('https://i.gyazo.com/c2d9ea3c62b1f5349fe1ef93715a4cb8.jpg');
+    background-image: url('https://i.gyazo.com/2f4dc7230181eba163f7ebe5a36ec9c7.jpg');
   }
   100% {
     background-image: url('https://i.gyazo.com/0a2e4daab0c0e8ce31907d7f27d032cc.jpg');
