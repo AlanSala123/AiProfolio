@@ -20,45 +20,43 @@ const portfolioJsonTemplate  =  `{
                         "fontFamily": ""
                     }
                 }
-            },         
-        "header" : {
-            "dimensions" : {
-                "height" : ""
             },
-            "background" : {
-                "color" : "",
-                "image" : {
-                    "url" : "",
-                    "dimensions" : {
-                        "height" : "",
-                        "width" : ""
-                    } 
+            "header" : {
+                "dimensions" : {
+                    "height" : "",
+                    "width" : ""
+                },
+                "background" : {
+                    "color" : ""
+                },
+                "border" : {
+                    "color" : "",
+                    "width" : "",
+                    "style" : ""
+                },
+                "foreground" : {
+                    "title" : {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily" : "",
+                        "fontWeight" : "",
+                        "fontStyle" : ""
+                    },
+                    "subtitle" : {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily" : "",
+                        "fontWeight" : "",
+                        "fontStyle" : ""
+                    },
+                    "alignment" : {
+                        "textAlign": "",
+                        "verticalAlign": ""
+                    }
                 }
-            },
-            "foreground" : {
-                "image" : {
-                    "url" : "",
-                    "dimensions" : {
-                        "height" : "",
-                        "width" : ""
-                    } 
-                },
-                "title" : {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFanily" : ""
-                },
-                "subtitle" : {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFanily" : ""
-                },
-                "alignment" : {
-                    "textAlign": "",
-                    "verticalAlign": ""
-                  }
             }
-        },
+                     
+        ,
         "experiences": {
             "dimensions": {
                 "minHeight": ""
@@ -67,7 +65,9 @@ const portfolioJsonTemplate  =  `{
                 "color": "",
                 "image": ""
             },
+            flexWrap : "",
             "experienceItem": {
+                maxWidth : "",
                 "alignment": {
                     "textAlign": "",
                     "verticalAlign": ""
@@ -101,26 +101,26 @@ const portfolioJsonTemplate  =  `{
             }
         },
         "skills": {
+            justifyContent : "",
             "dimensions": {
                 "minHeight": ""
             },
+            flexWrap : "",
             "background": {
                 "color": "",
                 "image": ""
             },
+            "showProgressBar": true,
+            "showLevel": true,
             "skillItem": {
-                "alignment": {
-                    "textAlign": "",
-                    "verticalAlign": ""
-                },
                 "spacing": "",
                 "style": {
-                    boxShadow : "",
+                    "boxShadow" : "",
                     "border" : {
-                        borderStyle : "",
-                        borderRadius : "",
-                        borderWidth : "",
-                        borderColor : ""
+                        "borderStyle" : "",
+                        "borderRadius" : "",
+                        "borderWidth" : "",
+                        "borderColor" : ""
                     },
                     "name": {
                         "fontSize": "",
@@ -138,7 +138,8 @@ const portfolioJsonTemplate  =  `{
                     }
                 }
             }
-        },
+        }
+,        
         "projects": {
             "dimensions": {
                 "minHeight": ""
@@ -220,6 +221,7 @@ const portfolioJsonTemplate  =  `{
             }
         },
         "education": {
+            flexDirection : "",
             "dimensions": {
                 "minHeight": ""
             },

@@ -12,57 +12,34 @@ const resumeTemplateJson = `{
     },
     "experiences": [
       {
-        "experience": "",
-        "location": "",
-        "description": ""
+        "title": "",
+        "description": "",
+        "date": ""
       }
     ],
     "projects": [
       {
-        "project": "",
+        "title": "",
         "description": "",
-        "link": "",
-        "image-url": ""
+        "technologies" : []
       }
     ],
-    "skills": [],
+    "skills": [
+      {
+        name: "",
+        level: "",
+        progress: ""
+      }
+    ],
     "education": [
       {
-        "school": "",
-        "location": "",
-        "gpa": "",
-        "degree" : "",
-        "major": ""
-      }
-    ],
-    "certifications": [
-      {
-        "name": "",
-        "issuingOrganization": "",
-        "date": ""
-      }
-    ],
-    "awards": [
-      {
-        "title": "",
-        "issuer": "",
-        "date": ""
-      }
-    ],
-    "publications": [
-      {
-        "title": "",
-        "publicationDate": "",
-        "publicationName": ""
-      }
-    ],
-    "volunteerWork": [
-      {
-        "organization": "",
-        "role": "",
-        "dates": ""
+        "degree": "",
+        "institution": "",
+        "major": "",
+        "date" : ""
       }
     ]
+    
   }`
 
   module.exports = resumeTemplateJson
