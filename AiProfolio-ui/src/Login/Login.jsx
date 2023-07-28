@@ -48,11 +48,6 @@ export default function Login({ setUser, setToken }) {
   };
 
   // Define the images for the slideshow
-  const slideshowImages = [
-    "https://i.gyazo.com/0a2e4daab0c0e8ce31907d7f27d032cc.jpg",
-    "https://i.gyazo.com/db900cf5314b6b09a267621c76318a38.jpg",
-    "https://i.gyazo.com/c2d9ea3c62b1f5349fe1ef93715a4cb8.jpg"
-  ];
 
   return (
     <><Particles
