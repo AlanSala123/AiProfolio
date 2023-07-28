@@ -2,7 +2,7 @@ const { Configuration, OpenAIApi } = require("openai")
 require('dotenv').config()
 const portfolioJsonTemplate = require("./component_map.js")
 const resumeTemplateJson = require("./resume_map.js")
-const fs = require("fs")
+const pdfjsLib = require('pdfjs-dist');
 
 
 const configuration = new Configuration({
@@ -12,6 +12,27 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 class ChatGPT{
+  
+
+  static async parsePDF(fileBuffer) {
+    const data = new Uint8Array(fileBuffer);
+    const pdf = await pdfjsLib.getDocument({data: data}).promise;
+  
+    let totalText = "";
+  
+    const numPages = pdf.numPages;
+  
+    for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
+      const page = await pdf.getPage(pageNumber);
+      const content = await page.getTextContent();
+  
+      const pageText = content.items.map(item => item.str).join(' ');
+      totalText += pageText + ' ';
+    }
+
+    return totalText;
+  }
+
     static async request(prompt, model){
         const chatCompletion = await openai.createChatCompletion({
             model: model,
@@ -33,7 +54,6 @@ class ChatGPT{
               
         ${resumeText}`, "gpt-3.5-turbo")
         const responseObject = JSON.parse(response)
-        console.log(responseObject)
         return responseObject
     }
 
@@ -45,6 +65,7 @@ class ChatGPT{
       Following the structure of this JSON template:
 
       ${portfolioJsonTemplate}
+      FOLLOW THIS FORMAT STRICTLY.
       
       
 In this creative challenge, you have been given a JSON template that contains various components. 
@@ -67,7 +88,8 @@ COLORS AND MAKE IT LOOK NICE, MAKE IT FOLLOW A THEME AND MAKE IT LOOK PROFESSION
 PLease make sure to make the text contrast from the background of items and make sure the text is readable and accessible to all users.
 MAKE THE CONTRAST VALUE A MINIMUM OF !
 MAKE IT LOOK PROFESSIONAL AND KEEP A THEME.
-RETURN ONLY THE GENERATED JSON STRING NOTHING ELSE, FOLLOW THIS FORMAT STRICTLY.
+FILL OUT ALL THE SECTIONS
+MANDATORY: RETURN ONLY THE GENERATED JSON NOTHING ELSE LIKE TEXT OR ANYTHING.
       `, "gpt-4")
       console.log(response);
       const responseObject = JSON.parse(response)
@@ -76,64 +98,4 @@ RETURN ONLY THE GENERATED JSON STRING NOTHING ELSE, FOLLOW THIS FORMAT STRICTLY.
   }
 }
 
-const luisResume = `LUIS BRAVO
-Oxnard, CA • (805) 415-9758 • luisbravo@ucsb.edu • https://www.linkedin.com/in/luisbrvo/
- EDUCATION
- University of California, Santa Barbara (UCSB)
-Bachelor of Science (B.S.)
-GPA : 3.1 / 4
-RESEARCH EXPERIENCE
-Student Researcher, UCSB Systems and Networking Lab, Santa Barbara, CA
- Contributed to the development of Trust ee, a Python package aimed at providing network operators with tools to increase trust in
-black box ML models
- Led the conversion of the Trustee trust report output from CLI to HTML, improving its readability and shareability
- Implemented functionality to set thresholds and generate decision trees based on the threshold set to assist network operators in
-identifying potential issues with ML models
- Worked in a team environment to ensure project goals were met in a timely and efficient manner
-PERSONAL PROJECTS
- Designed and developed an iOS application that enables users to create and share a fridge database, providing the ability to update, delete, and edit items and notes into the shared environment.
- Designed and developed a Python-based application enabling users to create invoices and estimates with ease, while also providing efficient management of files and data to ensure an accessible and responsive graphical user interface.
- Designed and developed a social media prototype application at CalHacks which allowed users to see visual connections between each of their mutual friends in a node graph-like graphical format.
-RELEVANT COURSEWORK
- Data Structures and Algorithms, Object Oriented Design, Computer Architecture, Computer Organization and Design Logic, Numerical Computing, Problem Solving with Computers, Discrete Math, Calculus, Vector Calculus, Differential Equations
-SKILLS
-Technical: Python, Swift, C++, iOS development, HTML, CSS, Javascript, Express.js, Node.js, React.js, PostgreSQL English (Native), Spanish (Advanced)
-Santa Barbara, CA Expected June 2025
- January 2022-Present
-   EXPERIENCE
-Futureforce Tech Launchpad Scholar, Salesforce, San Francisco, CA
- Leading a team in the development of a full stack web application
- Developing a variety of web applications to gain experience in full stack web development
- Researching and experimenting with a variety of development technologies
-Fulfillment Associate, Amazon, Isla Vista, CA
- Assisted customers with package pickup and delivery
- Maintained accurate records of packages received and delivered
- Worked as part of a team to provide efficient and effective service to customers
-Cashier, Vons, Santa Barbara, CA
- Assisted customers with package pickup and delivery
- Maintained accurate records of packages received and delivered
- Worked as part of a team to provide efficient and effective service to customers
-Cashier, Walmart, Oxnard, CA
- Handled customer transactions and assisted with customer inquiries and concerns
- Maintained a clean and organized work environment
- Assisted with stocking shelves and maintaining inventory
-June 2023-August 2023
-September 2022-February 2023
-February 2022-June 2022
-August 2021-December 2021
- `
-
- console.time('executionTime');
-
-
-  ChatGPT.buildWebsite().then(website => {
-    console.timeEnd('executionTime');
-    fs.writeFile('EXAMPLE.json', JSON.stringify(website), 'utf8', function (err) {
-      if (err) {
-          console.log("An error occured while writing JSON Object to File.");
-          return console.log(err);
-      }
-   
-      console.log("JSON file has been saved.");
-  });
-  }).catch(console.error)
+module.exports = ChatGPT

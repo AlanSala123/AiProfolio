@@ -1,5 +1,4 @@
 const User = require('../models/user.js')
-const app = require('../server.js')
 const express = require('express')
 
 const authRouter = express.Router()
