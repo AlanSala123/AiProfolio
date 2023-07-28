@@ -1,57 +1,112 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import VanillaTilt from 'vanilla-tilt';
 import './About.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faCity } from '@fortawesome/free-solid-svg-icons'
 
-export default function AboutUs() {
-  const [animate, setAnimate] = useState(false);
+function Tilt(props) {
+  const { options, ...rest } = props;
+  const tilt = useRef(null);
 
   useEffect(() => {
-    //when section comes into view animation starts
-    const handleScroll = () => {
-      const servicesElement = document.querySelector('#about-us-container');
-      const bounding = servicesElement.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+    VanillaTilt.init(tilt.current, options);
+  }, [options]);
+  return <div ref={tilt} {...rest} />
+}
 
-      if (bounding.top < windowHeight) {
-        setAnimate(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+export default function AboutUs() {
+  const options = {
+    scale: 1.2,
+    speed: 1000,
+    max: 30
+  };
 
   return (
-    <div id="about-us-container">
-        <h1 className='about-header'>About Us</h1>
-      <div className="about-box" style={{ display: animate ? 'block' : 'none' }}>
-        <img
-          src="https://media.licdn.com/dms/image/D4E03AQGzOTHBDxAh4g/profile-displayphoto-shrink_800_800/0/1679439879252?e=1695254400&v=beta&t=cjn8XG2EMofwrlHtahLmS7bY_dVZsm2_pbv0OV7qh-Y"
-          alt="Person 1"
-          className="about-image"
-        />
-        <h3 className="about-name">Marwan Kabir</h3>
-        <p className="about-description">Hi, I'm Marwan</p>
-      </div>
+    <div className="bod">
+      <section>
+        <h2 className="team">Our Team</h2>
+        <div className="container">
+          <div className="card">
+            <div className="content">
+              <div className="imgBx"><img src="https://media.licdn.com/dms/image/D4E03AQGzOTHBDxAh4g/profile-displayphoto-shrink_800_800/0/1679439879252?e=1695254400&v=beta&t=cjn8XG2EMofwrlHtahLmS7bY_dVZsm2_pbv0OV7qh-Y" /></div>
+              <div className="contentBx">
+                <h3>Marwan Kabir<br /><span>Software Engineer Intern</span></h3>
+              </div>
+            </div>
+            <ul className="sci">
+              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
+              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+            </ul>
+          </div>
+          <div className="card">
+            <div className="content">
+              <div className="imgBx"><img src="https://media.licdn.com/dms/image/D5603AQFH-DfWF_1vmg/profile-displayphoto-shrink_800_800/0/1686029839874?e=1695254400&v=beta&t=xiUrcGZqZSRnaAbxAypAK2gk4Q7d6oTWrPwQTRsSy8c" /></div>
+              <div className="contentBx">
+                <h3>Luis Bravo<br /><span>Software Engineer Intern</span></h3>
 
-      <div className="about-box" style={{ display: animate ? 'block' : 'none' }}>
-        <img
-          src="https://media.licdn.com/dms/image/D5603AQFH-DfWF_1vmg/profile-displayphoto-shrink_800_800/0/1686029839874?e=1695254400&v=beta&t=xiUrcGZqZSRnaAbxAypAK2gk4Q7d6oTWrPwQTRsSy8c"
-          alt="Person 2"
-          className="about-image"
-        />
-        <h3 className="about-name">Luis Bravo</h3>
-        <p className="about-description">Hi, I'm Luis</p>
-      </div>
+              </div>
+            </div>
+            <ul className="sci">
+              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+            </ul>
+          </div>
+          <div className="card">
+            <div className="content">
+              <div className="imgBx"><img src="https://media.licdn.com/dms/image/C4E03AQGVNfYXWWLEFg/profile-displayphoto-shrink_800_800/0/1651170466467?e=1695254400&v=beta&t=oxbPmyX_iMDUGF6DvuZxRul6Yq-JnqtSZ035sFXnxxA" /></div>
+              <div className="contentBx">
+                <h3>Alan Salazar<br /><span>Software Engineer Intern</span></h3>
 
-      <div className="about-box" style={{ display: animate ? 'block' : 'none' }}>
-        <img
-          src="https://media.licdn.com/dms/image/C4E03AQGVNfYXWWLEFg/profile-displayphoto-shrink_800_800/0/1651170466467?e=1695254400&v=beta&t=oxbPmyX_iMDUGF6DvuZxRul6Yq-JnqtSZ035sFXnxxA"
-          alt="Person 3"
-          className="about-image"
-        />
-        <h3 className="about-name">Alan Salazar</h3>
-        <p className="about-description">Hi, I'm Alan</p>
-      </div>
+              </div>
+            </div>
+            <ul className="sci">
+              <li style={{ '--i': 1 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+              <li style={{ '--i': 2 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+              <li style={{ '--i': 3 }}><a href="#"><FontAwesomeIcon icon={faCity} /></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
+    /* // <div className="entire-section">
+    //   <h1 className="our-team"> Our Team </h1>
+    //   <div className="about-container">
+    //     <div className="test">
+    //     <Tilt options={options}>
+    //       <div className="about-card" data-tilt>
+    //         <img src="https://media.licdn.com/dms/image/D4E03AQGzOTHBDxAh4g/profile-displayphoto-shrink_800_800/0/1679439879252?e=1695254400&v=beta&t=cjn8XG2EMofwrlHtahLmS7bY_dVZsm2_pbv0OV7qh-Y" alt="Marwan Kabir" />
+    //         <h2> Marwan Kabir </h2>
+    //         <p>Hi, I'm Marwan</p>
+    //         <div className='links'>
+    //           <a href="https://LinkedIn.com"><img src="https://static.vecteezy.com/system/resources/previews/018/930/587/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png" alt="LinkedIn" /></a>
+    //         </div>
+    //       </div>
+    //     </Tilt>
+    //     </div>
+    //     <Tilt options={options}>
+    //       <div className="about-card" data-tilt>
+    //         <img src="https://media.licdn.com/dms/image/D5603AQFH-DfWF_1vmg/profile-displayphoto-shrink_800_800/0/1686029839874?e=1695254400&v=beta&t=xiUrcGZqZSRnaAbxAypAK2gk4Q7d6oTWrPwQTRsSy8c" alt="Marwan Kabir" />
+    //         <h2> Luis Bravo </h2>
+    //         <p> Hi, I'm Luis</p>
+    //         <div className='links'>
+    //           <a href="https://LinkedIn.com"><img src="https://static.vecteezy.com/system/resources/previews/018/930/587/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png" alt="LinkedIn" /></a>
+    //         </div>
+    //       </div>
+    //     </Tilt>
+    //     <Tilt options={options}>
+    //       <div className="about-card" data-tilt>
+    //         <img src="https://media.licdn.com/dms/image/C4E03AQGVNfYXWWLEFg/profile-displayphoto-shrink_800_800/0/1651170466467?e=1695254400&v=beta&t=oxbPmyX_iMDUGF6DvuZxRul6Yq-JnqtSZ035sFXnxxA" alt="Marwan Kabir" />
+    //         <h2> Alan Salazar </h2>
+    //         <p>Hi, I'm Alan</p>
+    //         <div className='links'>
+    //           <a href="https://LinkedIn.com"><img src="https://static.vecteezy.com/system/resources/previews/018/930/587/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png" alt="LinkedIn" /></a>
+    //         </div>
+    //       </div>
+    //     </Tilt>
+    //   </div>
+  // </div> */
   );
 }

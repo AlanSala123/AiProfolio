@@ -1,85 +1,218 @@
-#about-us-container {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: transparent;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    position: relative; /* Add this line to establish a positioning context */
-  }
-  
-  .about-box {
-    flex: 0 0 calc(20% - 40px); /* Adjust the width of the container with margin space */
-    margin: 80px;
-    padding: 20px;
-    border-radius: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff; /* Replace with your desired solid color */
-    opacity: 0;
-    animation: scaleIn 1s ease-out forwards;
-    display: flex; /* Added to make the container adjust its width to fit the content */
-    flex-direction: column; /* Added to stack the content vertically */
-    align-items: center; /* Added to vertically center the content */
-    text-align: center; /* Added to center the text horizontally */
-    transform: scaleY(1.2); /* Added to create an egg-shaped appearance */
-  }
-  
-  .about-box:nth-child(1) {
-    animation-delay: 0.4s;
-  }
-  
-  .about-box:nth-child(2) {
-    animation-delay: 0.8s;
-  }
-  
-  .about-box:nth-child(3) {
-    animation-delay: 1.2s;
-  }
-  
-  @keyframes scaleIn {
-    from {
-      transform: scale(0);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  .about-image {
-    width: 300px;
-    height: auto;
-    border-radius: 200px;
-  }
-  
-  .about-name {
-    margin-top: 10px;
-    font-size: 18px;
-    word-wrap: break-word; /* Allow the text to wrap within the container */
-    font-family: "Outfit";
-  }
-  
-  .about-description {
-    margin-top: 5px;
-    font-size: 14px;
-    word-wrap: break-word; /* Allow the text to wrap within the container */
-    font-family: "Outfit";
-  }
+/* .bod{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #161623;
+  min-height: 100vh;
+} */
 
-  .about-header {
-    font-family: "Outfit";
-    font-size: 44px;
-    font-weight: bold;
-    color: #5CAB72;
-    text-align: center;
-    margin: 0 auto;
-    z-index: 2;
-    position: absolute;
-    top: 20px; /* Adjust the top positioning as needed */
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  
-  
+section{
+  position: relative;
+  background: #161623;
+}
+
+.team {
+  font-size: 60px;
+  font-weight: bold;
+  color: #fff; 
+  margin: 0; 
+  padding: 10px; 
+  background-color: #161623; 
+  border-radius: 10px; 
+  position: absolute;
+  top: 130px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  font-family: outfit;
+}
+
+section::before{
+  content: '';
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#f00, #f0f);
+  clip-path: circle(30% at right 70%);
+}
+
+section::after{
+  content: '';
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#2196f3, #e91e63);
+  clip-path: circle(20% at 10% 10%);
+}
+
+.container{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 110vh;
+}
+
+.container .card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.container .card .content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.container .card:hover .content {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+
+.container .card .content .imgBx{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid rgba(0, 0, 0, 0.25);
+}
+
+.container .card .content .imgBx img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container .card .content .contentBx h3 {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0 10px;
+  line-height: 1.1em;
+}
+
+.container .card .content .contentBx h3 span {
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: initial;
+}
+
+.container .card .sci {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.container .card .sci li{
+  list-style: none;
+  margin: 0 10px;
+  transform: translateY(40px);
+  transition: 0.5s;
+  opacity: 0;
+  transition-delay: calc(0.1s) * var(--i);
+}
+
+.container .card:hover .sci li{
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.container .card .sci li a {
+  color: white;
+  font-size: 24px;
+}
+
+
+
+/* .entire-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  z-index: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.our-team{
+  font-size: 36px;
+  text-align: center;
+  font-family: outfit;
+  font-weight: bold;
+  color: white;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10vw;
+  width: 100%;
+
+}
+
+
+.about-card {
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 10%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.about-card img {
+  width: 140px;
+  border-radius: 50%;
+}
+
+.about-card h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.about-card p {
+  font-size: 18px;
+  margin: 10px auto;
+  max-width: 330px;
+}
+
+.about-card .links img {
+  width: 40px;
+  border-radius: 50%;
+  margin: 10px 5px;
+} */
