@@ -1,165 +1,226 @@
-.login {
-    background-color: #5cab72;
-    padding: 30px;
-    border-radius: 10px;
-    width: 600px;
-    height: 81vh;
-    margin: 0 auto;
-    margin-top: 2%;
-    text-align: center;
-    font-family: outfit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Login Container */
+.login-container {
+  background-color: rgba(226, 225, 225, 0.1);
+  position: relative;
+  z-index: 10;
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%; /* Adjust the width as desired */
+  margin: 0 auto;
+  margin-top: 10vh; /* Adjust the top margin to center the container vertically */
+  display: flex;
+  backdrop-filter: blur(3.5px);
+}
+
+/* Left Side */
+.login-left {
+  flex: 1;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items:center ;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  margin-right: 700px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.title{
+  font-size: 40px;
+  color: white;
+}
+
+p {
+  font-size: 24px;
+  color: white;
+}
+
+.Google {
+  background-color: #4285f4;
+  color: white;
+  padding: 12px 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.Google:hover {
+  background-color: #246db4;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: white;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.separator span {
+  margin: 0 10px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.loginForm label {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+  width: 50%;
+}
+
+.loginForm input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.loginButton {
+  background-color: white;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px; /* Adjust the width as desired */
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 100px;
+}
+
+.loginButton:hover {
+  background-color: #4d935d;
+}
+
+#error-message {
+  color: rgb(136, 0, 0);
+  font-weight: 1000;
+  font-size: 16px;
+  margin-top: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-right: .15rem solid rgb(136, 0, 0);
+  white-space: nowrap;
+  letter-spacing: .1rem;
+  animation:
+      typing-medium 1s steps(40, end),
+      blink-red .75s step-end infinite;
+}
+
+#error-message-short {
+  color: rgb(136, 0, 0);
+  font-weight: 1000;
+  font-size: 16px;
+  margin-top: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-right: .15rem solid rgb(136, 0, 0);
+  white-space: nowrap;
+  letter-spacing: .1rem;
+  animation:
+      typing-short 1s steps(40, end),
+      blink-red .75s step-end infinite;
+}
+
+#error-message-long {
+  color: rgb(136, 0, 0);
+  font-weight: 1000;
+  font-size: 16px;
+  margin-top: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-right: .15rem solid rgb(136, 0, 0);
+  white-space: nowrap;
+  letter-spacing: .1rem;
+  animation:
+      typing-long 1s steps(40, end),
+      blink-red .75s step-end infinite;
+}
+
+#error-message-shortest {
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
+  margin-top: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-right: .15rem solid rgb(136, 0, 0);
+  white-space: nowrap;
+  letter-spacing: .1rem;
+  animation:
+      typing-shortest 1s steps(40, end),
+      blink-red .75s step-end infinite;
+}
+
+
+/* Right Side (Slideshow) */
+.login-right {
+  flex: 1;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  animation: slideshow 12s infinite;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Keyframes for the slideshow effect */
+@keyframes slideshow {
+  0% {
+    background-image: url('https://i.gyazo.com/0a2e4daab0c0e8ce31907d7f27d032cc.jpg');
   }
-  
-  .login h1 {
-    font-size: 70px;
-    margin-bottom: 10px;
-    color: white;
-    font-family: outfit;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  33% {
+    background-image: url('https://i.gyazo.com/db900cf5314b6b09a267621c76318a38.jpg');
   }
-  
-  .loginForm {
-    display: flex;
+  66% {
+    background-image: url('https://i.gyazo.com/c2d9ea3c62b1f5349fe1ef93715a4cb8.jpg');
+  }
+  100% {
+    background-image: url('https://i.gyazo.com/0a2e4daab0c0e8ce31907d7f27d032cc.jpg');
+  }
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .login-container {
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 30px;
   }
 
-  .Google {
-    background-color: #4285f4;
-    color: white;
-    padding: 12px 50px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-  }
-  
-  .Google:hover {
-    background-color: #246db4;
-  }
-  
-  .sep {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .l {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #ccc;
-    margin-bottom: 10px;
-  }
-  
-  .sep span {
-    margin: 0 10px;
-    color: #888;
-    margin-bottom: 10px;
-  }
-  
-  .loginForm label {
-    color: white;
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-align: left;
-    width: 50%;
-  }
-  
-  .loginForm input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
+  .login-left,
+  .login-right {
     width: 100%;
-    box-sizing: border-box;
   }
-  
-  .loginButton {
-    background-color: white;
-    color: black;
-    padding: 12px;
-    border: none;
-    border-radius: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 200px; /* Adjust the width as desired */
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-    margin-bottom: 100px;
-  }
-  
-  .loginButton:hover {
-    background-color: #4d935d;
-  }
-  
-  .login #error-message,
-  .login #error-message-short,
-  .login #error-message-long {
-    color: rgb(136, 0, 0);
-    font-weight: 1000;
-    font-size: 16px;
-    margin-top: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-right: 0.15rem solid rgb(136, 0, 0);
-    white-space: nowrap;
-    letter-spacing: 0.1rem;
-    animation: typing-medium 1s steps(40, end), blink-red 0.75s step-end infinite;
-  }
-  
-  .login #error-message-short {
-    animation: typing-short 1s steps(40, end), blink-red 0.75s step-end infinite;
-  }
-  
-  .login #error-message-long {
-    animation: typing-long 1s steps(40, end), blink-red 0.75s step-end infinite;
-  }
-  
-  @keyframes blink-red {
-    from,
-    to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: rgb(136, 0, 0);
-    }
-  }
-  
-  @keyframes typing-short {
-    from {
-      width: 0;
-    }
-    to {
-      width: 225px;
-    }
-  }
-  
-  @keyframes typing-medium {
-    from {
-      width: 0;
-    }
-    to {
-      width: 375px;
-    }
-  }
-  
-  @keyframes typing-long {
-    from {
-      width: 0;
-    }
-    to {
-      width: 475px;
-    }
-  }
-  
+}
