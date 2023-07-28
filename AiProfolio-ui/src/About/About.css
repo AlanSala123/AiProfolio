@@ -7,7 +7,7 @@
   min-height: 100vh;
 } */
 
-section{
+.bod section{
   position: relative;
   background: #161623;
 }
@@ -28,25 +28,25 @@ section{
   font-family: outfit;
 }
 
-section::before{
+.bod section::before{
   content: '';
   position:absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#f00, #f0f);
+  background: linear-gradient(rgb(129, 205, 139), rgb(29, 119, 36));
   clip-path: circle(30% at right 70%);
 }
 
-section::after{
+.bod section::after{
   content: '';
   position:absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#2196f3, #e91e63);
+  background: linear-gradient(#166f35, #136526);
   clip-path: circle(20% at 10% 10%);
 }
 
@@ -80,7 +80,7 @@ section::after{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  opacity: 0.5;
+  opacity: 1;
   transition: 0.5s;
 }
 
