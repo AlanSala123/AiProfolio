@@ -50,8 +50,10 @@ class ChatGPT{
             FOLLOW THIS FORMAT STRICTLY
 
             ${resumeTemplateJson}
+
+            FOR THE SUMMARY SECTION CREATE A MINIMUM 200 WORD DESCRIPTION OF THE PERSON BASED ON THE RESUME TEXT.
+            FOR THE JOB ASPIRATION SECTION ASSUME WHAT THE PERSONS JOB ASPIRATION (Job Title) IS BASED ON THE RESUME TEXT
             
-              
         ${resumeText}`, "gpt-3.5-turbo")
         const responseObject = JSON.parse(response)
         return responseObject
@@ -99,3 +101,4 @@ MANDATORY: RETURN ONLY THE GENERATED JSON NOTHING ELSE LIKE TEXT OR ANYTHING.
 }
 
 module.exports = ChatGPT
+
