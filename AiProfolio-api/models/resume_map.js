@@ -6,6 +6,7 @@ const resumeTemplateJson = `{
       "media-links": []
     },
     "summary": "",
+    "jobAspiration": "",
     "contactInformation": {
       "phone": "",
       "address": ""

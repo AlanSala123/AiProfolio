@@ -18,6 +18,10 @@
     margin: 0;
     font-size: 16px;
   }
+
+  .dropzone-container p {
+    color : #555555;
+  }
   
   .dropzone-container.active {
     border-color: #36a2d6;
@@ -36,6 +40,7 @@
   .preview-title {
     font-size: 24px;
     font-weight: bold;
+    color: #555555;
   }
   
   .remove-all-button {
@@ -54,7 +59,7 @@
   
   .remove-all-button:hover {
     background-color: #36a2d6;
-    color: white;
+    color: rgb(106, 106, 106);
   }
   
   .remove-all-button:focus {
@@ -95,7 +100,7 @@
     top: 4px; /* Adjusted position for better visibility */
     right: 4px; /* Adjusted position for better visibility */
     background-color: #ff5f5f;
-    color: white;
+    color: rgb(112, 112, 112);
     border: none;
     border-radius: 50%;
     width: 28px; /* Increased button size for better visibility */
@@ -159,7 +164,7 @@
   
   .remove-rejected-button {
     background-color: #ff5f5f;
-    color: white;
+    color: rgb(131, 131, 131);
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
@@ -180,4 +185,10 @@
   .remove-rejected-button:active {
     background-color: #c53030;
   }
-  
+  #dragDropForm {
+    padding: 2.5%;
+  }
+
+  .resumeStatus p{
+    color: black;
+  }

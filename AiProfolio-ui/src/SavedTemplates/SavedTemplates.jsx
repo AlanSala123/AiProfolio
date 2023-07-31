@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./SavedTemplates.css"; // Make sure to create this CSS file for styling
 import { RiFile2Line } from "react-icons/ri"; // Import the file icon from react-icons library
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   // Assuming you have an array of portfolios from the backend
@@ -17,6 +18,7 @@ const Dashboard = () => {
     // Add more portfolios as needed
   ];
 
+  const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("");
   const filteredPortfolios = portfolios.filter((portfolio) =>
     portfolio.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -52,7 +54,7 @@ onChange={(e) => setSearchQuery(e.target.value)}
 ))}
 {/* Add more cards here */}
 </div>
-<div className="fab">+</div>
+<div onClick={()=>{navigate('/Drag-Drop')}}className="fab">+</div>
 </div>
 </div>
 

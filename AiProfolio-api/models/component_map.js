@@ -19,8 +19,40 @@ const portfolioJsonTemplate  =  `{
                         "fontColor": "",
                         "fontFamily": ""
                     }
-                }
+                } 
             },
+            "about": {
+                "dimensions": {
+                    "minHeight": ""
+                },
+                "background": {
+                    "color": "",
+                    "image": ""
+                },
+                "aboutItem": {
+                    "alignment": {
+                        "textAlign": "",
+                        "verticalAlign": ""
+                    },
+                    "spacing": "",
+                    "style": {
+                        "profilePicture": {
+                            "width": "",
+                            "height": ""
+                        },
+                        "name": {
+                            "fontSize": "",
+                            "fontColor": "",
+                            "fontFamily": ""
+                        },
+                        "description": {
+                            "fontSize": "",
+                            "fontColor": "",
+                            "fontFamily": ""
+                        }
+                    }
+                }
+            },            
             "header" : {
                 "dimensions" : {
                     "height" : "",
@@ -222,9 +254,6 @@ const portfolioJsonTemplate  =  `{
         },
         "education": {
             flexDirection : "",
-            "dimensions": {
-                "minHeight": ""
-            },
             "background": {
                 "color": "",
                 "image": ""

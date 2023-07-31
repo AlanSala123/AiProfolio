@@ -1,49 +1,29 @@
 import React from 'react';
 import './Experiences.css';
 
-function Experiences({ experiences }) {
-
-    const experienceList = [
-        {
-          title: "Software Engineer",
-          description: "Developed web applications using JavaScript, React, and Node.js.",
-          dates: "June 2019 - Present",
-        },
-        {
-          title: "Product Manager",
-          description: "Led product development and launch of a new mobile app.",
-          dates: "January 2017 - May 2019",
-        },
-        {
-          title: "Marketing Specialist",
-          description: "Implemented marketing campaigns and analyzed customer data.",
-          dates: "July 2015 - December 2016",
-        },
-      ];
-      
+function Experience({ experiences, experienceList }) {
 
     return (
         <div
-            className="experienceSection"
+            id="experience"
             style={{
-                minHeight : experiences?.dimensions?.minHeight,
-                width : "90vw",
-                backgroundColor : experiences?.background?.color,
-                padding : "5vw"
+                minHeight: experiences?.dimensions?.minHeight || '50vh',
+                width: '100vw',
+                backgroundColor: experiences?.background?.color,
+                padding : "5vw",
+                boxSizing: "border-box"
             }}
-
         >
-            
             <ul style={{
                 display: "flex",
-                flexDirection: "rows",
+                flexDirection: "column",
                 textAlign : experiences?.experienceItem?.alignment?.textAlign,
                 verticalAlign : experiences?.experienceItem?.alignment?.verticalAlign,
-                gap : experiences?.experienceItem?.spacing,
+                gap : experiences?.experienceItem?.spacing || '1em',
                 margin : "0",
+                listStyle : "none"
             }}>
                 {experienceList.map((experience, index) => (
-
                     <li
                         key={index}
                         style={{
@@ -54,34 +34,39 @@ function Experiences({ experiences }) {
                             borderRadius : experiences?.experienceItem?.style?.border?.borderRadius,
                             paddingLeft : "1%",
                             paddingRight : "1%",
-                            listStyle : "none"
-                            
+
+                            paddingBottom : "1%",
+                            marginBottom : "2%"
                         }}
                     >
-                        <h1
+                        <h2
                         style={{
                             fontSize : experiences?.experienceItem?.style?.title?.fontSize,
-                            fontColor : experiences?.experienceItem?.style?.title?.fontColor,
+                            color : experiences?.experienceItem?.style?.title?.fontColor,
                             fontFamily : experiences?.experienceItem?.style?.title?.fontFamily,
                         }}
                         >
                         {experience.title}
-                        </h1>
+                        </h2>
+
                         <p
                         style={{
                             fontSize : experiences?.experienceItem?.style?.description?.fontSize,
-                            fontColor : experiences?.experienceItem?.style?.description?.fontColor,
+                            color : experiences?.experienceItem?.style?.description?.fontColor,
                             fontFamily : experiences?.experienceItem?.style?.description?.fontFamily,
-                        }}>
-                            {experience.description}
+                        }}
+                        >
+                        {experience.description}
                         </p>
+
                         <p
                         style={{
                             fontSize : experiences?.experienceItem?.style?.date?.fontSize,
-                            fontColor : experiences?.experienceItem?.style?.date?.fontColor,
+                            color : experiences?.experienceItem?.style?.date?.fontColor,
                             fontFamily : experiences?.experienceItem?.style?.date?.fontFamily,
-                        }}>
-                            {experience.dates}
+                        }}
+                        >
+                        {experience.date}
                         </p>
                     </li>
                 ))}
@@ -90,4 +75,4 @@ function Experiences({ experiences }) {
     );
 }
 
-export default Experiences;
+export default Experience;
