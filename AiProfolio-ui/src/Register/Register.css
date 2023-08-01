@@ -5,20 +5,19 @@
   z-index: 10;
   padding: 30px;
   border-radius: 10px;
-  width: 80%; /* Adjust the width as desired */
-  height: 90vh;
+  width: 80%;
+  height: 95vh;
   margin: 0 auto;
   display: flex;
   backdrop-filter: blur(3.5px);
 }
 
-/* Left Side */
 .register-left {
   flex: 1;
   padding-right: 20px;
   display: flex;
   flex-direction: column;
-  align-items:center ;
+  align-items: center;
 }
 
 .user-icon {
@@ -84,6 +83,7 @@ p {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 2vh;
 }
 
 .registerForm label {
@@ -110,7 +110,7 @@ p {
   border-radius: 15px;
   font-size: 16px;
   cursor: pointer;
-  width: 200px; /* Adjust the width as desired */
+  width: 200px;
   margin-top: 10px;
   transition: background-color 0.3s ease;
   margin-bottom: 100px;
@@ -121,39 +121,41 @@ p {
 }
 
 #error-message {
-  color: rgb(136, 0, 0);
-  font-weight: 1000;
-  font-size: 16px;
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
   margin-top: 10px;
   margin: 0 auto;
   overflow: hidden;
-  border-right: 0.15rem solid rgb(136, 0, 0);
+  border-right: 0.15rem solid rgb(239, 74, 74);
   white-space: nowrap;
   letter-spacing: 0.1rem;
   animation: typing-medium 1s steps(40, end), blink-red 0.75s step-end infinite;
 }
 
 #error-message-short {
-  color: rgb(136, 0, 0);
-  font-weight: 1000;
-  font-size: 16px;
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
   margin-top: 10px;
+  margin-bottom: 20px;
   margin: 0 auto;
   overflow: hidden;
-  border-right: 0.15rem solid rgb(136, 0, 0);
+  border-right: 0.15rem solid rgb(239, 74, 74);
   white-space: nowrap;
   letter-spacing: 0.1rem;
   animation: typing-short 1s steps(40, end), blink-red 0.75s step-end infinite;
 }
 
 #error-message-long {
-  color: rgb(136, 0, 0);
-  font-weight: 1000;
-  font-size: 16px;
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
   margin-top: 10px;
+  margin-bottom: 20px;
   margin: 0 auto;
   overflow: hidden;
-  border-right: 0.15rem solid rgb(136, 0, 0);
+  border-right: 0.15rem solid rgb(239, 74, 74);
   white-space: nowrap;
   letter-spacing: 0.1rem;
   animation: typing-long 1s steps(40, end), blink-red 0.75s step-end infinite;
@@ -166,40 +168,40 @@ p {
   margin-top: 10px;
   margin: 0 auto;
   overflow: hidden;
-  border-right: 0.15rem solid rgb(136, 0, 0);
+  border-right: 0.15rem solid rgb(239, 74, 74);
   white-space: nowrap;
   letter-spacing: 0.1rem;
   animation: typing-shortest 1s steps(40, end), blink-red 0.75s step-end infinite;
 }
 
-/* Right Side (Slideshow) */
 .register-right {
   flex: 1;
   background-color: #f0f0f0;
   border-radius: 10px;
   animation: slideshow 12s infinite;
-  background-size: contain; /* Changed from cover to contain */
+  background-size: contain;
   background-position: center;
   height: 90vh;
 }
 
-/* Keyframes for the slideshow effect */
 @keyframes slideshow {
   0% {
     background-image: url("https://i.gyazo.com/0a2e4daab0c0e8ce31907d7f27d032cc.jpg");
   }
+
   33% {
     background-image: url("https://i.gyazo.com/db900cf5314b6b09a267621c76318a38.jpg");
   }
+
   66% {
     background-image: url("https://i.gyazo.com/2f4dc7230181eba163f7ebe5a36ec9c7.jpg");
   }
+
   100% {
     background-image: url("https://i.gyazo.com/0a2e4daab0c0e8ce31907d7f27d032cc.jpg");
   }
 }
 
-/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .register-container {
     flex-direction: column;
@@ -217,174 +219,54 @@ p {
   text-align: left;
 }
 
-/* body {
-    background-color: #5CAB72;
-}
-.register {
-    background-color: #5cab72;
-    padding: 30px;
-    border-radius: 10px;
-    width: 600px;
-    height: 81vh;
-    margin: 0 auto;
-    margin-top: 5%;
-    text-align: center;
-    font-family: outfit;
-  }
-  
-  .register h1 {
-    font-size: 70px;
-    margin-bottom: 10px;
-    color:white;
-    font-family: outfit;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
-  }
-  
-  .register p {
-    font-size: 25px;
-    color: #777;
-    margin-bottom: 50px;
-    color:white;
-    width: 100%;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
-  }
-  
-  .register #error-message {
-    color: rgb(136, 0, 0);
-    font-weight: 1000;
-    font-size: 16px;
-    margin-top: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-right: .15rem solid rgb(136, 0, 0);
-    white-space: nowrap;
-    letter-spacing: .1rem;
-    animation:
-        typing-medium 1s steps(40, end),
-        blink-red .75s step-end infinite;
-  }
-
-  .register #error-message-short {
-    color: rgb(136, 0, 0);
-    font-weight: 1000;
-    font-size: 16px;
-    margin-top: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-right: .15rem solid rgb(136, 0, 0);
-    white-space: nowrap;
-    letter-spacing: .1rem;
-    animation:
-        typing-short 1s steps(40, end),
-        blink-red .75s step-end infinite;
-  }
-
-  .register #error-message-long {
-    color: rgb(136, 0, 0);
-    font-weight: 1000;
-    font-size: 16px;
-    margin-top: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-right: .15rem solid rgb(136, 0, 0);
-    white-space: nowrap;
-    letter-spacing: .1rem;
-    animation:
-        typing-long 1s steps(40, end),
-        blink-red .75s step-end infinite;
-  }
-
-  .GoogleButton {
-    background-color: #4285f4;
-    color: white;
-    padding: 12px 50px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-  }
-  
-  .GoogleButton:hover {
-    background-color: #246db4;
-  }
-  
-  .separator {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #ccc;
-    margin-bottom: 10px;
-  }
-  
-  .separator span {
-    margin: 0 10px;
-    color: #888;
-    margin-bottom: 10px;
-  }
-  
-  .regForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .regForm input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    width: 300px;
-    box-sizing: border-box;
-  }
-  
-  .SignButton {
-    background-color: white;
-    color: black;
-    padding: 12px;
-    border: none;
-    border-radius: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 50%;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-    margin-bottom: 100px;
-  }
-  
-  .SignButton:hover {
-    background-color: #4d935d;
-  }
-  
 @keyframes blink-red {
-    from, to {border-color: transparent;}
-    50%{ border-color: rgb(136, 0, 0);}
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: rgb(136, 0, 0);
+  }
 }
 
 @keyframes typing-shortest {
-  from {width: 0}
-  to {width: 190px;}
+  from {
+    width: 0
+  }
+
+  to {
+    width: 190px;
+  }
 }
 
 @keyframes typing-short {
-  from {width: 0}
-  to {width: 225px;}
+  from {
+    width: 0
+  }
+
+  to {
+    width: 225px;
+  }
 }
 
 @keyframes typing-medium {
-  from {width: 0}
-  to {width: 375px;}
+  from {
+    width: 0
+  }
+
+  to {
+    width: 375px;
+  }
 }
 
 @keyframes typing-long {
-  from {width: 0;}
-  to {width: 475px;}
-} */
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 475px;
+  }
+}
