@@ -5,13 +5,12 @@
   z-index: 10;
   padding: 30px;
   border-radius: 10px;
-  width: 80%; /* Adjust the width as desired */
+  width: 80%; 
   margin: 0 auto;
   display: flex;
   backdrop-filter: blur(3.5px);
 }
 
-/* Left Side */
 .login-left {
   flex: 1;
   padding-right: 20px;
@@ -115,7 +114,7 @@ p {
   border-radius: 15px;
   font-size: 16px;
   cursor: pointer;
-  width: 200px; /* Adjust the width as desired */
+  width: 200px; 
   margin-top: 10px;
   transition: background-color 0.3s ease;
   margin-bottom: 100px;
@@ -126,10 +125,9 @@ p {
 }
 
 #error-message {
-  color: rgb(136, 0, 0);
-  font-weight: 1000;
-  font-size: 16px;
-  margin-top: 10px;
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
   margin: 0 auto;
   overflow: hidden;
   border-right: .15rem solid rgb(136, 0, 0);
@@ -141,9 +139,9 @@ p {
 }
 
 #error-message-short {
-  color: rgb(136, 0, 0);
-  font-weight: 1000;
-  font-size: 16px;
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
   margin-top: 10px;
   margin: 0 auto;
   overflow: hidden;
@@ -156,9 +154,9 @@ p {
 }
 
 #error-message-long {
-  color: rgb(136, 0, 0);
-  font-weight: 1000;
-  font-size: 16px;
+  color: rgb(239, 74, 74);
+  font-weight: 2000;
+  font-size: 24px;
   margin-top: 10px;
   margin: 0 auto;
   overflow: hidden;
@@ -192,7 +190,7 @@ p {
   background-color: #f0f0f0;
   border-radius: 10px;
   animation: slideshow 12s infinite;
-  background-size: contain; /* Changed from cover to contain */
+  background-size: contain;
   background-position: center;
 }
 
