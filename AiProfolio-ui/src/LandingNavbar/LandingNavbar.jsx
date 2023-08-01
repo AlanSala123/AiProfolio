@@ -23,8 +23,8 @@ export default function LandingNavbar({ token, handleLogout }) {
         <ul className="navbar-items">
           <li><a href="/#hero">Home</a></li>
           <li><a href="/#our-services">Services</a></li>
-          <li><a href="#about-us-container">About</a></li>
-          <li><a href="#entire-container">Contact</a></li>
+          <li><a href="/#team">Team</a></li>
+          <li><a href="/#waves">Contact</a></li>
         </ul>
       </div>
       }
