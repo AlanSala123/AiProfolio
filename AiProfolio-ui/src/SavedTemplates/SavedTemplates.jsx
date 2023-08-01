@@ -54,7 +54,7 @@ onChange={(e) => setSearchQuery(e.target.value)}
 ))}
 {/* Add more cards here */}
 </div>
-<div onClick={()=>{navigate('/Drag-Drop')}}className="fab">+</div>
+<div onClick={()=>{navigate('/create')}}className="fab">+</div>
 </div>
 </div>
 

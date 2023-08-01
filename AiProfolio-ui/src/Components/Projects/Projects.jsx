@@ -1,13 +1,11 @@
 import React from 'react';
 import './Projects.css';
 
-
 function Projects({ projects, projectList }) {
-
 
     return (
         <div
-            id="projects"
+            className="ProjectsSection"
             style={{
                 minHeight: projects?.dimensions?.minHeight || '100vh',
                 width: '100vw',
@@ -31,7 +29,7 @@ function Projects({ projects, projectList }) {
                             borderRadius: projects?.projectItem?.style?.border?.borderRadius,
                             borderWidth: projects?.projectItem?.style?.border?.borderWidth,
                             borderColor: projects?.projectItem?.style?.border?.borderColor,
-                            marginBottom: "2%",
+                            margin: "2%",
                             padding: "2%",
                         }}
                     >

@@ -5,7 +5,7 @@ const {
   InternalServerError,
   FieldValidationError,
 } = require("../utilities/error.js")
-const crypto = require("crypto")
+const crypto = require("crypto");
 
 class Portfolio {
   
@@ -38,22 +38,21 @@ class Portfolio {
     }
   }
 
-  static async createPortfolio(portfolioData) {
-    try {
-      const {name, user_id, template_id, code, created_at } = portfolioData;
+  static async insertPortfolio(templateObj, resumeObj, userId) {
 
-     
+    try {
       const result = await pool.query(
-        `INSERT INTO portfolios (id, name, user_id, template_id, code, created_at) 
-         VALUES ($1, $2, $3, $4, $5, $6)
+        `INSERT INTO portfolios (id, user_id, template_code, resume_data) 
+         VALUES ($1, $2, $3, $4)
          RETURNING *`,
 
         //Generating portfolio id 
-        [crypto.randomBytes(8).toString('hex'), name, user_id, template_id, code, created_at]
+        [crypto.randomBytes(8).toString('hex'), userId, JSON.stringify(templateObj), JSON.stringify(resumeObj)]
       );
       return result.rows[0];
     } catch (error) {
-      throw new InternalServerError("Failed to create portfolio");
+      console.log("ERROR: ", error)
+      //throw new InternalServerError("Failed to create portfolio");
     }
   }
 
@@ -86,5 +85,7 @@ class Portfolio {
     }
   }
 }
+
+
 
 module.exports = Portfolio;

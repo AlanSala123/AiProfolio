@@ -43,6 +43,9 @@ class ChatGPT{
         }
 
     static async parseResume(resumeText){
+
+      
+
         const response = await ChatGPT.request(`
             I will feed you text from a resume and you will output a organized json string of ALL the data inside the resume, 
             ONLY OUTPUT THE GENERATED STRING NOTHING ELSE,
@@ -53,6 +56,8 @@ class ChatGPT{
 
             FOR THE SUMMARY SECTION CREATE A MINIMUM 200 WORD DESCRIPTION OF THE PERSON BASED ON THE RESUME TEXT.
             FOR THE JOB ASPIRATION SECTION ASSUME WHAT THE PERSONS JOB ASPIRATION (Job Title) IS BASED ON THE RESUME TEXT
+
+
             
         ${resumeText}`, "gpt-3.5-turbo")
         const responseObject = JSON.parse(response)
@@ -63,6 +68,7 @@ class ChatGPT{
 
 
     static async buildWebsite(){
+      
       const response = await ChatGPT.request(`
       Following the structure of this JSON template:
 
@@ -81,6 +87,7 @@ break free from ordinary designs and produce something truly unique. However, it
 When working on your design, remember that the text color and item background for each component must 
 be distinctive and contrasting. Additionally, the text should remain readable and accessible to all users.
  While the design should be unique, it should also maintain a professional appearance.
+
 
 Finally, unleash your creativity and let your imagination run wild. Return the final design as a JSON code that brings life to the 
 components with a myriad of colors and engaging elements. Aim to create a design that truly stands out with its uniqueness and contrast 
