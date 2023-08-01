@@ -131,3 +131,51 @@ body, html {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
   transform: scale(1.1);
 }
+
+/* ... (The rest of your CSS remains the same) ... */
+
+.slideshow {
+  overflow: hidden;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.slides-container {
+  display: flex;
+  animation: slideAnimation 20s linear infinite; /* Adjust the duration as needed */
+}
+
+.slide {
+  flex: 0 0 250px; /* Assuming each card is 250px wide */
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slide p{
+  color: #333;
+  font-size: 15px;
+}
+
+/* Keyframes for slide animation */
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.Popular-Title{
+  font-family: 'outfit';
+  font-size: 24px;
+  font-weight: bold;
+  color: #5cab72;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+
