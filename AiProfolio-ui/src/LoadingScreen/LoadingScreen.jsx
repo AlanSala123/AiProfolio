@@ -59,22 +59,22 @@ function MorphingBall() {
     const context = canvas.getContext('2d');
 
     // Increase canvas size for higher resolution
-    const scale = window.devicePixelRatio; // Change to 1 on devices that don't support high-res canvas
-    canvas.width = 1024 * scale;
-    canvas.height = 512 * scale;
+    // const scale = window.devicePixelRatio; // Change to 1 on devices that don't support high-res canvas
+    // canvas.width = 1024 * scale;
+    // canvas.height = 512 * scale;
 
-    // Ensure all future drawing operations are scaled
-    context.scale(scale, scale);
+    // // Ensure all future drawing operations are scaled
+    // context.scale(scale, scale);
 
-    // Adjust the font size to be larger to account for the increased canvas size
-    context.font = '100px Franklin Gothic Medium';
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
+    // // Adjust the font size to be larger to account for the increased canvas size
+    // context.font = '100px Franklin Gothic Medium';
+    // context.textAlign = 'center';
+    // context.textBaseline = 'middle';
 
-    context.fillStyle = 'white';
-    context.fillText('Profolio', canvas.width / 2 / scale, canvas.height / 2 / scale);
-    context.fillStyle = 'green';
-    context.fillText('Ai', canvas.width / 3.5 / scale, canvas.height / 2 / scale);
+    // context.fillStyle = 'white';
+    // context.fillText('Profolio', canvas.width / 2 / scale, canvas.height / 2 / scale);
+    // context.fillStyle = 'green';
+    // context.fillText('Ai', canvas.width / 3.5 / scale, canvas.height / 2 / scale);
 
     // Create a texture from the canvas
     const texture = new THREE.CanvasTexture(canvas);
@@ -97,7 +97,7 @@ function MorphingBall() {
     const color = new THREE.Color();
     const clock = new THREE.Clock();
 
-    let explodeFactor = 3;
+    let explodeFactor = 4;
     let reforming = false;
 
     const raycaster = new THREE.Raycaster();
@@ -117,7 +117,7 @@ function MorphingBall() {
 
       if (intersects.length > 0) {
         console.log("Sphere was clicked."); // Debug log
-        explodeFactor += 2.5
+        explodeFactor += 1
         reforming = false;
         setTimeout(() => {
           reforming = true;

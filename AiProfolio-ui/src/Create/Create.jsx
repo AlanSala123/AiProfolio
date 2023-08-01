@@ -5,7 +5,7 @@ import axios from "axios";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { useNavigate } from "react-router-dom";
 
-const Create = ({ setResumeObj, setTemplateObj }) => {
+const Create = ({token}) => {
     const [resume, setResume] = useState(null);
     const [images, setImages] = useState([]);
     const [rejected, setRejected] = useState([]);
@@ -18,19 +18,25 @@ const Create = ({ setResumeObj, setTemplateObj }) => {
       if (resume){
         try {
           const formData = new FormData();
-          if (resume) {
-            formData.append('resume', resume);
-          }
-          images.forEach((file, index) => {
-            formData.append(`images[${index}]`, file);
-          });
+
+if (resume) {
+  formData.append('resume', resume);
+}
+
+images.forEach((imageObj, index) => {
+  formData.append('images', imageObj.file);
+  formData.append(`labels[${index}]`, imageObj.label);
+});
+
           setLoading(true)
-          const res = await axios.post("http://localhost:3001/product/create", formData )
+          const res = await axios.post("http://localhost:3001/product/create", formData, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+          }
+          } )
           console.log(res)
-          setResumeObj(res?.data?.resume)
-          setTemplateObj(res?.data?.template)
           setLoading(false)
-          navigate('/view')
+          navigate(`/view/${res?.data}`)
         } catch (error) {
           setLoading(false)
           console.log("ERROR:", error);
@@ -40,33 +46,39 @@ const Create = ({ setResumeObj, setTemplateObj }) => {
 
 
   // Callback function when files are dropped or selected
-  const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
-    const allowedExtensionsForResume = [".pdf", ".docx"];
-    const allowedExtensionsForImages = [".jpg", ".jpeg", ".png"];
+  // Callback function when files are dropped or selected
+const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+  const allowedExtensionsForResume = [".pdf", ".docx"];
+  const allowedExtensionsForImages = [".jpg", ".jpeg", ".png"];
 
-    const droppedResume = acceptedFiles.find((file) =>
-      allowedExtensionsForResume.includes(
-        file.name.substring(file.name.lastIndexOf("."))
-      )
-    );
-    const droppedImages = acceptedFiles.filter((file) =>
-      allowedExtensionsForImages.includes(
-        file.name.substring(file.name.lastIndexOf("."))
-      )
-    );
+  const droppedResume = acceptedFiles.find((file) =>
+    allowedExtensionsForResume.includes(
+      file.name.substring(file.name.lastIndexOf("."))
+    )
+  );
 
-    if (droppedResume) {
-      setResume(droppedResume);
-    }
+  const droppedImages = acceptedFiles.filter((file) =>
+    allowedExtensionsForImages.includes(
+      file.name.substring(file.name.lastIndexOf("."))
+    )
+  ).map((file) => ({
+    file,
+    label: ''
+  }));
 
-    if (droppedImages.length) {
-      setImages((previousFiles) => [...previousFiles, ...droppedImages]);
-    }
+  if (droppedResume) {
+    setResume(droppedResume);
+  }
 
-    if (rejectedFiles?.length) {
-      setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
-    }
-  }, []);
+  if (droppedImages.length) {
+    setImages((previousFiles) => [...previousFiles, ...droppedImages]);
+  }
+
+  if (rejectedFiles?.length) {
+    setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
+  }
+}, []);
+
 
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -95,6 +107,13 @@ const Create = ({ setResumeObj, setTemplateObj }) => {
     const maxSize = 1024 * 1000; // 1 MB
     return bytes > maxSize ? "File is too large" : `${bytes} Bytes`;
   }
+
+  const handleLabelChange = (e, index) => {
+    const newImages = [...images];
+    newImages[index].label = e.target.value;
+    setImages(newImages);
+  };
+  
 
   if (!loading) {
 
@@ -152,24 +171,33 @@ const Create = ({ setResumeObj, setTemplateObj }) => {
 
         <h3 className="accepted-title">Accepted Images</h3>
         <ul className="file-list">
-          {images.map((image) => (
-            <li key={image.name} className="file-item">
-              <img
-                src={URL.createObjectURL(image)}
-                alt={image.name}
-                className="file-image"
-              />
-              <button
-                type="button"
-                className="remove-file-button"
-                onClick={() => removeImage(image.name)} 
-              >
-                X
-              </button>
-              <p className="file-name">{image.name}</p>
-            </li>
-          ))}
-        </ul>
+  {images.map((imageObj, index) => (
+    <li key={imageObj.file.name} className="file-item">
+      <p className="file-name">{imageObj.file.name}</p>
+      <img
+        src={URL.createObjectURL(imageObj.file)}
+        alt={imageObj.file.name}
+        className="file-image"
+      />
+      <input
+        type="text"
+        placeholder="Enter label"
+        value={imageObj.label}
+        onChange={(e) => handleLabelChange(e, index)}
+      />
+      <button
+        type="button"
+        className="remove-file-button"
+        onClick={() => removeImage(imageObj.file.name)} 
+      >
+        X
+      </button>
+    </li>
+  ))}
+</ul>
+
+
+
 
       </section>
       <button
