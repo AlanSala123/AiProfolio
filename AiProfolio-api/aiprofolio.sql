@@ -6,4 +6,4 @@ CREATE DATABASE aiprofolio;
 \connect aiprofolio
 
 \i aiprofolio-schema.sql
-\i aiprofolio-test.sql
+-- \i aiprofolio-test.sql

@@ -1,6 +1,8 @@
 import React from 'react';
 
-function AboutMe({ about, data }) {
+function AboutMe({ about, data, images }) {
+
+
     return (
         <div
             id="about"
@@ -20,12 +22,11 @@ function AboutMe({ about, data }) {
                 gap : about?.aboutItem?.spacing || '1em',
             }}>
                 {/* <img
-                    src={aboutItem.profilePicture}
+                    src={getAboutImg()}
                     alt="Profile"
                     style={{
                         width: about?.aboutItem?.style?.profilePicture?.width || '150px',
                         height: about?.aboutItem?.style?.profilePicture?.height || '150px',
-                        borderRadius: '50%',
                     }}
                 /> */}
                 <h2

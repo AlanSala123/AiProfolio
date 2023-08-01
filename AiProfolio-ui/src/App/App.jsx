@@ -20,14 +20,12 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import Education from '../Components/Education/Education';
 import Experience from '../Components/Experiences/Experiences';
 import AboutMe from '../Components/AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 
 
 function App() {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
-  const [resumeObj, setResumeObj] = useState(null)
-  const [templateObj, setTemplateObj] = useState(null)
-
 
   const navigate = useNavigate()
 
@@ -69,20 +67,15 @@ function App() {
     <>
         <LandingNavbar  token={token} handleLogout={handleLogout}/>
         <Routes>
-          <Route path='/view' element={
-            <>
-              <Navbar navbar={templateObj?.navbar} data={resumeObj}/>
-              <Header header={templateObj?.header} data={resumeObj}/>
-              <AboutMe about={templateObj?.about} data={resumeObj}/>
-              <Education education={templateObj?.education} educationData={resumeObj?.education}/>
-              <Experience experiences={templateObj?.experiences} experienceList={resumeObj?.experiences}/>
-              <Skills skills={templateObj?.skills} skillList={resumeObj?.skills}/>
-              <Projects projects={templateObj?.projects} projectList={resumeObj?.projects} />
-            </>
+          <Route path='/Loading' element={<LoadingScreen/>}/>
+          <Route path='/view/:id' element={
+            <Portfolio token={
+              token
+            }/>
           }/>
           <Route path="/create" element={
 <main>
-<Create setResumeObj={setResumeObj} setTemplateObj={setTemplateObj}/>
+<Create  token={token}/>
 </main>
 } />
 

@@ -71,25 +71,18 @@
   }
   
   .file-list {
-    margin-top: 6px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
   }
   
   .file-item {
-    position: relative;
-    height: 150px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
   }
   
-  .file-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
   
   .file-item:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
