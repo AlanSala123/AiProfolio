@@ -38,13 +38,10 @@ export default function Register({ setUser}) {
             }, {
                 withCredentials: true,
               });
-            if (res?.data?.user) {
-                const user = res?.data?.user;
-                const token = res?.data?.token;
-                setUser({ ...user, token });
-                localStorage.setItem("token", token);
-                navigate("/saved-templates");
-            }
+            const user = res?.data;
+            setUser(user);
+            navigate("/saved-templates");
+
         } catch (err) {
             if (err?.response?.data?.error) {
                 const message = err?.response?.data?.error;

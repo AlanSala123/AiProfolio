@@ -46,7 +46,6 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
   try {
     
     const user = req.user
-    console.log(user)
     console.time('execution time')
 
       const fileBuffer = req.files.resume[0].buffer; 
@@ -62,7 +61,8 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
     });
 
       const parsedText = await ChatGPT.parsePDF(fileBuffer);
-      const [templateObject, resumeObject] = await Promise.all([ChatGPT.buildWebsite(), ChatGPT.parseResume(parsedText)])
+    //   const [templateObject, resumeObject] = await Promise.all([ChatGPT.buildWebsite(), ChatGPT.parseResume(parsedText)])
+    const [templateObject, resumeObject] = await Promise.all([ChatGPT.buildWebsiteFaster(), ChatGPT.parseResume(parsedText)])
       // TODO VERIFY JSOn
       const portfolio = await Portfolio.insertPortfolio( templateObject,  resumeObject,  user.id )
       if (imageLabelPairs){
@@ -94,10 +94,9 @@ productRouter.get('/fetch/:id', async (req, res)=>{
   }
 })
 
-productRouter.get('/fetchall', async (req, res)=>{
+productRouter.get('/fetchAll', async (req, res)=>{
   const user = req.user
   try {
-
     const portfolios = await Portfolio.fetchByUser(user.id)
     console.log(portfolios)
     res.send(portfolios)
