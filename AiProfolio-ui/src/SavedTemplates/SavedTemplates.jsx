@@ -4,7 +4,7 @@ import "./SavedTemplates.css"; // Make sure to create this CSS file for styling
 import { RiFile2Line } from "react-icons/ri"; // Import the file icon from react-icons library
 import { useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
   // Assuming you have an array of portfolios from the backend
   const portfolios = [
     { id: 1, title: "Portfolio 1", description: "This is portfolio 1" },

@@ -10,7 +10,7 @@ import Skills from "../Components/Skills/Skills"
 import Projects from "../Components/Projects/Projects"
 
 
-export default function Portfolio({token}){
+export default function Portfolio(){
     const [resumeObj, setResumeObj] = useState(null)
     const [templateObj, setTemplateObj] = useState(null)
     const [images, setImages] = useState(null)
@@ -28,11 +28,7 @@ export default function Portfolio({token}){
 
     async function fetchPortfolio(){
         try {
-           const res = await axios.post(`http://localhost:3001/product/fetch/${id}`,  {
-            headers: {
-              'Authorization': `Bearer ${token}`
-          }
-          })
+           const res = await axios.get(`http://localhost:3001/product/fetch/${id}`)
           console.log(res?.data)
           setImages(res?.data?.images)
            setResumeObj(res?.data?.resume)
