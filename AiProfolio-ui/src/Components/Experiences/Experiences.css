@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;800&display=swap');
+body {
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(to right, #FAFAFA, #E9E9E9), url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+    margin: 0;
+    padding: 0;
+}
+.timeline {
+    position: relative;
+    margin: 0 auto;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, white, black);
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 20px;
+}
+/* Clear floats after containers */
+.timeline .container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Containers on the left */
+.timeline .container:nth-child(odd) {
+    float: left;
+    left: 0;
+    animation: loadIn .5s forwards .2s;
+}
+/* Containers on the right */
+.timeline .container:nth-child(even) {
+    float: right;
+    right: 0;
+    animation: loadIn .5s forwards .2s;
+}
+.timeline::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+.timeline .container:hover {
+    cursor: pointer;
+}
+.timeline .container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 25px;
+    right: -10px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all .3s ease;
+}
+.timeline .container:hover::after {
+    width: 40px;
+    height: 40px;
+}
+.timeline .container:hover .content {
+    transform: rotateY(180deg);
+}
+.front h3, .front h4 {
+    margin: 0;
+    color: #1A1A1A;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Montserrat, sans-serif';
+    text-shadow: 1px 1px #888;
+    -webkit-text-stroke: 1px #888;
+}
+.back p {
+    margin-bottom: 1.25rem;
+    text-justify: inter-word;
+    line-height: 1.7;
+    font-weight: 500;
+    font-family: 'Lato, sans-serif';
+    text-shadow: 1px 1px #888;
+}
+.right {
+    animation: loadIn .5s forwards .2s;
+}
+.left {
+    animation: loadIn .5s forwards .2s;
+}
+@keyframes loadIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

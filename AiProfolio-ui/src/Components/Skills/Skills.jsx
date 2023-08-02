@@ -39,7 +39,7 @@ function Skills({ skills, skillList }) {
             style={{
                 minHeight: skills?.dimensions?.minHeight || '50vh',
                 width: '100vw',
-                backgroundColor: skills?.background?.color,
+                background: skills?.background?.color,
                 padding : "5vw",
                 boxSizing: "border-box"
             }}

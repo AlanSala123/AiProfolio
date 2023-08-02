@@ -5,11 +5,11 @@ function Projects({ projects, projectList }) {
 
     return (
         <div
-            className="ProjectsSection"
+            id="projects"
             style={{
                 minHeight: projects?.dimensions?.minHeight || '100vh',
                 width: '100vw',
-                backgroundColor: projects?.background?.color,
+                background: projects?.background?.color,
             }}
         >
             <div className="projects-list"
@@ -31,6 +31,7 @@ function Projects({ projects, projectList }) {
                             borderColor: projects?.projectItem?.style?.border?.borderColor,
                             margin: "2%",
                             padding: "2%",
+                            background: projects?.projectItem?.background?.color,
                         }}
                     >
                         <h3

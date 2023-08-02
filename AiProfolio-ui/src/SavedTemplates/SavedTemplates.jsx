@@ -88,7 +88,7 @@ const Dashboard = () => {
         <div className="card-container">
           {portfolios.map((portfolio) => (
             <div key={portfolio.id} className="card"
-              style={{backgroundColor: JSON.parse(portfolio?.template_code)?.portfolio?.header?.background?.color}}
+              style={{background: JSON.parse(portfolio?.template_code)?.portfolio?.header?.background?.color}}
               onClick={()=>{navigate(`/view/${portfolio.id}`)}}
             >
               <RiFile2Line className="file-icon" color="#5cab72" />

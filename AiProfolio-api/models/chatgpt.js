@@ -82,36 +82,14 @@ class ChatGPT{
     FOLLOW THIS FORMAT STRICTLY.
 
     And also use this theme ${JSON.stringify(themeData)}
+    ALSO MAKE SURE THAT THE VALUES YOU INPUT ARE VALID CSS CODE AND NO EXTRA TEXT
     
     
-In this creative challenge, you have been given a JSON template that contains various components. 
-Your task is to infuse these components with distinctive and vibrant styles to create an eye-catching design 
-while ensuring readability and accessibility. Emphasize contrast so that foreground items stand out clearly against their backgrounds.
+    Revamp a provided JSON template into a unique, eye-catching, and professional design, ensuring a strong contrast for readability and accessibility. Use vibrant CSS-valid colors while adhering to the template structure. The end result should be a JSON code that invigorates the components, maintaining a cohesive theme. Make certain all text fonts are accessible. Only return the CSS-valid JSON code, with no additional text. Avoid solely using black and white.
 
-Feel free to think outside the box and be daring in your color choices and styling elements. The goal is to 
-break free from ordinary designs and produce something truly unique. However, it's essential to stay within the
-bounds of the JSON template structure.
+    MANDATORY: OUTPUT ONLY THE JSON NO ADDITIONAL TEXT
 
-When working on your design, remember that the text color and item background for each component must 
-be distinctive and contrasting. Additionally, the text should remain readable and accessible to all users.
-While the design should be unique, it should also maintain a professional appearance.
-
-
-Finally, unleash your creativity and let your imagination run wild. Return the final design as a JSON code that brings life to the 
-components with a myriad of colors and engaging elements. Aim to create a design that truly stands out with its uniqueness and contrast 
-while maintaining a cohesive theme. Add color and personality to the template while ensuring that the design remains polished and professional.
-PLEASE DONT JUST USE BLACK AND WHITE USE COLORFUL 
-COLORS AND MAKE IT LOOK NICE, MAKE IT FOLLOW A THEME AND MAKE IT LOOK PROFESSIONAL.
-PLease make sure to make the text contrast from the background of items and make sure the text is readable and accessible to all users.
-MAKE IT LOOK PROFESSIONAL AND KEEP A THEME.
-FILL OUT ALL THE SECTIONS
-MANDATORY: RETURN ONLY THE GENERATED JSON NOTHING ELSE LIKE TEXT OR ANYTHING.
-MAKE TEXT FONTS READABLE AND ACCESSIBLE TO ALL USERS.
-USE AS MUCH OF THE THEME DATA AS POSSIBLE BUT ADD ANYTHING THAT YOU THINK Would IMPROVE THE DESIGN.
-
-
-
-    `, "gpt-3.5-turbo")
+    `, "gpt-4")
     const responseObject = JSON.parse(response)
     return responseObject
   }
@@ -126,13 +104,16 @@ USE AS MUCH OF THE THEME DATA AS POSSIBLE BUT ADD ANYTHING THAT YOU THINK Would 
         - TEXT COLORS DEPENDING ON BACKGROUND COLOR OF ITEMS OR SECTIONS
         - FONT STYLES AND SIZES
         - ANY ADDITIONAL STYLING DETAILS, SUCH AS BORDER STYLES, SPACING, OR ALIGNMENT
-        - Ect...
+        
+        FOCUS SOLEY ON STYLINGS, NOT ANIMATION OR INTERACTIVITY.
         
         THE COLORS SELECTED SHOULD BE VIBRANT AND ENGAGING, BUT ALSO OFFER SUFFICIENT CONTRAST TO ENSURE TEXT IS READABLE. FONTS SHOULD BE LEGIBLE AT ALL SIZES AND SUITED TO A VARIETY OF DEVICES AND SCREEN RESOLUTIONS.
 
+        The sections go in this order  navbar, header, about, education, experiences, skills, projects
+
         WHETHER YOU CHOOSE A COMPLEX OR MINIMALISTIC APPROACH, THE THEME SHOULD BE DISTINCTIVE AND UNIQUE. BE BOLD, AND DON'T HESITATE TO PUSH CREATIVE BOUNDARIES WHILE STILL MAINTAINING A HIGH DEGREE OF USABILITY AND ACCESSIBILITY.
-        DON'T LET THERE BE WHITE ON WHITE OR BLACK ON BLACK TEXT
-    `, 'gpt-3.5-turbo')
+        EMPHASIZE THAT THE SECTION SHOULD FLOW CONTINUOSLY AND LOOK PROFESSIONAL AND EASY TO READ.
+    `, 'gpt-4')
     console.log(res)
     return res
 }
@@ -141,12 +122,12 @@ USE AS MUCH OF THE THEME DATA AS POSSIBLE BUT ADD ANYTHING THAT YOU THINK Would 
 
   static async buildWebsiteFaster(){
     const themeData = await this.generateTheme()
-    const [navbar, about, header, experiences, skills, projects, education] = await Promise.all([this.buildComponent(navbarTemplate, "navbar", themeData), this.buildComponent(aboutTemplate, "about", themeData), this.buildComponent(headerTemplate, "hero", themeData), this.buildComponent(experiencesTemplate, "experiences", themeData), this.buildComponent(skillsTemplate, "skills", themeData), this.buildComponent(projectsTemplate, "projects", themeData), this.buildComponent(educationTemplate, "education", themeData)])
+    const [navbar, about, header, experiences, skills, projects, education] = await Promise.all([this.buildComponent(navbarTemplate, "navbar", themeData), this.buildComponent(aboutTemplate, "about", themeData), this.buildComponent(headerTemplate, "header", themeData), this.buildComponent(experiencesTemplate, "experiences", themeData), this.buildComponent(skillsTemplate, "skills", themeData), this.buildComponent(projectsTemplate, "projects", themeData), this.buildComponent(educationTemplate, "education", themeData)])
     return({
       "portfolio" : {
         "navbar": navbar.navbar,
         "about": about.about,
-        "header": header.hero,
+        "header": header.header,
         "experiences": experiences.experiences,
         "skills": skills.skills,
         "projects": projects.projects,

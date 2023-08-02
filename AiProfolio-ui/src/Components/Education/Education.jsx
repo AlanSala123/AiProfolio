@@ -13,7 +13,7 @@ function Education({ education, educationData }) {
         paddingLeft: '5vw',
         paddingRight: '5vw',
         paddingTop: '5vh',
-        backgroundColor: education?.background?.color,
+        background: education?.background?.color,
       }}
     >
       <ul style={{
@@ -37,7 +37,8 @@ function Education({ education, educationData }) {
             paddingRight : "1%",
             paddingTop : "1%",
             paddingBottom : "1%",
-            marginBottom : "2%"
+            marginBottom : "2%",
+            background: education?.educationItem?.background?.color
           }}>
             <h3
               style={{

@@ -7,9 +7,8 @@ function AboutMe({ about, data, images }) {
         <div
             id="about"
             style={{
-                minHeight: about?.dimensions?.minHeight || '50vh',
                 width: '100vw',
-                backgroundColor: about?.background?.color,
+                background: about?.background?.color,
                 padding : "5vw",
                 boxSizing: "border-box"
             }}

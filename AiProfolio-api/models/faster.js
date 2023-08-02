@@ -24,9 +24,6 @@ const navbarTemplate = `{
 
 const aboutTemplate = `{
     "about": {
-        "dimensions": {
-            "minHeight": ""
-        },
         "background": {
             "color": "",
             "image": ""
@@ -61,9 +58,9 @@ const aboutTemplate = `{
 
 const headerTemplate = `{
     "header" : {
+        "descripion" : "This object contains settings for the header section Please treat and style this section as if it was a hero banner.
         "dimensions" : {
-            "height" : "",
-            "width" : ""
+            "height" : ""
         },
         "background" : {
             "color" : ""
@@ -75,15 +72,16 @@ const headerTemplate = `{
         },
         "foreground" : {
             "title" : {
+                "description" : "This object contains settings for the title of the entire page so it should be prominent.",
                 "fontSize" : "",
-                "fontColor" : "",
+                "fontColor" : "This should contrast with background color",
                 "fontFamily" : "",
                 "fontWeight" : "",
                 "fontStyle" : ""
             },
             "subtitle" : {
                 "fontSize" : "",
-                "fontColor" : "",
+                "fontColor" : "This should contrast with background color",
                 "fontFamily" : "",
                 "fontWeight" : "",
                 "fontStyle" : ""
@@ -98,12 +96,15 @@ const headerTemplate = `{
 
 const experiencesTemplate = ` {
 "experiences": {
-    "dimensions": {
-        "minHeight": ""
-    },
-    "background": {
+    "title"" {
         "color": "",
-        "image": ""
+        "fontSize": "",
+        "fontFamily": "",
+        "fontWeight": ""
+    },
+    "description": "This object contains settings for the experiences section.
+    "background": {
+        "color": ""
     },
     "flexWrap" : "",
     "experienceItem": {
@@ -112,6 +113,9 @@ const experiencesTemplate = ` {
             "textAlign": "",
             "verticalAlign": ""
         },
+        "background" : {
+            "color" : ""
+        }
         "spacing": "",
         "style": {
             "boxShadow" : "",
@@ -123,17 +127,17 @@ const experiencesTemplate = ` {
             },
             "title": {
                 "fontSize": "",
-                "fontColor": "",
+                "fontColor": " should contrast with experienceItem background color",
                 "fontFamily": ""
             },
             "description": {
                 "fontSize": "",
-                "fontColor": "",
+                "fontColor": "should contrast with experienceItem background color",
                 "fontFamily": ""
             },
             "date": {
                 "fontSize": "",
-                "fontColor": "",
+                "fontColor": "should contrast with experienceItem background color",
                 "fontFamily": ""
             }
             
@@ -175,7 +179,7 @@ const skillsTemplate = `{
                 "name": {
                     "description": "This object contains settings for the name of the skill.",
                     "fontSize": "This setting controls the font size of the skill name.",
-                    "fontColor": "This setting controls the color of the skill name.",
+                    "fontColor": "This setting controls the color of the skill name. Should Contrast the background color",
                     "fontFamily": "This setting controls the font family of the skill name."
                 },
                 "progressBar": {
@@ -209,6 +213,9 @@ const projectsTemplate = `{"projects": {
             "textAlign": "",
             "verticalAlign": ""
         },
+        "background" : {
+            "color" : ""
+        }
         "spacing": "",
         "style": {
             "boxShadow" : "",
