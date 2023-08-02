@@ -66,6 +66,7 @@ function Skills({ skills, skillList }) {
                             borderColor : skills?.skillItem?.style?.border?.borderColor,
                             borderRadius : skills?.skillItem?.style?.border?.borderRadius,
                             maxWidth : "30%",
+                            backgroundColor: skills?.skillItem?.style?.backgroundColor,
                             minWidth : skill?.progress ? "30%" : "5%",
                             paddingLeft : "1%",
                             paddingRight : "1%",
