@@ -97,7 +97,7 @@ function MorphingBall() {
     const color = new THREE.Color();
     const clock = new THREE.Clock();
 
-    let explodeFactor = 4;
+    let explodeFactor = 5;
     let reforming = false;
 
     const raycaster = new THREE.Raycaster();
@@ -117,7 +117,7 @@ function MorphingBall() {
 
       if (intersects.length > 0) {
         console.log("Sphere was clicked."); // Debug log
-        explodeFactor += 1
+        explodeFactor += 0.7
         reforming = false;
         setTimeout(() => {
           reforming = true;
@@ -139,7 +139,7 @@ function MorphingBall() {
 
       if (intersects.length > 0) {
         console.log("Sphere was touched."); // Debug log
-        explodeFactor = 2;
+        explodeFactor = 5;
         reforming = false;
         setTimeout(() => {
           reforming = true;
@@ -175,10 +175,10 @@ function MorphingBall() {
     colorAttribute.needsUpdate = true;
 
     // gradually reform the sphere
-    if (reforming && explodeFactor > 3) {
+    if (reforming && explodeFactor > 5) {
       explodeFactor = explodeFactor * 0.99;
-      if (explodeFactor < 3) {
-        explodeFactor = 3;
+      if (explodeFactor < 5) {
+        explodeFactor = 5;
         reforming = false;
       }
     }

@@ -6,7 +6,7 @@ import { loadSlim } from "tsparticles-slim";
 import "./Register.css";
 import ReactLoading from 'react-loading';
 
-export default function Register({ setUser, setToken }) {
+export default function Register({ setUser}) {
     const [error, setError] = useState("");
     const [form, setForm] = useState({
         firstName: "",
@@ -35,14 +35,15 @@ export default function Register({ setUser, setToken }) {
                 first_name: form.firstName,
                 email: form.email,
                 password: form.password,
-            });
+            }, {
+                withCredentials: true,
+              });
             if (res?.data?.user) {
                 const user = res?.data?.user;
                 const token = res?.data?.token;
-                setUser(user);
-                setToken(token);
-                navigate("/saved-templates");
+                setUser({ ...user, token });
                 localStorage.setItem("token", token);
+                navigate("/saved-templates");
             }
         } catch (err) {
             if (err?.response?.data?.error) {
@@ -52,6 +53,7 @@ export default function Register({ setUser, setToken }) {
             }
         }
     };
+    
 
     const isRegisterButtonDisabled = !(form.email && form.firstName && form.password);
     const registerButtonStyles = {

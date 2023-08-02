@@ -5,7 +5,7 @@ import axios from "axios";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { useNavigate } from "react-router-dom";
 
-const Create = ({token}) => {
+const Create = ({user}) => {
     const [resume, setResume] = useState(null);
     const [images, setImages] = useState([]);
     const [rejected, setRejected] = useState([]);
@@ -29,11 +29,7 @@ images.forEach((imageObj, index) => {
 });
 
           setLoading(true)
-          const res = await axios.post("http://localhost:3001/product/create", formData, {
-            headers: {
-              'Authorization': `Bearer ${token}`
-          }
-          } )
+          const res = await axios.post("http://localhost:3001/product/create", formData, {withCredentials: true})
           console.log(res)
           setLoading(false)
           navigate(`/view/${res?.data}`)

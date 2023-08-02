@@ -9,7 +9,8 @@ const {
 } = require("../utilities/error.js")
 
 const crypto = require("crypto")
-const secretKey = crypto.randomBytes(32).toString("hex")
+require('dotenv').config()
+const secretKey = process.env.JWT_SECRET
 
 class User {
 

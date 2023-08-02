@@ -21,6 +21,7 @@ function AboutMe({ about, data, images }) {
                 justifyContent : about?.aboutItem?.alignment?.textAlign,
                 gap : about?.aboutItem?.spacing || '1em',
             }}>
+                
                 {/* <img
                     src={getAboutImg()}
                     alt="Profile"

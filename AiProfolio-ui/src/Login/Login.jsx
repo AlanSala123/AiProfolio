@@ -6,7 +6,7 @@ import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import ReactLoading from 'react-loading';
 
-export default function Login({ setUser, setToken }) {
+export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,13 +28,13 @@ export default function Login({ setUser, setToken }) {
         loginForm: {
           email: email,
           password: password,
-        },
+        }
+      }, {
+        withCredentials: true,
       });
-      const { user, token } = response.data;
+      const user = response.data;
       setUser(user);
-      setToken(token);
       navigate("/saved-templates");
-      localStorage.setItem("token", token);
     } catch (error) {
       if (error?.response?.data?.error) {
         const message = error?.response?.data?.error;
