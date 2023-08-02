@@ -1,9 +1,9 @@
 footer {
     position: relative;
-    width: 95%;
+    width: 100vw;
     background-color: #3586ff;
     min-height: 100px;
-    padding: 20px 50px;
+
     display: flex;
     justify-content: center;
     align-items: center;

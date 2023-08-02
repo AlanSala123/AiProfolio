@@ -97,7 +97,7 @@ class User {
     }
     const user = await this.create(registerForm)
     const token = this.generateAuthToken(user)
-    return {token}
+    return {user, token}
   }
 
   static async login({loginForm, token}){
