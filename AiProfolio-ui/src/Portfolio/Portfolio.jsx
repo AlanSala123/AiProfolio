@@ -28,7 +28,7 @@ export default function Portfolio(){
 
     async function fetchPortfolio(){
         try {
-           const res = await axios.get(`http://localhost:3001/product/fetch/${id}`)
+           const res = await axios.get(`http://localhost:3001/product/fetch/${id}`, {withCredentials: true})
           console.log(res?.data)
           setImages(res?.data?.images)
            setResumeObj(res?.data?.resume)
@@ -50,13 +50,13 @@ export default function Portfolio(){
                 <Skills skills={templateObj?.skills} skillList={resumeObj?.skills}/>
                 <Projects projects={templateObj?.projects} projectList={resumeObj?.projects} />
                 <div>
-        {images.map(element => {
+        {/* {images.map(element => {
     const buffer = element.serialized.data;
     const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
 
     return <img src={`data:${element.mimetype};base64,${base64String}`} alt={element.label} key={element.id} />
 })
-}
+} */}
     </div>
             </>
             )

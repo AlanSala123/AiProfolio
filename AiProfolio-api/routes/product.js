@@ -27,7 +27,7 @@ const authMiddleware = (req, res, next) => {
       next();
   } catch (error) {
     console.log(error)
-      res.status(401).send({ error: 'Not authenticated' });
+    res.status(401).send({ error: 'Not authenticated' });
   }
 }
 
@@ -69,9 +69,6 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
         await Promise.all(imageLabelPairs?.map(pair => Promise.resolve(Image.insertImage(pair, portfolio.id))));
       }
 
-      console.log(imageLabelPairs)
-      
-
       console.timeEnd('execution time')
       res.send(portfolio.id)
   } catch (error) {
@@ -82,14 +79,28 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
 
 
 productRouter.get('/fetch/:id', async (req, res)=>{
-  const potfolio_id  = req.params.id
+  const portfolio_id  = req.params.id
+  const user = req.user
+  console.log("user", user)
+  try {
+
+    const portfolio = await Portfolio.fetchPortfolio(portfolio_id)
+    const images = await Image.fetchByPortfolioId(portfolio_id)
+
+    res.send({"template" : JSON.parse(portfolio.template_code)?.portfolio, "resume" : JSON.parse(portfolio.resume_data),"images" : images })
+
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+productRouter.get('/fetchall', async (req, res)=>{
   const user = req.user
   try {
 
-    const portfolio = await Portfolio.fetchPortfolio(potfolio_id)
-    const images = await Image.fetchByPortfolioId(potfolio_id)
-
-    res.send({"template" : JSON.parse(portfolio.template_code)?.portfolio, "resume" : JSON.parse(portfolio.resume_data),"images" : images })
+    const portfolios = await Portfolio.fetchByUser(user.id)
+    console.log(portfolios)
+    res.send(portfolios)
 
   } catch (error) {
     console.log(error)

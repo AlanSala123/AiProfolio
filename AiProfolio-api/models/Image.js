@@ -15,12 +15,10 @@ class Image {
         `SELECT * FROM images WHERE portfolio_id=$1`,
         [portfolio_id]
       );
-      if (result.rows.length === 0) {
-        throw error;
-      }
+      
       return result.rows;
     } catch (error) {
-      throw new NotFoundError("Not Found");
+      throw new InternalServerError("Image Query");
     }
   }
 
