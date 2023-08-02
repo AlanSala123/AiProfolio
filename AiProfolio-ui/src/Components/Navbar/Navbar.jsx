@@ -3,7 +3,7 @@ import React from 'react';
 
 function Navbar({navbar, data}) {
     return (
-      <nav id="template-navbar" style={{"height": navbar?.dimensions?.height, "width": navbar?.dimensions?.width, "backgroundColor": navbar?.background?.color}}>
+      <nav id="template-navbar" style={{"height": navbar?.dimensions?.height, "width": navbar?.dimensions?.width, "background": navbar?.background?.color}}>
         <ul style={{height: navbar?.dimensions?.height, gap: navbar?.items?.spacing, "textAlign" : navbar?.items?.alignment?.textAlign, verticalAlign : "middle", display: "flex", flexDirection : "row", listStyle : "none", margin : "0", justifyContent: "center", alignItems: "center"}}>
 
                 <li >

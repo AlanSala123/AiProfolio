@@ -1,30 +1,31 @@
 import React from 'react';
-// import './Experiences.css';
+import './Experiences.css';
 function Experience({experiences, experienceList}) {
     
-    if(experienceList.length > 20) {
+    if(experienceList.length > 3) {
         return (
-            <div className="timeline" style={{ maxWidth: experiences?.dimensions?.maxWidth || '1200px', padding: experiences?.padding || '50px 0', boxSizing: 'border-box'}}>
+            <div id="experience" className="timeline" style={{ maxWidth: '100%', boxSizing: 'border-box', backgroundColor: experiences?.background.color}}>
+                <h1 style={{color: experiences.title.color, fontFamily: experiences.title.fontFamily, fontSize: experiences.title.fontSize, fontWeight: experiences.title.fontWeight, margin: '0', paddingTop: '20px'}}>EXPERIENCE</h1>
                 {experienceList.map((experience, index) => (
                     <div
                         key={index}
                         className="container"
                         style={{
-                            padding: experiences?.containerItem?.style?.padding || 30,
-                            width: experiences?.containerItem?.style?.width || '60%',
-                            margin: experiences?.containerItem?.style?.margin || '40px 0',
-                            transition: experiences?.containerItem?.style?.transition || 'transform .5s',
-                            perspective: experiences?.containerItem?.style?.perspective || 1000,
-                            maxHeight:experiences?.containerItem?.style?.maxHeight || '400px'
+                            width: '40%',
+                            margin: '20px 0',
+                            transition: 'transform .5s',
+                            maxHeight: '200px',
+                            marginLeft:'15%',
+                            marginRight:'15%'
                         }}
                     >
                         <div className="content" style={{ position: 'relative', width: '100%', height: '100%', transformStyle: 'preserve-3d', transition: 'transform .5s' }}>
-                            <div className="front" style={{ padding: '20px 30px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, backgroundColor: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', zIndex: 2, transform: 'rotateY(0deg)' }}>
+                            <div className="front" style={{ padding: '10px 20px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, backgroundColor: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', zIndex: 2, transform: 'rotateY(0deg)' }}>
                                 <h2 style={{ color: '#1A1A1A', textTransform: 'uppercase', fontWeight: 800, fontFamily: 'Montserrat, sans-serif', textShadow: '2px 2px #888', WebkitTextStroke: '1px #888' }}>{experience.title}</h2>
                                 <h3>{experience.company}</h3>
-                                <h4>{experience.year}</h4>
+                                <h4>{experience.date}</h4>
                             </div>
-                            <div className="back" style={{ padding: '20px 30px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, backgroundColor: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transform: 'rotateY(180deg)' }}>
+                            <div className="back" style={{ padding: '20px 30px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, backgroundColor: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transform: 'rotateY(180deg)', overflow: 'scroll', paddingTop: '40px' }}>
                             <p style={{
                                 marginBottom: '1.25rem',
                                 textAlign: 'justify',
@@ -35,7 +36,7 @@ function Experience({experiences, experienceList}) {
                                 color: 'black',
                                 overflowWrap: 'break-word',
                                 wordWrap: 'break-word',
-                                fontSize: '15px'
+                                fontSize: '15px',
                                 }}>{experience.description}</p>
                             </div>
                         </div>
@@ -48,9 +49,8 @@ function Experience({experiences, experienceList}) {
             <div
                 id="experience"
                 style={{
-                    minHeight: experiences?.dimensions?.minHeight || '50vh',
                     width: '100vw',
-                    backgroundColor: experiences?.background?.color,
+                    background: experiences?.background?.color,
                     padding: "5vw",
                     boxSizing: "border-box"
                 }}
@@ -76,7 +76,8 @@ function Experience({experiences, experienceList}) {
                                 paddingLeft: "1%",
                                 paddingRight: "1%",
                                 paddingBottom: "1%",
-                                marginBottom: "2%"
+                                marginBottom: "2%",
+                                background: experiences?.experienceItem?.background?.color,
                             }}
                         >
                             <h2
@@ -114,3 +115,4 @@ function Experience({experiences, experienceList}) {
     }
 }
 export default Experience;
+
