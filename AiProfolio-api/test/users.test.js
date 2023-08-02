@@ -105,7 +105,9 @@ describe("Token Handling", () => {
             first_name: 'test-first_name',
             email: 'test-email@test.com'
         })
+        console.log(token)
         const user = User.verifyToken(token)
+        
         expect({
             id: user.id,
             first_name: user.first_name,
