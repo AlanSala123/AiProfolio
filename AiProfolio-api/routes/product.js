@@ -22,11 +22,11 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-      const user = User.verifyToken((token)); // Make sure to replace 'your-secret-key' with your actual secret key
+      const user = User.verifyToken((token)); 
       req.user = user;
       next();
   } catch (error) {
-    console.log(error)
+    
     res.status(401).send({ error: 'Not authenticated' });
   }
 }
@@ -72,7 +72,8 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
       console.timeEnd('execution time')
       res.send(portfolio.id)
   } catch (error) {
-      console.log(error);
+    console.timeEnd('execution time')
+    console.log(error)
       res.status(500).send({ message: "Internal server error" });
   }
 });
@@ -81,7 +82,7 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
 productRouter.get('/fetch/:id', async (req, res)=>{
   const portfolio_id  = req.params.id
   const user = req.user
-  console.log("user", user)
+
   try {
 
     const portfolio = await Portfolio.fetchPortfolio(portfolio_id)
@@ -98,7 +99,6 @@ productRouter.get('/fetchAll', async (req, res)=>{
   const user = req.user
   try {
     const portfolios = await Portfolio.fetchByUser(user.id)
-    console.log(portfolios)
     res.send(portfolios)
 
   } catch (error) {

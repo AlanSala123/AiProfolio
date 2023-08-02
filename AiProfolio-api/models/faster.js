@@ -143,45 +143,58 @@ const experiencesTemplate = ` {
 }
 `
 
-const skillsTemplate = `{"skills": {
-    "justifyContent" : "",
-    "dimensions": {
-        "minHeight": ""
-    },
-    "flexWrap" : "",
-    "background": {
-        "color": "",
-        "image": ""
-    },
-    "showProgressBar": true,
-    "showLevel": true,
-    "skillItem": {
-        "spacing": "",
-        "style": {
-            "boxShadow" : "",
-            "border" : {
-                "borderStyle" : "",
-                "borderRadius" : "",
-                "borderWidth" : "",
-                "borderColor" : ""
-            },
-            "name": {
-                "fontSize": "",
-                "fontColor": "",
-                "fontFamily": ""
-            },
-            "progressBar": {
-                "color": "",
-                "backgroundColor": ""
-            },
-            "level": {
-                "fontSize": "",
-                "fontColor": "",
-                "fontFamily": ""
+const skillsTemplate = `{
+    "skills": {
+        "justifyContent": "This setting controls the alignment of the skill items along the horizontal axis.",
+        "dimensions": {
+            "description": "This object contains settings for the dimensions of the skills section.",
+            "minHeight": "This setting controls the minimum height of the skills section."
+        },
+        "flexWrap": "This setting controls whether the skill items should wrap onto multiple lines when there are too many to fit on one line.",
+        "background": {
+            "description": "This object contains settings for the background of the skills section.",
+            "color": "This setting controls the color of the background.",
+            "image": "This setting specifies the URL of the background image."
+        },
+        "showProgressBar": "This boolean setting controls whether a progress bar should be shown for each skill.",
+        "showLevel": "This boolean setting controls whether the level of proficiency for each skill should be shown.",
+        "skillItem": {
+            "description": "This object contains settings for individual skill items.",
+            "spacing": "This setting controls the spacing between skill items.",
+            "style": {
+                "description": "This object contains settings for the style of the skill items.",
+                "backgroundColor": "This setting controls the background color of the skill items.",
+                "boxShadow": "This setting controls the box shadow of the skill items.",
+                "border": {
+                    "description": "This object contains settings for the border of the skill items.",
+                    "borderStyle": "This setting controls the style of the border (e.g., 'solid', 'dashed').",
+                    "borderRadius": "This setting controls the radius of the border (for rounded corners).",
+                    "borderWidth": "This setting controls the width of the border.",
+                    "borderColor": "This setting controls the color of the border."
+                },
+                "name": {
+                    "description": "This object contains settings for the name of the skill.",
+                    "fontSize": "This setting controls the font size of the skill name.",
+                    "fontColor": "This setting controls the color of the skill name.",
+                    "fontFamily": "This setting controls the font family of the skill name."
+                },
+                "progressBar": {
+                    "description": "This object contains settings for the progress bar of the skill.",
+                    "color": "This setting controls the color of the filled portion of the progress bar.",
+                    "backgroundColor": "This setting controls the color of the unfilled portion of the progress bar."
+                },
+                "level": {
+                    "description": "This object contains settings for the level of proficiency of the skill.",
+                    "fontSize": "This setting controls the font size of the skill level.",
+                    "fontColor": "This setting controls the color of the skill level.",
+                    "fontFamily": "This setting controls the font family of the skill level."
+                }
             }
         }
     }
-}}`
+}
+`
+
 
 const projectsTemplate = `{"projects": {
     "dimensions": {
@@ -278,5 +291,5 @@ module.exports = {
     skillsTemplate,
     projectsTemplate,
     educationTemplate,
-    // ...Other template exports...
+  
 };
