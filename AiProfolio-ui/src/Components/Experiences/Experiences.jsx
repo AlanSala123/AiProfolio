@@ -2,7 +2,7 @@ import React from 'react';
 // import './Experiences.css';
 function Experience({experiences, experienceList}) {
     
-    if(experienceList.length > 2) {
+    if(experienceList.length > 20) {
         return (
             <div className="timeline" style={{ maxWidth: experiences?.dimensions?.maxWidth || '1200px', padding: experiences?.padding || '50px 0', boxSizing: 'border-box'}}>
                 {experienceList.map((experience, index) => (

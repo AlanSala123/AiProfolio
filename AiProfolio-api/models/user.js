@@ -64,12 +64,14 @@ class User {
 
     try {
       user = await User.fetch("email", email)
-    } catch{}
+    } catch(error){
+      console.log( error)
+    }
     if (user)
       throw new InternalServerError("Email already exists")
     
     try {
-      const result = await pool.query(`INSERT INTO users(id, password, first_name, email) VALUES($1,$2,$3,$4) RETURNING email`,[
+      const result = await pool.query(`INSERT INTO users(id, password, first_name, email) VALUES($1,$2,$3,$4) RETURNING *`,[
         crypto.randomBytes(8).toString('hex'),
         bcrypt.hashSync(password, 15),
         first_name,
@@ -95,7 +97,7 @@ class User {
     }
     const user = await this.create(registerForm)
     const token = this.generateAuthToken(user)
-    return {user, token}
+    return {token}
   }
 
   static async login({loginForm, token}){
@@ -107,7 +109,7 @@ class User {
       if (token){
         if(this.verifyToken(token)){
           const newToken = this.generateAuthToken(user)
-          return {user, newToken}
+          return {newToken}
         }
       }
 
