@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 const pool = require("../config/database.js")
 const jwt = require("jsonwebtoken")
+require('dotenv').config()
 const {
   InvalidCredentialsError,
   NotFoundError,
@@ -9,15 +10,20 @@ const {
 } = require("../utilities/error.js")
 
 const crypto = require("crypto")
-require('dotenv').config()
-const secretKey = process.env.JWT_SECRET
+const secretKey = process.env.JWT_SECRET ? process.env.JWT_SECRET : 'disfjosijfoiojfdosifdosijdfiosdhfuisdhfuishfudsiofjsoi'
+
+if (!process.env.JWT_SECRET) {
+  console.error('The secret is defaulting to unsecure fallback');
+}
 
 class User {
 
   static verifyToken(token) {
+    
     if (typeof token !== "string")
       throw new InvalidCredentialsError(`Token not a string, its a ${typeof token}`)
     try{
+      
       let verified = jwt.verify(token, secretKey)
       if (verified) {
         let decoded = jwt.decode(token)
