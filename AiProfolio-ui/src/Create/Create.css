@@ -1,6 +1,287 @@
 /* DragDrop.css */
 
 .dropzone-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  border: 3px dashed #ccc;
+  padding: 30px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px auto;
+  max-width: 90%;
+  border-radius: 15px;
+  background-color: #fafafa;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dropzone-container:hover {
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dropzone-content {
+  margin: 0;
+  font-size: calc(18px + 1vw);
+  color: black;
+  font-weight: 600;
+  transition: font-size 0.3s ease;
+  overflow: hidden;
+  border-right: .15rem solid black;
+  white-space: nowrap;
+  letter-spacing: .15rem;
+  animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
+}
+
+
+.dropzone-content p{
+  color: black;
+}
+
+.dropzone-container.active {
+  border-color: #36a2d6;
+}
+
+.preview-section {
+  margin-top: 20px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.preview-section:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.preview-heading {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.preview-title {
+  font-size: calc(20px + 0.5vw);
+  font-weight: bold;
+  color: #333;
+}
+
+.remove-all-button {
+  margin-top: 15px;
+  font-size: calc(12px + 0.3vw);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #c53030;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.rejected-message{
+  color: black;
+}
+
+.rejected-message p{
+  color: #c53030;
+}
+
+.remove-all-button:hover {
+  background-color: #a42424;
+}
+
+.file-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.file-name {
+  background-color: #4d935d;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  order:1;
+  margin-right: 20px;
+}
+
+.file-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.file-item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.remove-file-button {
+  bottom: 8px;
+  right: 8px;
+  background-color: #c53030;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  order: 2;
+}
+
+.remove-file-button:hover {
+  background-color: #a42424;
+}
+
+.remove-resume-button {
+  background-color: #c53030;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.remove-resume-button:hover {
+  background-color: #a42424;
+  transform: translateY(-2px);
+}
+
+.accepted-title,
+.rejected-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #333;
+}
+
+.rejected-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rejected-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffe5e5;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.rejected-file-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #c53030;
+}
+
+.error-list {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #c53030;
+}
+
+.remove-rejected-button {
+  background-color: #c53030;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-rejected-button:hover {
+  background-color: #a42424;
+}
+
+#dragDropForm {
+  padding: 3%;
+  border-radius: 15px;
+  max-width: 90%;
+  margin: auto;
+}
+
+.resumeStatus p{
+  color: #333;
+  font-size: calc(14px + 0.3vw);
+}
+
+#submit-resume-button {
+  background: #4d935d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  font-size: calc(16px + 0.5vw);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#submit-resume-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+#submit-resume-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+@media (min-width: 768px) {
+  .file-item {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .file-item {
+    width: calc(33% - 20px);
+  }
+}
+@keyframes typing {
+  from {max-width: 0}
+  to {max-width: 50ch;} 
+}
+
+@keyframes blink {
+  from, to {border-color: transparent;}
+  50%{ border-color: black;}
+}
+
+
+
+
+
+
+
+
+/* 
+
+.dropzone-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,8 +291,8 @@
     padding: 20px;
     cursor: pointer;
     transition: border-color 0.3s ease;
-    margin: 20px auto; /* Added margin for spacing */
-    max-width: 600px; /* Added max-width to limit the width */
+    margin: 20px auto; 
+    max-width: 600px; 
   }
   
   .dropzone-content {
@@ -90,14 +371,14 @@
   
   .remove-file-button {
     position: absolute;
-    top: 4px; /* Adjusted position for better visibility */
-    right: 4px; /* Adjusted position for better visibility */
+    top: 4px; 
+    right: 4px; 
     background-color: #ff5f5f;
     color: rgb(112, 112, 112);
     border: none;
     border-radius: 50%;
-    width: 28px; /* Increased button size for better visibility */
-    height: 28px; /* Increased button size for better visibility */
+    width: 28px; 
+    height: 28px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,13 +419,13 @@
   
   .rejected-item {
     display: flex;
-    align-items: center; /* Center items vertically */
+    align-items: center; 
     justify-content: space-between;
     margin: 10px 0;
   }
   
   .rejected-file-name {
-    margin: 2px 10px; /* Adjusted margin to move the file name away from the remove button */
+    margin: 2px 10px; 
     font-size: 14px;
     font-weight: bold;
   }
@@ -164,7 +445,7 @@
     cursor: pointer;
     font-size: 12px;
     transition: background-color 0.3s ease;
-    margin-right: 80%; /* Added margin to move the button closer to the file name */
+    margin-right: 80%; 
   }
   
   .remove-rejected-button:hover {
@@ -184,4 +465,4 @@
 
   .resumeStatus p{
     color: black;
-  }
+  } */
