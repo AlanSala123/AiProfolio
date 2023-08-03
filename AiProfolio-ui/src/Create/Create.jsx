@@ -5,77 +5,80 @@ import axios from "axios";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { useNavigate } from "react-router-dom";
 
-const Create = ({user}) => {
-    const [resume, setResume] = useState(null);
-    const [images, setImages] = useState([]);
-    const [rejected, setRejected] = useState([]);
-    const [loading, setLoading] = useState(false);
-  
-    const navigate = useNavigate()
-  
-    async function submitResume(e){
-      e.preventDefault()
-      if (resume){
-        try {
-          const formData = new FormData();
+const Create = ({ user }) => {
+  const [resume, setResume] = useState(null);
+  const [images, setImages] = useState([]);
+  const [rejected, setRejected] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-if (resume) {
-  formData.append('resume', resume);
-}
+  const navigate = useNavigate();
 
-images.forEach((imageObj, index) => {
-  formData.append('images', imageObj.file);
-  formData.append(`labels[${index}]`, imageObj.label);
-});
+  async function submitResume(e) {
+    e.preventDefault();
+    if (resume) {
+      try {
+        const formData = new FormData();
 
-          setLoading(true)
-          const res = await axios.post("http://localhost:3001/product/create", formData, {withCredentials: true})
-          console.log(res)
-          setLoading(false)
-          navigate(`/view/${res?.data}`)
-        } catch (error) {
-          setLoading(false)
-          console.log("ERROR:", error);
+        if (resume) {
+          formData.append("resume", resume);
         }
+
+        images.forEach((imageObj, index) => {
+          formData.append("images", imageObj.file);
+          formData.append(`labels[${index}]`, imageObj.label);
+        });
+
+        setLoading(true);
+        const res = await axios.post(
+          "http://localhost:3001/product/create",
+          formData,
+          { withCredentials: true }
+        );
+        console.log(res);
+        setLoading(false);
+        navigate(`/view/${res?.data}`);
+      } catch (error) {
+        setLoading(false);
+        console.log("ERROR:", error);
       }
     }
-
+  }
 
   // Callback function when files are dropped or selected
   // Callback function when files are dropped or selected
-const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
-  const allowedExtensionsForResume = [".pdf", ".docx"];
-  const allowedExtensionsForImages = [".jpg", ".jpeg", ".png"];
+  const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+    const allowedExtensionsForResume = [".pdf", ".docx"];
+    const allowedExtensionsForImages = [".jpg", ".jpeg", ".png"];
 
-  const droppedResume = acceptedFiles.find((file) =>
-    allowedExtensionsForResume.includes(
-      file.name.substring(file.name.lastIndexOf("."))
-    )
-  );
+    const droppedResume = acceptedFiles.find((file) =>
+      allowedExtensionsForResume.includes(
+        file.name.substring(file.name.lastIndexOf("."))
+      )
+    );
 
-  const droppedImages = acceptedFiles.filter((file) =>
-    allowedExtensionsForImages.includes(
-      file.name.substring(file.name.lastIndexOf("."))
-    )
-  ).map((file) => ({
-    file,
-    label: ''
-  }));
+    const droppedImages = acceptedFiles
+      .filter((file) =>
+        allowedExtensionsForImages.includes(
+          file.name.substring(file.name.lastIndexOf("."))
+        )
+      )
+      .map((file) => ({
+        file,
+        label: "",
+      }));
 
-  if (droppedResume) {
-    setResume(droppedResume);
-  }
+    if (droppedResume) {
+      setResume(droppedResume);
+    }
 
-  if (droppedImages.length) {
-    setImages((previousFiles) => [...previousFiles, ...droppedImages]);
-  }
+    if (droppedImages.length) {
+      setImages((previousFiles) => [...previousFiles, ...droppedImages]);
+    }
 
-  if (rejectedFiles?.length) {
-    setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
-  }
-}, []);
-
-
+    if (rejectedFiles?.length) {
+      setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
+    }
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: [".jpg", ".jpeg", ".png", ".pdf", ".docx"],
@@ -109,108 +112,106 @@ const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
     newImages[index].label = e.target.value;
     setImages(newImages);
   };
-  
 
   if (!loading) {
-
-
-  return (
-    <form id="dragDropForm">
-      <div {...getRootProps()} className="dropzone-container">
-        <input {...getInputProps()} />
-        <div className="dropzone-content">
-          {isDragActive ? (
-            <p>Drop the files here ...</p>
-          ) : (
-            <p>Drag & drop files here, or click to select files</p>
-          )}
+    return (
+      <form id="dragDropForm">
+        <div {...getRootProps()} className="dropzone-container">
+          <input {...getInputProps()} />
+          <div className="dropzone-content">
+            {isDragActive ? (
+              <p>Drop The Files Here ...</p>
+            ) : (
+              <p>Drag & Drop Files Here, Or Click To Select Files</p>
+            )}
+          </div>
         </div>
-      </div>
 
-      {rejected.length > 0 && (
-        <div className="rejected-message">
-          <p>
-            The following files were rejected due to exceeding the maximum size:
-          </p>
-          <ul>
-            {rejected.map(({ file, errors }) => (
-              <li key={file.name}>
-                {file.name} ({formatBytes(file.size)})
+        {rejected.length > 0 && (
+          <div className="rejected-message">
+            <p>
+              The following files were rejected due to exceeding the maximum
+              size:
+            </p>
+            <ul>
+              {rejected.map(({ file, errors }) => (
+                <li key={file.name}>
+                  {file.name} ({formatBytes(file.size)})
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Preview section to show the accepted and rejected files */}
+        <section className="preview-section">
+          <div className="preview-heading">
+            <h2 className="preview-title">Your Files</h2>
+            {(resume ? 1 : 0) + images.length + rejected.length > 1 && (
+              <button
+                type="button"
+                onClick={removeAll}
+                className="remove-all-button"
+              >
+                Remove all files
+              </button>
+            )}
+          </div>
+
+          {resume ? (
+            <div className="resumeStatus">
+              <h3>Resume</h3>
+              <div className="file-name">{resume.name}</div>
+              <button
+                type="button"
+                className="remove-resume-button"
+                onClick={removeResume}
+              >
+                Remove
+              </button>
+            </div>
+          ) : (
+            <>Please upload a resume</>
+          )}
+          <h3 className="accepted-title">Accepted Images</h3>
+          <ul className="file-list">
+            {images.map((imageObj, index) => (
+              <li key={imageObj.file.name} className="file-item">
+                <p className="file-name">{imageObj.file.name}</p>
+                <img
+                  src={URL.createObjectURL(imageObj.file)}
+                  alt={imageObj.file.name}
+                  className="file-image"
+                />
+                <input
+                  type="text"
+                  placeholder="Enter label"
+                  value={imageObj.label}
+                  onChange={(e) => handleLabelChange(e, index)}
+                />
+                <button
+                  type="button"
+                  className="remove-file-button"
+                  onClick={() => removeImage(imageObj.file.name)}
+                >
+                  X
+                </button>
               </li>
             ))}
           </ul>
-        </div>
-      )}
-
-      {/* Preview section to show the accepted and rejected files */}
-      <section className="preview-section">
-        <div className="preview-heading">
-          <h2 className="preview-title">Your Files</h2>
-          <button
-            type="button"
-            onClick={removeAll}
-            className="remove-all-button"
-          >
-            Remove all files
-          </button>
-        </div>
-
-        {resume ? (
-          <div className="resumeStatus">
-            <h3>Resume</h3>
-            <p>{resume.name}</p>
-            <button type="button" onClick={removeResume}>Remove</button>
-          </div>
-        ) : (<>
-        Please upload a resume
-        </>)}
-
-        <h3 className="accepted-title">Accepted Images</h3>
-        <ul className="file-list">
-  {images.map((imageObj, index) => (
-    <li key={imageObj.file.name} className="file-item">
-      <p className="file-name">{imageObj.file.name}</p>
-      <img
-        src={URL.createObjectURL(imageObj.file)}
-        alt={imageObj.file.name}
-        className="file-image"
-      />
-      <input
-        type="text"
-        placeholder="Enter label"
-        value={imageObj.label}
-        onChange={(e) => handleLabelChange(e, index)}
-      />
-      <button
-        type="button"
-        className="remove-file-button"
-        onClick={() => removeImage(imageObj.file.name)} 
-      >
-        X
-      </button>
-    </li>
-  ))}
-</ul>
-
-
-
-
-      </section>
-      <button
-        onClick={submitResume}
-      >
-        Submit Resume
-      </button>
-    </form>
-  );
-  }else {
+        </section>
+        <button id="submit-resume-button" onClick={submitResume}>
+          Submit Resume
+        </button>
+      </form>
+    );
+  } else {
     return (
       <>
-        <LoadingScreen/>
+        <LoadingScreen />
       </>
-    )
+    );
   }
-
 };
 
 export default Create;

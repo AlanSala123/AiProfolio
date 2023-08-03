@@ -6,7 +6,6 @@
   padding: 30px;
   border-radius: 10px;
   width: 80%;
-  height: 95vh;
   margin: 0 auto;
   display: flex;
   backdrop-filter: blur(3.5px);
@@ -179,7 +178,7 @@ p {
   background-color: #f0f0f0;
   border-radius: 10px;
   animation: slideshow 12s infinite;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   height: 90vh;
 }
@@ -202,7 +201,8 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+/* Responsive styles for smaller screens */
+@media (max-width: 1344px) {
   .register-container {
     flex-direction: column;
   }
@@ -211,7 +211,12 @@ p {
   .register-right {
     width: 100%;
   }
+
+  .register-right {
+    display: none;
+  }
 }
+
 
 .password-requirements {
   color: white;
