@@ -13,6 +13,7 @@ export default function OurServices() {
       const servicesElement = document.querySelector('.services-container');
       const bounding = servicesElement.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      
       if (bounding.top < windowHeight / 1.2) {
         setAnimate(true);
       }

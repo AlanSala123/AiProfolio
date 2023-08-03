@@ -5,57 +5,61 @@ import axios from "axios";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { useNavigate } from "react-router-dom";
 
+
 const Create = ({ user }) => {
+ 
   const [resume, setResume] = useState(null);
   const [images, setImages] = useState([]);
   const [rejected, setRejected] = useState([]);
   const [loading, setLoading] = useState(false);
 
+ 
   const navigate = useNavigate();
 
+ 
   async function submitResume(e) {
     e.preventDefault();
     if (resume) {
       try {
+        // Prepare form data
         const formData = new FormData();
 
+        
         if (resume) {
           formData.append("resume", resume);
         }
-
         images.forEach((imageObj, index) => {
           formData.append("images", imageObj.file);
           formData.append(`labels[${index}]`, imageObj.label);
         });
 
+        
         setLoading(true);
         const res = await axios.post(
           "http://localhost:3001/product/create",
           formData,
           { withCredentials: true }
         );
-        console.log(res);
         setLoading(false);
+  
         navigate(`/view/${res?.data}`);
       } catch (error) {
         setLoading(false);
-        console.log("ERROR:", error);
       }
     }
   }
 
-  // Callback function when files are dropped or selected
-  // Callback function when files are dropped or selected
+  // Callback function to handle file drop
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
     const allowedExtensionsForResume = [".pdf", ".docx"];
     const allowedExtensionsForImages = [".jpg", ".jpeg", ".png"];
 
+    // Separate accepted files into resumes and images
     const droppedResume = acceptedFiles.find((file) =>
       allowedExtensionsForResume.includes(
         file.name.substring(file.name.lastIndexOf("."))
       )
     );
-
     const droppedImages = acceptedFiles
       .filter((file) =>
         allowedExtensionsForImages.includes(
@@ -67,52 +71,54 @@ const Create = ({ user }) => {
         label: "",
       }));
 
+    // Update state with dropped files
     if (droppedResume) {
       setResume(droppedResume);
     }
-
     if (droppedImages.length) {
       setImages((previousFiles) => [...previousFiles, ...droppedImages]);
     }
-
+  
     if (rejectedFiles?.length) {
       setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
     }
   }, []);
 
+  // Initialize dropzone hook
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: [".jpg", ".jpeg", ".png", ".pdf", ".docx"],
     maxSize: 1024 * 1000,
     onDrop,
   });
 
+  // Functions to remove files from state
   const removeResume = () => setResume(null);
-
   const removeImage = (name) => {
     setImages((images) => images.filter((image) => image.file.name !== name));
   };
-
   const removeAll = () => {
     setResume(null);
     setImages([]);
     setRejected([]);
   };
-
   const removeRejected = (name) => {
     setRejected((files) => files.filter(({ file }) => file.name !== name));
   };
 
+  // Function to format file sizes
   function formatBytes(bytes) {
     const maxSize = 1024 * 1000; // 1 MB
     return bytes > maxSize ? "File is too large" : `${bytes} Bytes`;
   }
 
+  // Function to handle label changes for images
   const handleLabelChange = (e, index) => {
     const newImages = [...images];
     newImages[index].label = e.target.value;
     setImages(newImages);
   };
 
+  // Conditional rendering based on 'loading' state
   if (!loading) {
     return (
       <form id="dragDropForm">
@@ -207,9 +213,7 @@ const Create = ({ user }) => {
     );
   } else {
     return (
-      <>
-        <LoadingScreen />
-      </>
+      <LoadingScreen />
     );
   }
 };

@@ -57,7 +57,6 @@ authRouter.get('/user', async (req, res)=>{
         const user = req.user
         res.status(200).send({user: user})
     } catch (error) {
-        console.log(error)
         res.clearCookie('token'); 
         res.status(500).send({error: error.message})
     }

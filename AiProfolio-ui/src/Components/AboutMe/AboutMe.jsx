@@ -20,15 +20,6 @@ function AboutMe({ about, data, images }) {
                 justifyContent : about?.aboutItem?.alignment?.textAlign,
                 gap : about?.aboutItem?.spacing || '1em',
             }}>
-                
-                {/* <img
-                    src={getAboutImg()}
-                    alt="Profile"
-                    style={{
-                        width: about?.aboutItem?.style?.profilePicture?.width || '150px',
-                        height: about?.aboutItem?.style?.profilePicture?.height || '150px',
-                    }}
-                /> */}
                 <h2
                 style={{
                     fontSize : about?.aboutItem?.style?.name?.fontSize,

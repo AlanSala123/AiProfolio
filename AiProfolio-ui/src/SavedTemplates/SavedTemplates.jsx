@@ -22,14 +22,12 @@ const Dashboard = () => {
         setPortfolios(res?.data)
 
       } catch (error) {
-        console.log(error);
       }
     };
     fetchAllPortfolios();
   }, []);
 
   useEffect(() => {
-    console.log(portfolios);
   }, [portfolios]);
   
 
