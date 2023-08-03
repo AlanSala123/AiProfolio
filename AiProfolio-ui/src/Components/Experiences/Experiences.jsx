@@ -20,12 +20,12 @@ function Experience({experiences, experienceList}) {
                         }}
                     >
                         <div className="content" style={{ position: 'relative', width: '100%', height: '100%', transformStyle: 'preserve-3d', transition: 'transform .5s' }}>
-                            <div className="front" style={{ padding: '10px 20px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, backgroundColor: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', zIndex: 2, transform: 'rotateY(0deg)' }}>
+                            <div className="front" style={{ padding: '10px 20px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, background: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', zIndex: 2, transform: 'rotateY(0deg)' }}>
                                 <h2 style={{ color: '#1A1A1A', textTransform: 'uppercase', fontWeight: 800, fontFamily: 'Montserrat, sans-serif', textShadow: '2px 2px #888', WebkitTextStroke: '1px #888' }}>{experience.title}</h2>
                                 <h3>{experience.company}</h3>
                                 <h4>{experience.date}</h4>
                             </div>
-                            <div className="back" style={{ padding: '20px 30px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, backgroundColor: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transform: 'rotateY(180deg)', overflow: 'scroll', paddingTop: '40px' }}>
+                            <div className="back" style={{ padding: '20px 30px', position: 'absolute', width: 'calc(100% - 60px)', height: 'calc(100% - 40px)', backfaceVisibility: 'hidden', borderRadius: 6, background: experiences?.containerItem?.style?.backgroundColor || '#FFFFFF', color: '#696969', fontFamily: 'Montserrat, sans-serif', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transform: 'rotateY(180deg)', overflow: 'scroll', paddingTop: '40px' }}>
                             <p style={{
                                 marginBottom: '1.25rem',
                                 textAlign: 'justify',
