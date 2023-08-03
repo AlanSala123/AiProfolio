@@ -149,6 +149,12 @@ const experiencesTemplate = ` {
 
 const skillsTemplate = `{
     "skills": {
+        "title": {
+            "description": "This object contains settings for the title of the skills section.",
+            "fontSize": "This setting controls the font size of the title.",
+            "fontColor": "This setting controls the color of the title.",
+            "fontFamily": "This setting controls the font family of the title."
+        },
         "justifyContent": "This setting controls the alignment of the skill items along the horizontal axis.",
         "dimensions": {
             "description": "This object contains settings for the dimensions of the skills section.",
@@ -160,11 +166,14 @@ const skillsTemplate = `{
             "color": "This setting controls the color of the background.",
             "image": "This setting specifies the URL of the background image."
         },
-        "showProgressBar": "This boolean setting controls whether a progress bar should be shown for each skill.",
-        "showLevel": "This boolean setting controls whether the level of proficiency for each skill should be shown.",
         "skillItem": {
             "description": "This object contains settings for individual skill items.",
             "spacing": "This setting controls the spacing between skill items.",
+            "dimensions": {
+               "minWidth": "This setting controls the minimum height of the skill items.",
+                "maxWidth": "This setting controls the maximum height of the skill items.",
+                "maxHeight" : "This setting controls the maximum height of the skill items."
+            },
             "style": {
                 "description": "This object contains settings for the style of the skill items.",
                 "backgroundColor": "This setting controls the background color of the skill items.",
@@ -185,7 +194,14 @@ const skillsTemplate = `{
                 "progressBar": {
                     "description": "This object contains settings for the progress bar of the skill.",
                     "color": "This setting controls the color of the filled portion of the progress bar.",
-                    "backgroundColor": "This setting controls the color of the unfilled portion of the progress bar."
+                    "backgroundColor": "This setting controls the color of the unfilled portion of the progress bar.",
+                    "border": {
+                        "description": "This object contains settings for the border of the progress bar.",
+                        "borderStyle": "This setting controls the style of the border (e.g., 'solid', 'dashed').",
+                        "borderRadius": "This setting controls the radius of the border (for rounded corners).",
+                        "borderWidth": "This setting controls the width of the border.",
+                        "borderColor": "This setting controls the color of the border."
+                    }
                 },
                 "level": {
                     "description": "This object contains settings for the level of proficiency of the skill.",
@@ -287,6 +303,7 @@ const educationTemplate = `{"education": {
         }
     }
 }}`
+
 
 // And so on for experiences, skills, projects, achievements, education...
 
