@@ -89,7 +89,7 @@ const Create = ({ user }) => {
   const removeResume = () => setResume(null);
 
   const removeImage = (name) => {
-    setImages((images) => images.filter((image) => image.name !== name));
+    setImages((images) => images.filter((image) => image.file.name !== name));
   };
 
   const removeAll = () => {
