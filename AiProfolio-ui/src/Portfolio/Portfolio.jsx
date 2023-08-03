@@ -29,7 +29,6 @@ export default function Portfolio(){
     async function fetchPortfolio(){
         try {
            const res = await axios.get(`http://localhost:3001/product/fetch/${id}`, {withCredentials: true})
-          console.log(res?.data)
           setImages(res?.data?.images)
            setResumeObj(res?.data?.resume)
            setTemplateObj(res?.data?.template)

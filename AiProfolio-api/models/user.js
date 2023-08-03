@@ -71,7 +71,6 @@ class User {
     try {
       user = await User.fetch("email", email)
     } catch(error){
-      console.log( error)
     }
     if (user)
       throw new InternalServerError("Email already exists")

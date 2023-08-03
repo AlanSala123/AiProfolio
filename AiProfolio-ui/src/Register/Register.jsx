@@ -1,31 +1,33 @@
 import React, { useState, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ReactLoading from 'react-loading';
+
+// Internal dependencies
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import "./Register.css";
-import ReactLoading from 'react-loading';
 
-export default function Register({ setUser}) {
+export default function Register({ setUser }) {
+    const navigate = useNavigate();
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState("");
     const [form, setForm] = useState({
         firstName: "",
         email: "",
         password: "",
     });
-    const [loading, setLoading] = useState("");
-    const navigate = useNavigate();
 
+    // Particles configuration
     const particlesInit = useCallback(async (engine) => {
         await loadSlim(engine);
     }, []);
-
     const particlesLoaded = useCallback(async (container) => { }, []);
 
+    // Event handlers
     const handleOnInputChange = (event) => {
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
     };
-
     const handleOnSubmit = async (event) => {
         event.preventDefault();
         setError(null);
@@ -37,11 +39,10 @@ export default function Register({ setUser}) {
                 password: form.password,
             }, {
                 withCredentials: true,
-              });
+            });
             const user = res?.data;
             setUser(user);
             navigate("/saved-templates");
-
         } catch (err) {
             if (err?.response?.data?.error) {
                 const message = err?.response?.data?.error;
@@ -50,8 +51,8 @@ export default function Register({ setUser}) {
             }
         }
     };
-    
 
+    // Styles and conditions
     const isRegisterButtonDisabled = !(form.email && form.firstName && form.password);
     const registerButtonStyles = {
         cursor: isRegisterButtonDisabled ? "default" : "pointer",
@@ -59,6 +60,7 @@ export default function Register({ setUser}) {
         filter: isRegisterButtonDisabled ? "contrast(0.75)" : "",
     };
 
+    // Component rendering
     return (
         <>
             <Particles

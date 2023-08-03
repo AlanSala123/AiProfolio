@@ -117,7 +117,6 @@ function MorphingBall() {
       const intersects = raycaster.intersectObject(sphere);
 
       if (intersects.length > 0) {
-        console.log("Sphere was clicked."); // Debug log
         explodeFactor += 0.7
         reforming = false;
         setTimeout(() => {
@@ -139,7 +138,6 @@ function MorphingBall() {
       const intersects = raycaster.intersectObject(sphere);
 
       if (intersects.length > 0) {
-        console.log("Sphere was touched."); // Debug log
         explodeFactor = 5;
         reforming = false;
         setTimeout(() => {

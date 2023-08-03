@@ -36,7 +36,6 @@ function App() {
 
         setUser(newUser);
       } catch (error) {
-        console.log(error);
         handleLogout();
       }
     };
@@ -49,7 +48,6 @@ function App() {
       setUser(null);
       navigate('/');
     } catch (error) {
-      console.log(error);
     }
   }
 

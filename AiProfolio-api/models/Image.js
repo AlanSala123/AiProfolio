@@ -23,8 +23,6 @@ class Image {
   }
 
   static async insertImage({image, label}, portfolioId) {
-    console.log(image)
-    console.log(label)
     try {
       const result = await pool.query(
         `INSERT INTO images (id, portfolio_id, label, serialized, mimetype) 
@@ -36,7 +34,6 @@ class Image {
       );
       return result.rows[0];
     } catch (error) {
-        console.log(error)
       throw new InternalServerError("Failed to create image");
     }
   }
