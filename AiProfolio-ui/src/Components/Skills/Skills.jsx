@@ -85,7 +85,8 @@ function Skills({ skills, skillList }) {
                     verticalAlign: skills?.skillItem?.alignment?.verticalAlign,
                     gap: '1em',
                     margin: "0",
-                    listStyle: 'none'
+                    listStyle: 'none',
+                    marginBottom: "4vh",
                 }}>
                     {sortedSkillItems.map((skill, index) => {
                         const progress = skill.progress?.replace('%', '') || 0;
@@ -102,11 +103,10 @@ function Skills({ skills, skillList }) {
                                     maxWidth: skills?.skillItem?.dimensions?.maxWidth,
                                     minWidth: skills?.skillItem?.dimensions?.minWidth,
                                     maxHeight: skills?.skillItem?.dimensions?.maxHeight,
-                                    paddingLeft: "1%",
-                                    paddingRight: "1%",
-                                    paddingTop: "1%",
-                                    paddingBottom: "1%",
-                                    marginBottom: "2%",
+                                    paddingLeft: "1.5%",
+                                    paddingRight: "1.5%",
+                                    paddingTop: "1.5%",
+                                    paddingBottom: "1.5%",
                                     textAlign: "center",
                                     display: "flex",
                                     alignItems: "center",
@@ -120,7 +120,9 @@ function Skills({ skills, skillList }) {
                                         <h1>
                                             <FontAwesomeIcon style={{
                                                 fontSize: skills?.skillItem?.dimensions?.maxHeight,
-                                                color: skills?.skillItem?.style?.name?.fontColor
+                                                color: skills?.skillItem?.style?.name?.fontColor,
+                                                margin: "0",
+                                                scale : "1.05"
                                             }} icon={skillIcons[skill.name.toLowerCase()]} />
                                         </h1>
                                     </>
@@ -153,7 +155,7 @@ function Skills({ skills, skillList }) {
                                             <div
                                                 style={{
                                                     width: '100%',
-                                                    height: '20px',
+                                                    minHeight: skills?.skillItem?.style?.progressBar.minHeight,
                                                     backgroundColor: skills?.skillItem?.style?.progressBar?.backgroundColor || "#ddd",
                                                     borderRadius: skills?.skillItem?.style?.progressBar?.border?.borderRadius || '3px',
                                                     borderStyle: skills?.skillItem?.style?.progressBar?.border?.borderStyle,
@@ -167,12 +169,8 @@ function Skills({ skills, skillList }) {
                                                     style={{
                                                         width: `${progress}%`,
                                                         height: '100%',
-                                                        borderRadius: skills?.skillItem?.style?.progressBar?.border?.borderRadius || '3px',
-                                                        borderStyle: skills?.skillItem?.style?.progressBar?.border?.borderStyle,
-                                                        borderWidth: skills?.skillItem?.style?.progressBar?.border?.borderWidth,
-                                                        borderColor: skills?.skillItem?.style?.progressBar?.border?.borderColor,
                                                         backgroundColor: skills?.skillItem?.style?.progressBar?.color || "#4CAF50",
-                                                        borderRadius: '3px'
+                                                        borderRadius: skills?.skillItem?.style?.progressBar?.border?.borderRadius
                                                     }}
                                                 ></div>
                                             </div>

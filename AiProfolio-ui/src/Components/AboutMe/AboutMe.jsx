@@ -36,7 +36,7 @@ function AboutMe({ about, data, images }) {
                     fontFamily : about?.aboutItem?.style?.name?.fontFamily,
                 }}
                 >
-                {data?.user?.name}
+                About
                 </h2>
                 <p
                 style={{
