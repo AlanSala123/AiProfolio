@@ -1,18 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { createNoise3D } from 'simplex-noise';
+import "./LoadingScreen.css"
 
 function LoadingScreen() {
   return (
-    <>
+    <div className='loadingScreen'>
     <MorphingBall/>
-    <h1 style={{
+    <h1 className = 'loading-text' style={{
         position: "absolute",
         bottom: "17.5vh",
         width: "100vw",
         textAlign: "center",
-    }}>Creating Portfolio</h1>
-    </>
+    }}>Creating Portfolio<span className="loading-dots"></span></h1>
+    </div>
 
   )
 }
