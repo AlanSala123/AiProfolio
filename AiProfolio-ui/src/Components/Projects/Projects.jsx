@@ -20,12 +20,25 @@ function Projects({ projects, projectList }) {
                     minHeight: projects?.dimensions?.minHeight || '100vh',
                     width: '100vw',
                     background: projects?.background?.color,
+                    textAlign: "center",
+                    alignItems: "center"
                 }}
             >
+                <h1 style={{
+                    margin: "0",
+                    fontFamily: projects?.title?.fontFamily,
+                    fontSize: projects?.title?.fontSize,
+                    color: projects?.title?.fontColor,
+                    textAlign: "center",
+                    paddingTop: "2%"
+                }}>
+                    Projects
+                </h1>
+
                 <Carousel
                     breakpoints={breakpoints}
                     showArrows={true}
-                    
+                    style={{textAlign: "center", alignItems:"center"}}
                 >
                     {projectList.map((project, index) => (
                         <div
@@ -40,6 +53,8 @@ function Projects({ projects, projectList }) {
                                 background: projects?.projectItem?.background?.color,
                                 padding: "2%",
                                 margin: "2%",
+                                textAlign: "center",
+                                alignItems: "center"
                             }}
                         >
                             <h3
@@ -84,6 +99,15 @@ function Projects({ projects, projectList }) {
                     background: projects?.background?.color,
                 }}
             >
+                <h1 style={{
+                    margin: "0",
+                    fontFamily: projects?.title?.fontFamily,
+                    fontSize: projects?.title?.fontSize,
+                    color: projects?.title?.fontColor
+                }}>
+                    Projects
+                </h1>
+
                 <div className="projects-list"
                     style={{
                         display: "grid",

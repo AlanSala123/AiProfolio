@@ -6,5 +6,40 @@
     border: none;
     border-radius: 0;
     box-shadow: none;
-    width: 100vw;
+    text-align: center;
+    align-items: center;
+}
+
+#projects {
+    text-align: center;
+    align-items: center;
+}
+.prod-item{
+    width: 50vw;
+}
+li.slide.selected{
+    
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#projects{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.carousel-root{
+    width: 50%;
+}
+
+button .control-arrow .control-next {
+    padding: 0;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+   background: none !important;
+}
+
+p.carousel-status{
+    opacity: 0;
 }
