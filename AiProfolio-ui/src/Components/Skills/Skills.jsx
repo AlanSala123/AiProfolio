@@ -2,7 +2,8 @@ import React from 'react';
 import './Skills.css';
 import { 
     faJava, faPython, faJsSquare, faReact, faHtml5, faCss3Alt, faNodeJs, faGit, faDocker, faAngular, faVuejs, faSwift, faPhp, // Programming languages and libraries
-    faWordpress, faLaravel, faSass, faLinux, faAws // Other technologies
+    faWordpress, faLaravel, faSass, faLinux, faAws, // Other technologies
+    faGithub
 } from '@fortawesome/free-brands-svg-icons'
 
 import { faCode } from '@fortawesome/free-solid-svg-icons'
@@ -21,7 +22,9 @@ function Skills({ skills, skillList }) {
         'html': faHtml5,
         'css': faCss3Alt,
         'node.js': faNodeJs,
+        'node' : faNodeJs,
         'git': faGit,
+        'github' : faGithub,
         'docker': faDocker,
         'angular': faAngular,
         'vue.js': faVuejs,
@@ -102,11 +105,8 @@ function Skills({ skills, skillList }) {
                                     background: skills?.skillItem?.style?.backgroundColor,
                                     maxWidth: skills?.skillItem?.dimensions?.maxWidth,
                                     minWidth: skills?.skillItem?.dimensions?.minWidth,
-                                    maxHeight: skills?.skillItem?.dimensions?.maxHeight,
                                     paddingLeft: "1.5%",
                                     paddingRight: "1.5%",
-                                    paddingTop: "1.5%",
-                                    paddingBottom: "1.5%",
                                     textAlign: "center",
                                     display: "flex",
                                     alignItems: "center",
@@ -145,7 +145,8 @@ function Skills({ skills, skillList }) {
                                                     fontSize: skills?.skillItem?.style?.level?.fontSize,
                                                     color: skills?.skillItem?.style?.level?.fontColor,
                                                     fontFamily: skills?.skillItem?.style?.level?.fontFamily,
-                                                    margin: "0"
+                                                    margin: "0",
+                                                    marginBottom : skill?.progress ? "0" : "0.5em"
                                                 }}
                                             >
                                                 {skill.level}

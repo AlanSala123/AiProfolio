@@ -31,7 +31,7 @@
   border-right: .15rem solid black;
   white-space: nowrap;
   letter-spacing: .15rem;
-  animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
+  animation: typing 3.5s steps(40, end), blink-2 .75s step-end infinite;
 }
 
 
@@ -267,7 +267,7 @@
   to {max-width: 50ch;} 
 }
 
-@keyframes blink {
+@keyframes blink-2 {
   from, to {border-color: transparent;}
   50%{ border-color: black;}
 }
