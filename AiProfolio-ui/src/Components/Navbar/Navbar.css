@@ -22,3 +22,18 @@
   #template-navbar a{
     text-decoration: none;
   }
+
+  @media screen and (max-width: 600px) {
+    #template-navbar-list{
+      flex-direction: column !important;
+    }
+    #template-navbar{
+      height: fit-content !important;
+      max-height: none !important;
+      min-height: none !important;
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+    }
+  }
+    
+  

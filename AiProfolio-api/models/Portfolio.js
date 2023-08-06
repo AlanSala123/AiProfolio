@@ -51,7 +51,8 @@ class Portfolio {
       );
       return result.rows[0];
     } catch (error) {
-      //throw new InternalServerError("Failed to create portfolio");
+      console.log(error)
+      throw new InternalServerError("Failed to create portfolio");
     }
   }
 

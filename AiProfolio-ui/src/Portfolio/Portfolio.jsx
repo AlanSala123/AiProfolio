@@ -25,6 +25,7 @@ export default function Portfolio(){
         fetchData()
     }, [])
     
+    console.log(templateObj)
 
     async function fetchPortfolio(){
         try {
