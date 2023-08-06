@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Skills({ skills, skillList }) {
     const skillIcons = {
-        // Programming languages and libraries
+        
         'java': faJava,
         'python': faPython,
         'javascript': faJsSquare,
@@ -33,14 +33,12 @@ function Skills({ skills, skillList }) {
     };
 
     const genericSkills = {
-        // Programming languages and libraries
+        
         'c++' : faCode
     };
 
-    // Create an array to hold the sorted skill items
     const sortedSkillItems = [];
 
-    // First, add the skills that exist in skillIcons
     skillList.forEach(skill => {
         const skillName = skill.name.toLowerCase();
         if (skillIcons[skillName]) {
@@ -48,7 +46,6 @@ function Skills({ skills, skillList }) {
         }
     });
 
-    // Then, add the remaining skills that are not in skillIcons
     skillList.forEach(skill => {
         const skillName = skill.name.toLowerCase();
         if (!skillIcons[skillName]) {
@@ -57,83 +54,27 @@ function Skills({ skills, skillList }) {
     });
 
     return (
-        <div
-            id="skills"
-            style={{
-                width: '100vw',
-                background: skills?.background?.color,
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-            }}
-        >
-            <h1
-                style={{
-                    fontFamily: skills?.title?.fontFamily,
-                    fontSize: skills?.title?.fontSize,
-                    color: skills?.title?.fontColor
-                }}
-            >
-                Skills
-            </h1>
+        <div id="skills" style={skills?.background}>
+            <h1 style={skills?.title}> Skills </h1>
             <div className="skills-container"> 
-                <ul style={{
-                    width: '95%',
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    textAlign: skills?.skillItem?.alignment?.textAlign,
-                    verticalAlign: skills?.skillItem?.alignment?.verticalAlign,
-                    gap: '1em',
-                    margin: "0",
-                    listStyle: 'none',
-                    marginBottom: "4vh",
-                }}>
+                <ul style={skills?.list}>
                     {sortedSkillItems.map((skill, index) => {
                         const progress = skill.progress?.replace('%', '') || 0;
                         return (
                             <li
                                 key={index}
-                                style={{
-                                    boxShadow: skills?.skillItem?.style?.boxShadow,
-                                    borderStyle: skills?.skillItem?.style?.border?.borderStyle,
-                                    borderWidth: skills?.skillItem?.style?.border?.borderWidth,
-                                    borderColor: skills?.skillItem?.style?.border?.borderColor,
-                                    borderRadius: skills?.skillItem?.style?.border?.borderRadius,
-                                    background: skills?.skillItem?.style?.backgroundColor,
-                                    maxWidth: skills?.skillItem?.dimensions?.maxWidth,
-                                    minWidth: skills?.skillItem?.dimensions?.minWidth,
-                                    paddingLeft: "1.5%",
-                                    paddingRight: "1.5%",
-                                    textAlign: "center",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexDirection: "column"
-
-                                }}
+                                style={skills?.item}
                             >
                                 {skillIcons[skill.name.toLowerCase()] ? (
                                     <>
                                         <h1>
-                                            <FontAwesomeIcon style={{
-                                                fontSize: skills?.skillItem?.dimensions?.maxHeight,
-                                                color: skills?.skillItem?.style?.name?.fontColor,
-                                                margin: "0",
-                                                scale : "1.05"
-                                            }} icon={skillIcons[skill.name.toLowerCase()]} />
+                                            <FontAwesomeIcon style={{...skills?.itemTitle, fontSize: skills?.item?.minWidth}} icon={skillIcons[skill.name.toLowerCase()]} />
                                         </h1>
                                     </>
                                 ) : (
                                     <>
                                         <h2
-                                            style={{
-                                                fontSize: skills?.skillItem?.style?.name?.fontSize,
-                                                color: skills?.skillItem?.style?.name?.fontColor,
-                                                fontFamily: skills?.skillItem?.style?.name?.fontFamily,
-                                            }}
+                                            style={skills?.itemTitle}
                                         >
                                             {genericSkills[skill.name.toLowerCase()] && <FontAwesomeIcon icon={genericSkills[skill.name.toLowerCase()]} />}
                                             &nbsp;
@@ -141,40 +82,10 @@ function Skills({ skills, skillList }) {
                                         </h2>
                                         {skill?.level && (
                                             <p
-                                                style={{
-                                                    fontSize: skills?.skillItem?.style?.level?.fontSize,
-                                                    color: skills?.skillItem?.style?.level?.fontColor,
-                                                    fontFamily: skills?.skillItem?.style?.level?.fontFamily,
-                                                    margin: "0",
-                                                    marginBottom : skill?.progress ? "0" : "0.5em"
-                                                }}
+                                                style={skills?.itemLevel}
                                             >
                                                 {skill.level}
                                             </p>
-                                        )}
-                                        {skill.progress && (
-                                            <div
-                                                style={{
-                                                    width: '100%',
-                                                    minHeight: skills?.skillItem?.style?.progressBar.minHeight,
-                                                    backgroundColor: skills?.skillItem?.style?.progressBar?.backgroundColor || "#ddd",
-                                                    borderRadius: skills?.skillItem?.style?.progressBar?.border?.borderRadius || '3px',
-                                                    borderStyle: skills?.skillItem?.style?.progressBar?.border?.borderStyle,
-                                                    borderWidth: skills?.skillItem?.style?.progressBar?.border?.borderWidth,
-                                                    borderColor: skills?.skillItem?.style?.progressBar?.border?.borderColor,
-                                                    marginBottom: "1em",
-                                                    marginTop: "0.5em"
-                                                }}
-                                            >
-                                                <div
-                                                    style={{
-                                                        width: `${progress}%`,
-                                                        height: '100%',
-                                                        backgroundColor: skills?.skillItem?.style?.progressBar?.color || "#4CAF50",
-                                                        borderRadius: skills?.skillItem?.style?.progressBar?.border?.borderRadius
-                                                    }}
-                                                ></div>
-                                            </div>
                                         )}
                                     </>
                                 )}

@@ -198,16 +198,16 @@ p {
 /* Keyframes for the slideshow effect */
 @keyframes slideshow {
   0% {
-    background-image: url('../../public/alan.png');
+    background-image: url('/public/alan.png');
   }
   33% {
-    background-image: url('../../public/marwan.png');
+    background-image: url('/public/marwan.png');
   }
   66% {
-    background-image: url('../../public/luis.png');
+    background-image: url('/public/luis.png');
   }
   100% {
-    background-image: url('../../public/alan.png');
+    background-image: url('/public/alan.png');
   }
 }
 

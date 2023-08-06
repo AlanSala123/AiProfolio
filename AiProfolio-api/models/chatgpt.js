@@ -1,18 +1,9 @@
 const { Configuration, OpenAIApi } = require("openai");
 require("dotenv").config();
-const portfolioJsonTemplate = require("./component_map.js");
 const resumeTemplateJson = require("./resume_map.js");
 const pdfjsLib = require("pdfjs-dist");
+const e = require("express");
 
-const {
-  navbarTemplate,
-  aboutTemplate,
-  headerTemplate,
-  experiencesTemplate,
-  skillsTemplate,
-  projectsTemplate,
-  educationTemplate,
-} = require("./faster.js");
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -36,6 +27,7 @@ class ChatGPT {
       const pageText = content.items.map((item) => item.str).join(" ");
       totalText += pageText + " ";
     }
+
 
     return totalText;
   }
@@ -68,17 +60,30 @@ class ChatGPT {
 
             ${resumeTemplateJson}
 
-            FOR THE SUMMARY SECTION CREATE A MINIMUM 200 WORD DESCRIPTION OF THE PERSON BASED ON THE RESUME TEXT.
+            FOR THE SUMMARY SECTION CREATE A FIRST PERSON DESCRIPTION OF THE PERSON BASED ON THE RESUME TEXT MAKE IT GOOD AND LEAVE OUT BAD OR POTENTIALLY BAD THINGS LIKE A RELATIVELY LOW GPA FOR EXAMPLE.
             FOR THE JOB ASPIRATION SECTION ASSUME WHAT THE PERSONS JOB ASPIRATION (Job Title) IS BASED ON THE RESUME TEXT
            MAKE THE DESCRIPTIONS OF STUFF BETTER AND MORE DETAILED AND APPROPRIATE TO FIT A PORTFOLIO WEBSITE,
-           DONT ADD A PROGRESS OR LEVEL FOR THE SKILLS IF THERE IS NOTHING INDICATING THAT IN THE RESUME TEXT,
+           DON'T ADD A PROGRESS OR LEVEL FOR THE SKILLS IF THERE IS NOTHING INDICATING THAT IN THE RESUME TEXT,
+           PLEASE ENHANCE ANY DESCRIPTIONS OR EXPLANATIONS WITHIN REASON,
+          AND PLEASE DO NOT REMOVE ANY SECTIONS OR INFORMATION THAT IS IN THE RESUME TEXT,
+          FOLLOW THIS FORMAT STRICTLY
 
         ${this.preprocessResumeText(resumeText)}`,
+
       "gpt-3.5-turbo"
     );
-    const responseObject = JSON.parse(response);
+    const responseObject = JSON.parse(extractBracketedSubstring(response));
     return responseObject;
   }
+}
+
+function extractBracketedSubstring(s) {
+  const firstBracket = s.indexOf('{');
+  const lastBracket = s.lastIndexOf('}');
+  if (firstBracket === -1 || lastBracket === -1 || firstBracket > lastBracket) {
+    return null; // Return null if brackets are not found or not properly nested
+  }
+  return s.substring(firstBracket, lastBracket + 1);
 }
 
 module.exports = ChatGPT;

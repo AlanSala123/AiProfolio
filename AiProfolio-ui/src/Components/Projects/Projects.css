@@ -15,7 +15,7 @@
     align-items: center;
 }
 .prod-item{
-    width: 50vw;
+    width: 75vw;
 }
 li.slide.selected{
     
@@ -29,7 +29,7 @@ li.slide.selected{
     align-items: center;
 }
 .carousel-root{
-    width: 50%;
+    width: 75%;
 }
 
 button .control-arrow .control-next {

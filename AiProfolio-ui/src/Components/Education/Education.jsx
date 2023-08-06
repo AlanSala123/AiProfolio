@@ -8,71 +8,31 @@ function Education({ education, educationData }) {
   return (
     <div
       id="education"
-      style={{
-        width: '90vw',
-        paddingLeft: '5vw',
-        paddingRight: '5vw',
-        paddingTop: '5vh',
-        background: education?.background?.color,
-      }}
+      style={education?.background}
     >
-      <ul style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign : education?.educationItem?.alignment?.textAlign,
-                gap : education?.educationItem?.spacing || '1em',
-                margin : "0"
-            }}>
+      <h1 style={education?.title}>Education</h1>
+      <ul style={education?.list}>
 
         {educationData?.map((educations, index) => (
           <li key={index}
-          style={{
-            listStyle : "none",
-            boxShadow : education?.educationItem?.style?.boxShadow,
-            borderStyle : education?.educationItem?.style?.border?.borderStyle,
-            borderRadius : education?.educationItem?.style?.border?.borderRadius,
-            borderWidth : education?.educationItem?.style?.border?.borderWidth,
-            borderColor : education?.educationItem?.style?.border?.borderColor,
-            paddingLeft : "1%",
-            paddingRight : "1%",
-            paddingTop : "1%",
-            paddingBottom : "1%",
-            marginBottom : "2%",
-            background: education?.educationItem?.background?.color
-          }}>
+          style={education?.item}>
             <h3
-              style={{
-                fontFamily: education?.educationItem?.style?.institution?.fontFamily,
-                fontSize: education?.educationItem?.style?.institution?.fontSize,
-                color: education?.educationItem?.style?.institution?.fontColor,
-              }}
+              style={education?.itemInstitution}
             >
               {educations.institution}
             </h3>
             <p
-              style={{
-                fontFamily: education?.educationItem?.style?.degree?.fontFamily,
-                fontSize: education?.educationItem?.style?.degree?.fontSize,
-                color: education?.educationItem?.style?.degree?.fontColor,
-              }}
+              style={education?.itemDetails}
             >
               {educations.degree}
             </p>
             <p
-              style={{
-                fontFamily: education?.educationItem?.style?.major?.fontFamily,
-                fontSize: education?.educationItem?.style?.major?.fontSize,
-                color: education?.educationItem?.style?.major?.fontColor,
-              }}
+              style={education?.itemDetails}
             >
               {educations.major}
             </p>
             <p
-              style={{
-                fontFamily: education?.educationItem?.style?.date?.fontFamily,
-                fontSize: education?.educationItem?.style?.date?.fontSize,
-                color: education?.educationItem?.style?.date?.fontColor,
-              }}
+              style={education?.itemDetails}
             >
               {educations.date}
             </p>
