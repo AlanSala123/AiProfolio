@@ -113,12 +113,13 @@ module.exports = productRouter
 
 function buildWebsiteProgrammatically() {
   const generateRandomColor = () => {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
+    const r = Math.floor(Math.random() * 101) + 100; // range is now 100-200
+    const g = Math.floor(Math.random() * 101) + 100; // range is now 100-200
+    const b = Math.floor(Math.random() * 101) + 100; // range is now 100-200
 
     return "#" + ((r << 16) | (g << 8) | b).toString(16).padStart(6, "0");
   };
+
   const generateColorVariation = (baseColor, variationFactor) => {
     let r = parseInt(baseColor.substr(1, 2), 16);
     let g = parseInt(baseColor.substr(3, 2), 16);
@@ -144,7 +145,7 @@ function buildWebsiteProgrammatically() {
   
     const luminance = 0.2126 * relativeLuminance(r) + 0.7152 * relativeLuminance(g) + 0.0722 * relativeLuminance(b);
   
-    const targetLuminanceDiff = 0.5; 
+    const targetLuminanceDiff = 0.75; 
   
     const targetLuminance = luminance + (luminance < 0.5 ? targetLuminanceDiff : -targetLuminanceDiff);
   
@@ -170,33 +171,27 @@ function buildWebsiteProgrammatically() {
     return array[Math.floor(Math.random() * array.length)];
   }
 
+  const generatePaleColor = () => {
+
+    const darkmode = Math.random() < 0.5;
+
+    const minComponentValue = darkmode ? 15 : 220; // Set the minimum value for each RGB component
+    const maxComponentValue = darkmode ? 35 : 240; // Set the maximum value for each RGB component
+  
+    const r = Math.floor(Math.random() * (maxComponentValue - minComponentValue + 1) + minComponentValue);
+    const g = Math.floor(Math.random() * (maxComponentValue - minComponentValue + 1) + minComponentValue);
+    const b = Math.floor(Math.random() * (maxComponentValue - minComponentValue + 1) + minComponentValue);
+  
+    return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  };
+  
+  
+  console.log(generatePaleColor());
+  
+
   function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
-  const randomFont = getRandomElementFromArray([
-    "Arial",
-    "Verdana",
-    "Georgia",
-    "Times New Roman",
-    "Courier New",
-  ]);
-  const randomAlignment = getRandomElementFromArray([
-    "left",
-    "right",
-    "center",
-    "justify",
-  ]);
-  const randomBorderStyle = getRandomElementFromArray([
-    "dotted",
-    "dashed",
-    "solid",
-    "double",
-    "groove",
-    "ridge",
-    "inset",
-    "outset",
-  ]);
 
   function buildWebsiteProgrammatically2() {
     const fonts = [
@@ -221,10 +216,10 @@ function buildWebsiteProgrammatically() {
     const randomFont = getRandomElementFromArray(fonts);
     const randomAlignment = getRandomElementFromArray(alignments);
     const randomBorderStyle = getRandomElementFromArray(borderStyles);
-    const primaryColor = generateRandomColor();
-    const primaryColorText = generateComplementaryColor(primaryColor);
-    const secondaryColor = generateColorVariation(primaryColor, 50);
-    const secondaryColorText = generateComplementaryColor(secondaryColor);
+
+    const backgroundColor = generatePaleColor();
+    const accentColor = generateRandomColor();
+    const accentColorText = generateComplementaryColor(accentColor);
 
     // portfolio is structured here...
     const generateStyle = (min, max, unit = "px") =>
@@ -236,44 +231,44 @@ function buildWebsiteProgrammatically() {
           height: generateStyle(50, 100),
         },
         background: {
-          color: primaryColor,
+          color: accentColor,
         },
         items: {
           alignment: {
             textAlign: randomAlignment,
             verticalAlign: "middle",
           },
-          spacing: generateStyle(5, 20),
+          spacing: generateStyle(10, 20),
           style: {
-            fontSize: generateStyle(12, 24),
-            fontColor: primaryColorText,
+            fontSize: generateStyle(18, 24),
+            fontColor: accentColorText,
             fontFamily: randomFont,
           },
         },
       },
       header: {
         dimensions: {
-          height: generateStyle(30, 100, "vh"),
+          height: generateStyle(60, 100, "vh"),
         },
         background: {
-          color: secondaryColor,
+          color: accentColor,
         },
         border: {
-          color: primaryColor,
+          color: accentColorText,
           width: generateStyle(1, 5),
           style: randomBorderStyle,
         },
         foreground: {
           title: {
-            fontSize: generateStyle(36, 48),
-            fontColor: secondaryColorText,
+            fontSize: generateStyle(50, 75),
+            fontColor: accentColorText,
             fontFamily: randomFont,
             fontWeight: "bold",
             fontStyle: "normal",
           },
           subtitle: {
-            fontSize: generateStyle(14, 24),
-            fontColor: generateColorVariation(generateComplementaryColor(secondaryColor), 60),
+            fontSize: generateStyle(24, 36),
+            fontColor: generateColorVariation(accentColorText, 25),
             fontFamily: randomFont,
             fontWeight: "normal",
             fontStyle: "italic",
@@ -286,7 +281,7 @@ function buildWebsiteProgrammatically() {
       },
       about: {
         background: {
-          color: primaryColor,
+          color: backgroundColor,
         },
         aboutItem: {
           alignment: {
@@ -300,13 +295,13 @@ function buildWebsiteProgrammatically() {
               height: generateStyle(50, 100),
             },
             name: {
-              fontSize: generateStyle(20, 30),
-              fontColor: primaryColorText,
+              fontSize: generateStyle(18, 26),
+              fontColor: generateComplementaryColor(backgroundColor),
               fontFamily: randomFont,
             },
             description: {
-              fontSize: generateStyle(14, 18),
-              fontColor: primaryColorText,
+              fontSize: generateStyle(18, 26),
+              fontColor: generateComplementaryColor(backgroundColor),
               fontFamily: randomFont,
             },
           },
@@ -314,13 +309,13 @@ function buildWebsiteProgrammatically() {
       },
       experiences: {
         title: {
-          color: secondaryColorText,
+          color: accentColor,
           fontSize: generateStyle(24, 36),
           fontFamily: randomFont,
           fontWeight: "bold",
         },
         background: {
-          color: secondaryColor,
+          color: backgroundColor,
         },
         flexWrap: "wrap",
         experienceItem: {
@@ -330,7 +325,7 @@ function buildWebsiteProgrammatically() {
             verticalAlign: "top",
           },
           background: {
-            color: primaryColor,
+            color: accentColor,
           },
           spacing: generateStyle(10, 30),
           style: {
@@ -339,21 +334,21 @@ function buildWebsiteProgrammatically() {
               borderStyle: randomBorderStyle,
               borderRadius: generateStyle(1, 10),
               borderWidth: generateStyle(1, 5),
-              borderColor: primaryColorText,
+              borderColor: accentColorText,
             },
             title: {
               fontSize: generateStyle(20, 24),
-              fontColor: primaryColorText,
+              fontColor: accentColorText,
               fontFamily: randomFont,
             },
             description: {
               fontSize: generateStyle(14, 18),
-              fontColor: generateColorVariation(primaryColorText, 25),
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
             date: {
               fontSize: generateStyle(14, 18),
-              fontColor: generateColorVariation(primaryColorText, 25),
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
           },
@@ -362,7 +357,7 @@ function buildWebsiteProgrammatically() {
       skills: {
         title: {
           fontSize: generateStyle(24, 36),
-          fontColor: generateComplementaryColor(primaryColor),
+          fontColor: accentColor,
           fontFamily: randomFont,
         },
         justifyContent: "center",
@@ -371,7 +366,7 @@ function buildWebsiteProgrammatically() {
         },
         flexWrap: "wrap",
         background: {
-          color: primaryColor,
+          color: backgroundColor,
         },
         skillItem: {
           spacing: generateStyle(10, 20),
@@ -381,33 +376,33 @@ function buildWebsiteProgrammatically() {
             maxHeight: generateStyle(50, 100), 
           },
           style: {
-            backgroundColor: generateColorVariation(secondaryColor, 30),
+            backgroundColor: accentColor,
             boxShadow: "5px 5px 15px rgba(0,0,0,0.3)",
             border: {
               borderStyle: randomBorderStyle,
               borderRadius: generateStyle(1, 10),
               borderWidth: generateStyle(1, 5),
-              borderColor: generateComplementaryColor(generateColorVariation(secondaryColor, 30)),
+              borderColor: accentColorText,
             },
             name: {
               fontSize: generateStyle(16, 20),
-              fontColor: generateComplementaryColor(generateColorVariation(secondaryColor, 30)),
+              fontColor: accentColorText,
               fontFamily: randomFont,
             },
             progressBar: {
-              color: primaryColor,
-              backgroundColor: secondaryColor,
+              color: accentColorText,
+              backgroundColor: generateComplementaryColor(accentColorText),
               border: {
                 borderStyle: randomBorderStyle,
                 borderRadius: generateStyle(1, 10),
                 borderWidth: generateStyle(0.2, 2),
-                borderColor: generateComplementaryColor(secondaryColor),
+                borderColor: accentColorText,
               },
               minHeight : generateStyle(5, 10)
             },
             level: {
               fontSize: generateStyle(14, 18),
-              fontColor: generateComplementaryColor(generateColorVariation(secondaryColor, 10)),
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
           },
@@ -418,7 +413,7 @@ function buildWebsiteProgrammatically() {
           minHeight: generateStyle(200, 300),
         },
         background: {
-          color: generateColorVariation(secondaryColor, 20),
+          color: backgroundColor,
         },
         projectItem: {
           alignment: {
@@ -426,7 +421,7 @@ function buildWebsiteProgrammatically() {
             verticalAlign: "top",
           },
           background: {
-            color: generateComplementaryColor(generateColorVariation(secondaryColor, -20)),
+            color: accentColor,
           },
           spacing: generateStyle(10, 30),
           style: {
@@ -435,21 +430,21 @@ function buildWebsiteProgrammatically() {
               borderStyle: randomBorderStyle,
               borderRadius: generateStyle(1, 10),
               borderWidth: generateStyle(1, 5),
-              borderColor: generateComplementaryColor(generateComplementaryColor(generateColorVariation(secondaryColor, -20))),
+              borderColor: accentColorText,
             },
             title: {
               fontSize: generateStyle(20, 24),
-              fontColor: generateComplementaryColor(generateComplementaryColor(generateColorVariation(secondaryColor, -20))),
+              fontColor: accentColorText,
               fontFamily: randomFont,
             },
             description: {
               fontSize: generateStyle(14, 18),
-              fontColor: generateComplementaryColor(generateComplementaryColor(generateColorVariation(secondaryColor, -20))),
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
             technologies: {
               fontSize: generateStyle(14, 18),
-              fontColor: generateComplementaryColor(generateComplementaryColor(generateColorVariation(secondaryColor, -20))),
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
           },
@@ -458,12 +453,15 @@ function buildWebsiteProgrammatically() {
       education: {
         flexDirection: "column",
         background: {
-          color: secondaryColor,
+          color: backgroundColor,
         },
         educationItem: {
           alignment: {
             textAlign: randomAlignment,
             verticalAlign: "top",
+          },
+          background: {
+            color: accentColor,
           },
           spacing: `${getRandomNumber(10, 30)}px`,
           style: {
@@ -472,26 +470,26 @@ function buildWebsiteProgrammatically() {
               borderStyle: randomBorderStyle,
               borderRadius: `${getRandomNumber(1, 10)}px`,
               borderWidth: `${getRandomNumber(1, 5)}px`,
-              borderColor: secondaryColorText,
+              borderColor: accentColorText,
             },
             institution: {
               fontSize: `${getRandomNumber(20, 24)}px`,
-              fontColor: secondaryColorText,
+              fontColor: accentColorText,
               fontFamily: randomFont,
             },
             degree: {
               fontSize: `${getRandomNumber(16, 20)}px`,
-              fontColor: secondaryColorText,
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
             major: {
               fontSize: `${getRandomNumber(14, 18)}px`,
-              fontColor: secondaryColorText,
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
             date: {
               fontSize: `${getRandomNumber(14, 18)}px`,
-              fontColor: secondaryColorText,
+              fontColor: generateColorVariation(accentColorText, 25),
               fontFamily: randomFont,
             },
           },
@@ -502,4 +500,3 @@ function buildWebsiteProgrammatically() {
   return buildWebsiteProgrammatically2()
 }
 
-console.log(buildWebsiteProgrammatically());
