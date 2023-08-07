@@ -87,7 +87,7 @@ const Create = ({ user }) => {
   // Initialize dropzone hook
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: [".jpg", ".jpeg", ".png", ".pdf", ".docx"],
-    maxSize: 1024 * 1000,
+    maxSize: 1024 * 1000 ,
     onDrop,
   });
 
@@ -107,7 +107,7 @@ const Create = ({ user }) => {
 
   // Function to format file sizes
   function formatBytes(bytes) {
-    const maxSize = 1024 * 1000; // 1 MB
+    const maxSize = 1024 * 1000 ; // 1 MB
     return bytes > maxSize ? "File is too large" : `${bytes} Bytes`;
   }
 
@@ -193,6 +193,7 @@ const Create = ({ user }) => {
                   value={imageObj.label}
                   onChange={(e) => handleLabelChange(e, index)}
                 >
+                    <option value="">Select Label</option>
                     <option value="profile picture">Profile Picture</option>
                     <option value="logo">Logo</option>
                     <option value="school logo">School Logo</option>

@@ -242,17 +242,33 @@ class Generator {
     summaryFontColor,
     summaryFontFamily,
     summaryFontWeight,
+    
   }) {
+    const direction = this.getRandomElementFromArray(['row', 'column'])
     return {
-      about: {
+        about: {
         background: {
           background: backgroundColor,
           width: "100%",
           display: "flex",
           flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-
+          alignItems: "center",
+        },
+        content : {
+            display: "flex",
+            flexDirection: direction,
+            flexWrap : "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            columnGap: "5vw",
+        },
+        image : {
+            width: this.generateStyle(300, 500, "px"),
+            maxWidth: '95%',
+            borderRadius: '100%',
+            borderStyle: this.getRandomElementFromArray(this.borderStyles),
+            borderColor: summaryFontColor,
+            borderWidth: this.generateStyle(2, 5, "px"),
         },
         title: {
           fontSize: titleFontSize,
@@ -267,7 +283,8 @@ class Generator {
           color: summaryFontColor,
           fontFamily: summaryFontFamily,
           fontWeight: summaryFontWeight,
-          width: "95%",
+          maxWidth: "95%",
+          width: direction === "row" ? "45%" : "95%",
             textAlign: this.getRandomElementFromArray(['center', 'flex-start']),
             margin: "0",
             padding: "2.5vh 0px 5vh 0px"

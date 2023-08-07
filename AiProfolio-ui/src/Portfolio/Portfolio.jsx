@@ -17,6 +17,7 @@ export default function Portfolio(){
     
     const params = useParams()
     const id = params.id
+
     useEffect(() => {
         const fetchData = async () => {
             await fetchPortfolio()
@@ -27,16 +28,17 @@ export default function Portfolio(){
     
     console.log(templateObj)
 
-    async function fetchPortfolio(){
-        try {
-           const res = await axios.get(`http://localhost:3001/product/fetch/${id}`, {withCredentials: true})
-          setImages(res?.data?.images)
-           setResumeObj(res?.data?.resume)
-           setTemplateObj(res?.data?.template)
-        } catch (error) {
-            
-        }
+  async function fetchPortfolio() {
+    try {
+        const res = await axios.get(`http://localhost:3001/product/fetch/${id}`, { withCredentials: true });
+        setImages(res?.data?.images);
+        setResumeObj(res?.data?.resume);
+        setTemplateObj(res?.data?.template);
+    } catch (error) {
+        console.error("An error occurred while fetching portfolio:", error);
     }
+}
+
 
 
     if (resumeObj && templateObj){
@@ -50,13 +52,6 @@ export default function Portfolio(){
                 <Skills skills={templateObj?.skills} skillList={resumeObj?.skills}/>
                 <Projects projects={templateObj?.projects} projectList={resumeObj?.projects} />
                 <div>
-        {/* {images.map(element => {
-    const buffer = element.serialized.data;
-    const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
-
-    return <img src={`data:${element.mimetype};base64,${base64String}`} alt={element.label} key={element.id} />
-})
-} */}
     </div>
             </>
             )
