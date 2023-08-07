@@ -50,7 +50,9 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
 
       const fileBuffer = req.files.resume[0].buffer; 
       const images = req.files.images;
-      console.log(images)
+      
+      const isPdf = req.files.resume[0].originalname.endsWith('.pdf')
+      const isDocx = req.files.resume[0].originalname.endsWith('.docx')
       
       const labels = Object.keys(req.body).filter(key => key.startsWith('labels')).map(key => req.body[key])[0];
 
@@ -60,10 +62,17 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
             label: labels[index]
         };
     });
+    let parsedText = null;
+    if (isPdf){
+        parsedText = await ChatGPT.parsePDF(fileBuffer)
+    }
+    if (isDocx){
+        parsedText = await ChatGPT.parseDOCX(fileBuffer)
+    }
 
-    console.log(imageLabelPairs)
-
-      const parsedText = await ChatGPT.parsePDF(fileBuffer);
+    if (!parsedText){
+        throw new Error("Unsupported file format")
+    }
 
     const resumeObject = await ChatGPT.parseResume(parsedText)
     const gen = new Generator(resumeObject)
@@ -82,6 +91,17 @@ productRouter.post('/create', upload.fields([{ name: 'resume', maxCount: 1 }, { 
   }
 });
 
+productRouter.post('/host', async (req, res)=>{
+    const portfolio_id  = req.body.idToHost
+    const user = req.user
+    try {
+        await User.setHostedId( portfolio_id, user.id)
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({ message: "Internal server error" });
+    }
+})
+
 
 productRouter.get('/fetch/:id', async (req, res)=>{
   const portfolio_id  = req.params.id
@@ -95,15 +115,19 @@ productRouter.get('/fetch/:id', async (req, res)=>{
     res.send({"template" : JSON.parse(portfolio.template_code), "resume" : JSON.parse(portfolio.resume_data),"images" : images })
     
   } catch (error) {
-    console.log(error)
+    console.log("ERROR",error)
+
   }
 })
 
+
 productRouter.get('/fetchAll', async (req, res)=>{
   const user = req.user
+
   try {
     const portfolios = await Portfolio.fetchByUser(user.id)
-    res.send(portfolios)
+    const currUser = await User.fetch("id", user.id)
+    res.send({portfolios: portfolios, hosted: currUser})
 
   } catch (error) {
     console.log(error)
@@ -113,13 +137,20 @@ productRouter.get('/fetchAll', async (req, res)=>{
 productRouter.delete('/portfolio/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const user = req.user;
+    const userId = req.user.id;
+
+    const user = await User.fetch("id", userId)
+
+    if (id === user.hosted_id) {
+        throw new Error('Cannot delete hosted portfolio.');
+    }
 
     await Portfolio.deletePortfolio(id, user.id);
 
     res.status(200).send({ message: `Portfolio ${id} deleted successfully.` });
   } catch (error) {
-    res.status(500).send({ error: 'Error deleting portfolio.' });
+    console.log(error)
+    res.status(500).send({ error: `Error deleting portfolio. ${error}` });
   }
 });
 

@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const app = express();
 const authRouter = require('./routes/auth.js');
 const productRouter = require('./routes/product.js')
+const publicRouter = require('./routes/public.js')
 const { NotFoundError } = require("./utilities/error.js");
 const port = process.env.PORT || 3001
 
@@ -25,6 +26,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/product', productRouter)
 app.use('/auth', authRouter)
+app.use('/public', publicRouter)
 app.listen(port, () => {
   console.log(`🚀 Server listening on port ${port}`)
 })

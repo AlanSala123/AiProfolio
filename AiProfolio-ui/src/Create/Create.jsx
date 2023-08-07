@@ -4,6 +4,9 @@ import "./Create.css";
 import axios from "axios";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 
 const Create = ({ user }) => {
@@ -74,8 +77,28 @@ const Create = ({ user }) => {
     // Update state with dropped files
     if (droppedResume) {
       setResume(droppedResume);
+      toast.success('Successfully Uploaded Resume !', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+        
+      });
     }
     if (droppedImages.length) {
+      toast.success('Successfully Uploaded Image !', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+        
+      });
       setImages((previousFiles) => [...previousFiles, ...droppedImages]);
     }
   
@@ -122,6 +145,7 @@ const Create = ({ user }) => {
   if (!loading) {
     return (
       <form id="dragDropForm">
+        <ToastContainer />
         <div {...getRootProps()} className="dropzone-container">
           <input {...getInputProps()} />
           <div className="dropzone-content">

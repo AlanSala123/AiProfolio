@@ -8,12 +8,11 @@
   height: 100vh;
   position: relative;
   z-index: 1;
-  margin-top: 150px;
+
 }
 
 
 #tsparticles {
-  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -24,9 +23,11 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+
   font-family: Arial, sans-serif;
-  width: 80%;
-  backdrop-filter: blur(3.8px);
+  width: 100%;
+  min-height: 100vh;
+  backdrop-filter: blur(2px);
 }
 
 .header {
@@ -162,7 +163,36 @@
   background-color: #7e1f2d; 
 }
 
+.hostButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #555;
+  position: absolute;
+  bottom: 10px; 
+  transform: translateX(-50%); 
+  left: 20%;
+  width: 30%;
+}
+.hostButton:disabled {
+  background-color: #5cab72;
+  width: 45%;
+  left: 25%;
+}
 
+.hostButton:disabled:hover {
+  background-color: #5cab72;
+  width: 45%;
+}
+
+
+.hostButton:hover{
+  background-color: rgb(32, 28, 91);
+}
 
 /* Keyframes for slide animation */
 @keyframes slideAnimation {
@@ -182,4 +212,18 @@
   margin-bottom: 25px;
 }
 
+#hostedCopyButton{
+  width: 10%;
+  height: 5vh;
+  font-size: 16px;
+  border-radius: 16px;
+  align-self: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 250px;
+}
 
+#hostedCopyButton:hover{
+  background-color: #5cab72;
+  transition: background-color 0.3s;
+}

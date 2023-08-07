@@ -3,7 +3,7 @@ require("dotenv").config();
 const resumeTemplateJson = require("./resume_map.js");
 const pdfjsLib = require("pdfjs-dist");
 const e = require("express");
-
+const mammoth = require("mammoth");
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -32,6 +32,15 @@ class ChatGPT {
     return totalText;
   }
 
+static async parseDOCX(fileBuffer) {
+  return mammoth.extractRawText({ buffer: fileBuffer })
+    .then((result) => result.value)
+    .catch((error) => {
+      console.error('Error parsing DOCX:', error);
+      return null;
+    });
+}
+
   static async request(prompt, model) {
     const chatCompletion = await openai.createChatCompletion({
       model: model,
@@ -51,6 +60,7 @@ class ChatGPT {
   }
 
   static async parseResume(resumeText) {
+    console.log(resumeText)
     const response = await ChatGPT.request(
       `
             I will feed you text from a resume and you will output a organized json string of ALL the data inside the resume, 
@@ -64,9 +74,6 @@ class ChatGPT {
             FOR THE JOB ASPIRATION SECTION ASSUME WHAT THE PERSONS JOB ASPIRATION (Job Title) IS BASED ON THE RESUME TEXT
            MAKE THE DESCRIPTIONS OF STUFF BETTER AND MORE DETAILED AND APPROPRIATE TO FIT A PORTFOLIO WEBSITE,
            DON'T ADD A PROGRESS OR LEVEL FOR THE SKILLS IF THERE IS NOTHING INDICATING THAT IN THE RESUME TEXT,
-           PLEASE ENHANCE ANY DESCRIPTIONS OR EXPLANATIONS WITHIN REASON,
-          AND PLEASE DO NOT REMOVE ANY SECTIONS OR INFORMATION THAT IS IN THE RESUME TEXT,
-          FOLLOW THIS FORMAT STRICTLY
 
         ${this.preprocessResumeText(resumeText)}`,
 
