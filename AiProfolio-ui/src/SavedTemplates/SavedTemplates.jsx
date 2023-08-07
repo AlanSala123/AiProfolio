@@ -13,6 +13,8 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [portfolios, setPortfolios] = useState([]);
 
+
+
   useEffect(() => {
     const fetchAllPortfolios = async () => {
       try {
@@ -86,20 +88,18 @@ const Dashboard = () => {
         <div className="card-container">
           {portfolios.map((portfolio) => (
             <div key={portfolio.id} className="card"
-              style={{background: JSON.parse(portfolio?.template_code)?.portfolio?.header?.background?.color}}
+            
+              style={{background: JSON.parse(portfolio?.template_code)?.header?.background?.background}}
               onClick={()=>{navigate(`/view/${portfolio.id}`)}}
             >
               <RiFile2Line className="file-icon" color="#5cab72" />
-              <p
-              style={{color: JSON.parse(portfolio?.template_code)?.portfolio?.header?.foreground?.subtitle?.fontColor}}
-              >{portfolio?.id}</p>
               <h2
-              style={{color: JSON.parse(portfolio?.template_code)?.portfolio?.header?.foreground?.title?.fontColor}}
+              style={{color: JSON.parse(portfolio?.template_code)?.header?.title?.color}}
               >
                 {JSON.parse(portfolio.resume_data).user.name}
               </h2>
               <h2
-              style={{color: JSON.parse(portfolio.template_code)?.portfolio?.header?.foreground?.subtitle?.fontColor}}
+             style={{color: JSON.parse(portfolio?.template_code)?.header?.subtitle?.color}}
               >
                 {JSON.parse(portfolio.resume_data).jobAspiration}
               </h2>
