@@ -38,8 +38,8 @@ export default function OurServices() {
       </div>
       <div className="service">
         {Customize}
-        <p className="service-heading">Customize</p>
-        <p className="service-p">You can update anything in your portfolio with a simple click of a button</p>
+        <p className="service-heading">Explore</p>
+        <p className="service-p">Go through our wide variety of template options and generate one that best suits you</p>
       </div>
     </div>
   </div>

@@ -124,8 +124,9 @@ html {
   }
 
   .navbar-items {
-    gap: 1rem;
+    gap: 0.5rem;
     margin: 10px 0;
+    padding: 0;
   }
 
   .navbar-right {
@@ -147,5 +148,4 @@ html {
     margin-bottom: 10px;
   }
 }
-
 
