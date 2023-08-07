@@ -119,12 +119,12 @@ footer .wave#wave4{
 /* Mobile-friendly media query */
 @media (max-width: 768px) {
     footer {
-      padding: 10px; /* Adjust the padding for smaller screens */
+      padding: 10px; 
     }
   
     footer .wave {
-      top: -50px; /* Adjust the wave position for smaller screens */
-      height: 50px; /* Reduce the wave height for smaller screens */
-      background-size: 500px 50px; /* Reduce the wave background size for smaller screens */
+      top: -50px; 
+      height: 50px; 
+      background-size: 400px 50px;
     }
   }
