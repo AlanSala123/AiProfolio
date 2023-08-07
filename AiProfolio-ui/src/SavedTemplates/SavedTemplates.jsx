@@ -25,7 +25,7 @@ const Dashboard = ({user}) => {
   useEffect(() => {
     const fetchAllPortfolios = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/product/fetchAll", {
+        const res = await axios.get("https://aiprofolio-api.onrender.com/product/fetchAll", {
           withCredentials: true,
         });
         setPortfolios(res?.data?.portfolios)
@@ -38,7 +38,7 @@ const Dashboard = ({user}) => {
 
   async function setHosted(id){
     try {
-      const res = await axios.post(`http://localhost:3001/product/host`,{
+      const res = await axios.post(`https://aiprofolio-api.onrender.com/product/host`,{
         idToHost:id
       } ,{
         withCredentials: true,
@@ -54,7 +54,7 @@ const Dashboard = ({user}) => {
 
   const deletePortfolio = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/product/portfolio/${id}`, { withCredentials: true });
+      await axios.delete(`https://aiprofolio-api.onrender.com/product/portfolio/${id}`, { withCredentials: true });
       setPortfolios(prevPortfolios => prevPortfolios.filter(portfolio => portfolio.id !== id));
       toast.success('Deleted Portfolio!', {
         position: "top-right",
@@ -73,7 +73,7 @@ const Dashboard = ({user}) => {
 
   async function copyToClipboard() {
     try {
-      var copyText = `http://localhost:5173/public/${user?.id}`;
+      var copyText = `https://aiprofolio-api.onrender.com/public/${user?.id}`;
       await navigator.clipboard.writeText(copyText);
       toast.success('Copied To Clipboard!', {
         position: "top-right",

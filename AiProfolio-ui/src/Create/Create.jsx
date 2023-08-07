@@ -39,7 +39,7 @@ const Create = ({ user }) => {
         
         setLoading(true);
         const res = await axios.post(
-          "http://localhost:3001/product/create",
+          "https://aiprofolio-api.onrender.com/product/create",
           formData,
           { withCredentials: true }
         );

@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/auth/user", {
+        const res = await axios.get("https://aiprofolio-api.onrender.com/auth/user", {
           withCredentials: true,
         });
         const newUser = res?.data?.user;
@@ -44,7 +44,7 @@ function App() {
 
   async function handleLogout() {
     try {
-      await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true })
+      await axios.post('https://aiprofolio-api.onrender.com/auth/logout', {}, { withCredentials: true })
       setUser(null);
       if (!location.pathname.startsWith("/public/")){
         navigate('/');
