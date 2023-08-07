@@ -16,12 +16,15 @@
 }
 .prod-item{
     width: 75vw;
+    
+    
 }
 li.slide.selected{
     
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+
 }
 #projects{
     display: flex;
@@ -30,6 +33,7 @@ li.slide.selected{
 }
 .carousel-root{
     width: 75%;
+    gap: 100px;
 }
 
 button .control-arrow .control-next {

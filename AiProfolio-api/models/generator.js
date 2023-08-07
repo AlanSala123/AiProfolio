@@ -77,7 +77,7 @@ class Generator {
       0.7152 * relativeLuminance(g) +
       0.0722 * relativeLuminance(b);
 
-    const targetLuminanceDiff = darkmode ? 0.75 : 0.6;
+    const targetLuminanceDiff = darkmode ? 0.9 : 0.75;
 
     const targetLuminance =
       luminance +
@@ -107,8 +107,8 @@ class Generator {
   }
 
   generatePaleColor(darkmode) {
-    const minComponentValue = darkmode ? 15 : 220; // Set the minimum value for each RGB component
-    const maxComponentValue = darkmode ? 35 : 240; // Set the maximum value for each RGB component
+    const minComponentValue = darkmode ? 15 : 220; 
+    const maxComponentValue = darkmode ? 35 : 240; 
 
     const r = Math.floor(
       Math.random() * (maxComponentValue - minComponentValue + 1) +
@@ -133,13 +133,7 @@ class Generator {
   }
 
   buildNavbar({
-    height,
-    minHeight,
-    maxHeight,
     backgroundColor,
-    alignment,
-    spacing,
-    fontSize,
     fontColor,
     fontFamily,
     fontWeight,
@@ -147,15 +141,15 @@ class Generator {
     return {
       navbar: {
         background: {
-          height: height,
-          minHeight: minHeight,
-          maxHeight: maxHeight,
+        height: this.generateStyle(5, 10, "vh"),
+          minHeight: "50px",
+          maxHeight: "70px",
           background: backgroundColor,
           margin: "0",
           width: "100%",
           display: "flex",
-        alignItems: "center",
-            justifyContent: "center",
+          alignItems: "center",
+          justifyContent: "center",
         },
         list: {
           height: "inherit",
@@ -167,12 +161,12 @@ class Generator {
           display: "flex",
           listStyleType: "none",
           flexDirection: "row",
-          gap: spacing,
+          gap: this.generateStyle(10, 20, "px"),
           padding: "0",
           justifyContent: this.getRandomElementFromArray(['center', 'flex-start', 'flex-end']),
         },
         item: {
-          fontSize: fontSize,
+        fontSize: this.generateStyle(16, 24, "px"),
           color: fontColor,
           fontFamily: fontFamily,
           fontWeight: fontWeight,
@@ -182,30 +176,37 @@ class Generator {
   }
 
   buildHeader({
-    height,
+
     backgroundColor,
     borderColor,
-    borderWidth,
-    borderStyle,
-    titleFontSize,
+
+
     titleFontColor,
     titleFontFamily,
     titleFontWeight,
-    subtitleFontSize,
+
     subtitleFontColor,
     subtitleFontFamily,
     subtitleFontWeight,
-    textAlign,
-    verticalAlign,
+
   }) {
     return {
       header: {
         background: {
-          height: height,
+          height: '100vh',
           background: backgroundColor,
           borderColor: borderColor,
-          borderWidth: borderWidth,
-          borderStyle: borderStyle,
+          borderWidth: this.generateStyle(1, 5, "px"),
+          borderStyle: this.getRandomElementFromArray([
+            "solid",
+            "double",
+            "groove",
+            "ridge",
+            "inset",
+            "outset",
+            "none",
+            "none",
+          ]),
           display: "flex",
           flexDirection: "column",
           alignItems: this.getRandomElementFromArray(['center', 'flex-start']),
@@ -232,12 +233,12 @@ class Generator {
 
   buildAbout({
     backgroundColor,
-    alignment,
+
     titleFontSize,
     titleFontColor,
     titleFontFamily,
     titleFontWeight,
-    summaryFontSize,
+
     summaryFontColor,
     summaryFontFamily,
     summaryFontWeight,
@@ -281,27 +282,25 @@ class Generator {
     titleFontFamily,
     titleFontWeight,
     backgroundColor,
-    maxWidth,
+
     itemBackgroundColor,
-    itemBoxShadow,
-    itemBorderRadius,
-    itemBorderWidth,
+
+
     itemBorderStyle,
     itemBorderColor,
     itemTitleFontColor,
-    itemTitleFontSize,
+
     itemTitleFontFamily,
     itemTitleFontWeight,
     itemDescriptionFontColor,
-    itemDescriptionFontSize,
+
     itemDescriptionFontFamily,
     itemDescriptionFontWeight,
     itemDateFontColor,
-    itemDateFontSize,
+
     itemDateFontFamily,
     itemDateFontWeight,
-    itemMaxWidth,
-    itemMinWidth,
+
   }) {
     return {
       experiences: {
@@ -341,8 +340,11 @@ class Generator {
         width: this.getRandomElementFromArray([this.generateStyle(350, 500, "px"), this.generateStyle(700, 900, "px")]),
           maxWidth: '97.5%' ,
           background: itemBackgroundColor,
-          boxShadow: itemBoxShadow,
-          borderRadius: itemBorderRadius,
+          boxShadow: this.getRandomElementFromArray([
+            "none",
+            `0 0 10px 0 ${itemBorderColor}`,
+          ]),
+          borderRadius: this.generateStyle(3, 16, "px"),
           borderWidth: this.getRandomElementFromArray('none', this.generateStyle(1, 3, "px")),
           borderStyle: itemBorderStyle,
           borderColor: itemBorderColor,
@@ -350,8 +352,7 @@ class Generator {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          maxHeight : this.getRandomElementFromArray(['none', this.generateStyle(300, 400, "px"), this.generateStyle(700, 900, "px")]),
-            
+          
         },
         itemTitle: {
           color: itemTitleFontColor,
@@ -388,31 +389,21 @@ class Generator {
     titleFontWeight,
     backgroundColor,
     itemBackgroundColor,
-    itemBoxShadow,
-    itemBorderRadius,
-    itemBorderWidth,
+   
     itemBorderStyle,
     itemBorderColor,
     itemTitleFontColor,
-    itemTitleFontSize,
+   
     itemTitleFontFamily,
     itemTitleFontWeight,
     itemProgressBarColor,
-    itemProgressBarBackgroundColor,
-    itemProgressBarBorderRadius,
-    itemProgressBarBorderWidth,
-    itemProgressBarBorderStyle,
-    itemProgressBarBorderColor,
-    itemProgressBarMinHeight,
-    itemLevelFontColor,
-    itemLevelFontSize,
+
+   
     itemLevelFontFamily,
     itemLevelFontWeight,
-    itemMaxWidth,
-    itemMinWidth,
-    itemMaxHeight,
-    itemMinHeight,
-    itemSpacing,
+  
+
+
   }) {
     return {
       skills: {
@@ -437,7 +428,7 @@ class Generator {
           flexWrap: "wrap",
           margin: "0",
           listStyle: "none",
-          gap: itemSpacing,
+          gap: this.generateStyle(10, 20, "px"),
           justifyContent: "center",
           alignItems: "center",
           width: "95%",
@@ -445,13 +436,16 @@ class Generator {
         },
 
         item: {
-          maxWidth: itemMaxWidth,
-          minWidth: itemMinWidth,
-          minHeight: itemMinHeight,
+          maxWidth: this.generateStyle(300, 500, "px"),
+          minWidth: this.generateStyle(100, 200, "px"),
+          minHeight: this.generateStyle(50, 100, "px"),
           background: itemBackgroundColor,
-          boxShadow: itemBoxShadow,
-          borderRadius: itemBorderRadius,
-          borderWidth: itemBorderWidth,
+          boxShadow: this.getRandomElementFromArray([
+            "none",
+            `0 0 10px 0 ${itemBorderColor}`,
+          ]),
+          borderRadius: this.generateStyle(3, 16, "px"),
+          borderWidth: this.generateStyle(1, 5, "px"),
           borderStyle: itemBorderStyle,
           borderColor: itemBorderColor,
           display: "flex",
@@ -461,7 +455,7 @@ class Generator {
         },
         itemTitle: {
           color: itemTitleFontColor,
-          fontSize: itemTitleFontSize,
+          fontSize: this.generateStyle(24, 36, "px"),
           fontFamily: itemTitleFontFamily,
           fontWeight: itemTitleFontWeight,
           padding: "0.5vh 1vw 0.5vh 1vw",
@@ -471,7 +465,7 @@ class Generator {
 
         itemLevel: {
             color: itemProgressBarColor,
-            fontSize: itemLevelFontSize,
+            fontSize: this.generateStyle(12, 18, "px"),
             fontFamily: itemLevelFontFamily,
             fontWeight: itemLevelFontWeight,
 
@@ -486,30 +480,22 @@ class Generator {
     titleFontFamily,
     titleFontWeight,
     backgroundColor,
-    minHeight,
     itemBackgroundColor,
-    itemBoxShadow,
-    itemBorderRadius,
-    itemBorderWidth,
+
     itemBorderStyle,
     itemBorderColor,
     itemTitleFontColor,
-    itemTitleFontSize,
+
     itemTitleFontFamily,
     itemTitleFontWeight,
     itemDescriptionFontColor,
-    itemDescriptionFontSize,
+
     itemDescriptionFontFamily,
     itemDescriptionFontWeight,
     itemTechnologiesFontColor,
-    itemTechnologiesFontSize,
     itemTechnologiesFontFamily,
     itemTechnologiesFontWeight,
-    itemMaxWidth,
-    itemMinWidth,
-    itemMaxHeight,
-    itemMinHeight,
-    itemSpacing,
+
   }) {
     return {
       projects: {
@@ -528,11 +514,10 @@ class Generator {
             flexDirection: "column",
         },
         item : {
-            minHeight: minHeight,
+          
             background: itemBackgroundColor,
-            boxShadow: itemBoxShadow,
-            borderRadius: itemBorderRadius,
-            borderWidth: itemBorderWidth,
+            borderRadius: this.generateStyle(3, 16, "px"),
+            borderWidth: this.generateStyle(1, 5, "px"),
             borderStyle: itemBorderStyle,
             borderColor: itemBorderColor,
             display: "flex",
@@ -572,38 +557,23 @@ class Generator {
 
   buildEducation({
     backgroundColor,
-    alignment,
     titleFontColor,
     titleFontSize,
     titleFontFamily,
     titleFontWeight,
     itemBackgroundColor,
-    itemBoxShadow,
-    itemBorderRadius,
-    itemBorderWidth,
     itemBorderStyle,
     itemBorderColor,
     itemInstitutionFontColor,
-    itemInstitutionFontSize,
     itemInstitutionFontFamily,
     itemInstitutionFontWeight,
-    itemDegreeFontColor,
+
     itemDegreeFontSize,
     itemDegreeFontFamily,
     itemDegreeFontWeight,
-    itemMajorFontColor,
-    itemMajorFontSize,
-    itemMajorFontFamily,
-    itemMajorFontWeight,
-    itemDateFontColor,
-    itemDateFontSize,
-    itemDateFontFamily,
-    itemDateFontWeight,
-    itemMaxWidth,
-    itemMinWidth,
-    itemMaxHeight,
-    itemMinHeight,
-    itemSpacing,
+
+
+
   }) {
     return {
       education: {
@@ -623,7 +593,7 @@ class Generator {
             flexWrap: "wrap",
             margin: "0",
             listStyle: "none",
-            gap: itemSpacing,
+            gap: this.generateStyle(10, 20, "px"),
             justifyContent: "center",
             alignItems: "center",
             width: "95%",
@@ -632,20 +602,23 @@ class Generator {
 
         item: {
             
-            minWidth: itemMinWidth,
-            minHeight: itemMinHeight,
-            maxHeight: itemMaxHeight,
+            minWidth: this.generateStyle(100, 200, "px"),
+            minHeight: this.generateStyle(50, 100, "px"),
+            maxHeight: this.generateStyle(100, 200, "px"),
             background: itemBackgroundColor,
-            boxShadow: itemBoxShadow,
-            borderRadius: itemBorderRadius,
-            borderWidth: itemBorderWidth,
+            boxShadow: this.getRandomElementFromArray([
+                "none",
+                `0 0 10px 0 ${itemInstitutionFontColor}`,
+              ]),
+            borderRadius: this.generateStyle(3, 16, "px"),
+            borderWidth: this.generateStyle(1, 5, "px"),
             borderStyle: itemBorderStyle,
             borderColor: itemBorderColor,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            gap: itemSpacing,
+            gap: this.generateStyle(10, 20, "px"),
             width: "95%",
             padding: "2.5vh 1vw 5vh 1vw",
 
@@ -664,7 +637,7 @@ class Generator {
 
         itemInstitution: {
             color: itemInstitutionFontColor,
-            fontSize: itemInstitutionFontSize,
+            fontSize: this.generateStyle(16, 24, "px"),
             fontFamily: itemInstitutionFontFamily,
             fontWeight: itemInstitutionFontWeight,
             textAlign: this.getRandomElementFromArray(['center', 'flex-start']),
@@ -679,10 +652,10 @@ class Generator {
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
-            gap: itemSpacing,
+            gap: this.generateStyle(10, 20, "px"),
             width: "95%",
-            color: itemDegreeFontColor,
-            fontSize: itemDegreeFontSize,
+            color: itemInstitutionFontColor,
+            fontSize: this.generateStyle(16, 24, "px"),
             fontFamily: itemDegreeFontFamily,
             fontWeight: itemDegreeFontWeight,
             textAlign: this.getRandomElementFromArray(['center', 'flex-start']),
@@ -694,9 +667,9 @@ class Generator {
   }
 
   generateColorPalette = () => {
-    const darkmode = Math.random() < 0.4;
+    const darkmode = Math.random() < 0.5;
 
-    // Generate the main colors
+
     const primaryColor = this.generateRandomColor(darkmode);
     const secondaryColor = this.generateColorVariation(
       primaryColor,
@@ -704,12 +677,12 @@ class Generator {
     );
     const accentColor = this.generateComplementaryColor(primaryColor, darkmode);
 
-    // Generate the text colors
+
     const primaryTextColor = this.generateComplementaryColor(primaryColor, darkmode);
     const secondaryTextColor = this.generateComplementaryColor(secondaryColor, darkmode);
     const accentTextColor = this.generateComplementaryColor(accentColor, darkmode);
 
-    // Generate the background color
+
     const backgroundColor = this.generatePaleColor(darkmode);
     const backgroundTextColor =
       this.generateComplementaryColor(backgroundColor, darkmode);
@@ -768,213 +741,123 @@ class Generator {
       backgroundTextColor,
     } = this.generateColorPalette();
 
-    const options = ["simple"];
+    const sectionTitleFontSize = this.generateStyle(36, 42, "px")
 
-    const selected = this.getRandomElementFromArray(options);
+    const option = this.getRandomElementFromArray([0, 1]);
 
-    const styling = {};
-
-    if (selected === "simple") {
       const template = {
         ...this.buildNavbar({
-          height: this.generateStyle(5, 10, "vh"),
-          minHeight: "50px",
-          maxHeight: "70px",
-          backgroundColor: backgroundColor,
-          alignment: randomAlignment,
-          spacing: this.generateStyle(10, 20, "px"),
-          fontSize: this.generateStyle(16, 24, "px"),
-          fontColor: secondaryColor,
+          backgroundColor: [backgroundColor, primaryColor][option],
+          fontColor: [primaryColor, primaryTextColor][option],
           fontFamily: randomFont,
           fontWeight: randomFontWeight,
         }),
+
         ...this.buildHeader({
-          height: this.generateStyle(70, 100, "vh"),
-          backgroundColor: backgroundColor,
-          borderColor: secondaryColor,
-          borderWidth: this.generateStyle(1, 5, "px"),
-          borderStyle: this.getRandomElementFromArray([
-            "solid",
-            "double",
-            "groove",
-            "ridge",
-            "inset",
-            "outset",
-            "none",
-            "none",
-          ]),
-          titleFontSize: this.generateStyle(24, 48, "px"),
-          titleFontColor: secondaryColor,
+          backgroundColor: [backgroundColor, secondaryColor][option],
+          borderColor: [primaryColor, secondaryTextColor][option],
+          
+          titleFontColor: primaryColor,
           titleFontFamily: randomFont,
           titleFontWeight: randomFontWeight,
-          subtitleFontSize: this.generateStyle(16, 24, "px"),
-          subtitleFontColor: secondaryColor,
+          
+          subtitleFontColor: primaryColor,
           subtitleFontFamily: randomFont,
           subtitleFontWeight: randomFontWeight,
-          textAlign: randomAlignment,
-          verticalAlign: this.getRandomElementFromArray([
-            "top",
-            "middle",
-            "bottom",
-          ]),
+          
         }),
         ...this.buildAbout({
           backgroundColor: backgroundColor,
-          alignment: randomAlignment,
-          titleFontSize: this.generateStyle(24, 48, "px"),
-          titleFontColor: secondaryColor,
+          titleFontSize: sectionTitleFontSize,
+          titleFontColor: primaryColor,
           titleFontFamily: randomFont,
           titleFontWeight: randomFontWeight,
-          summaryFontSize: this.generateStyle(12, 18, "px"),
-          summaryFontColor: secondaryColor,
+          summaryFontColor: primaryColor,
           summaryFontFamily: randomFont,
           summaryFontWeight: randomFontWeight,
         }),
+
         ...this.buildExperiences({
-          titleFontColor: secondaryColor,
-          titleFontSize: this.generateStyle(24, 48, "px"),
+          titleFontColor: primaryColor,
+          titleFontSize: sectionTitleFontSize,
           titleFontFamily: randomFont,
           titleFontWeight: randomFontWeight,
           backgroundColor: backgroundColor,
-          maxWidth: this.generateStyle(300, 500, "px"),
-          itemBackgroundColor: backgroundColor,
-          itemBoxShadow: this.getRandomElementFromArray([
-            "none",
-            "0 0 10px 0 rgba(0, 0, 0, 0.2)",
-          ]),
-          itemBorderRadius: this.generateStyle(3, 16, "px"),
-          itemBorderWidth: this.generateStyle(1, 5, "px"),
+          itemBackgroundColor: [backgroundColor, secondaryColor][option],
           itemBorderStyle: randomBorderStyle,
-          itemBorderColor: secondaryColor,
-          itemTitleFontColor: secondaryColor,
-          itemTitleFontSize: this.generateStyle(16, 24, "px"),
+          itemBorderColor: [primaryColor, secondaryTextColor][option],
+          itemTitleFontColor: [primaryColor, secondaryTextColor][option],
           itemTitleFontFamily: randomFont,
           itemTitleFontWeight: randomFontWeight,
-          itemDescriptionFontColor: secondaryColor,
-          itemDescriptionFontSize: this.generateStyle(12, 18, "px"),
+          itemDescriptionFontColor: [primaryColor, secondaryTextColor][option],
           itemDescriptionFontFamily: randomFont,
           itemDescriptionFontWeight: randomFontWeight,
-          itemDateFontColor: secondaryColor,
-          itemDateFontSize: this.generateStyle(12, 18, "px"),
+          itemDateFontColor: [primaryColor, secondaryTextColor][option],
           itemDateFontFamily: randomFont,
           itemDateFontWeight: randomFontWeight,
-          itemMaxWidth: this.generateStyle(300, 500, "px"),
-          itemMinWidth: this.generateStyle(100, 200, "px"),
+         
         }),
         ...this.buildSkills({
-          titleFontColor: secondaryColor,
-          titleFontSize: this.generateStyle(24, 48, "px"),
+          titleFontColor: primaryColor,
+          titleFontSize: sectionTitleFontSize,
           titleFontFamily: randomFont,
           titleFontWeight: randomFontWeight,
           backgroundColor: backgroundColor,
-          itemBackgroundColor: backgroundColor,
-          itemBoxShadow: this.getRandomElementFromArray([
-            "none",
-            "0 0 10px 0 rgba(0, 0, 0, 0.2)",
-          ]),
-          itemBorderRadius: this.generateStyle(3, 16, "px"),
-          itemBorderWidth: this.generateStyle(1, 5, "px"),
+          itemBackgroundColor: [backgroundColor, secondaryColor][option],
           itemBorderStyle: randomBorderStyle,
-          itemBorderColor: secondaryColor,
-          itemTitleFontColor: secondaryColor,
-          itemTitleFontSize: this.generateStyle(16, 24, "px"),
+          itemBorderColor: [primaryColor, secondaryTextColor][option],
+          itemTitleFontColor: [primaryColor, secondaryTextColor][option],
           itemTitleFontFamily: randomFont,
           itemTitleFontWeight: randomFontWeight,
-          itemProgressBarColor: secondaryColor,
-          itemProgressBarBackgroundColor: backgroundColor,
-          itemProgressBarBorderRadius: this.generateStyle(3, 16, "px"),
-          itemProgressBarBorderWidth: this.generateStyle(1, 5, "px"),
-          itemProgressBarBorderStyle: randomBorderStyle,
-          itemProgressBarBorderColor: secondaryColor,
-          itemProgressBarMinHeight: this.generateStyle(10, 20, "px"),
-          itemLevelFontColor: secondaryColor,
-          itemLevelFontSize: this.generateStyle(12, 18, "px"),
+          itemProgressBarColor: [primaryColor, secondaryTextColor][option],
           itemLevelFontFamily: randomFont,
           itemLevelFontWeight: randomFontWeight,
-          itemMaxWidth: this.generateStyle(300, 500, "px"),
-          itemMinWidth: this.generateStyle(100, 200, "px"),
-          itemMaxHeight: this.generateStyle(100, 200, "px"),
-          itemMinHeight: this.generateStyle(50, 100, "px"),
-          itemSpacing: this.generateStyle(10, 20, "px"),
         }),
         ...this.buildProjects({
-          titleFontColor: secondaryColor,
-          titleFontSize: this.generateStyle(24, 48, "px"),
+          titleFontColor: primaryColor,
+          titleFontSize: sectionTitleFontSize,
           titleFontFamily: randomFont,
           titleFontWeight: randomFontWeight,
           backgroundColor: backgroundColor,
-          minHeight: this.generateStyle(300, 500, "px"),
-          itemBackgroundColor: backgroundColor,
-          itemBoxShadow: this.getRandomElementFromArray([
-            "none",
-            "0 0 10px 0 rgba(0, 0, 0, 0.2)",
-          ]),
-          itemBorderRadius: this.generateStyle(3, 16, "px"),
-          itemBorderWidth: this.generateStyle(1, 5, "px"),
+          itemBackgroundColor: [backgroundColor, secondaryColor][option],
+  
           itemBorderStyle: randomBorderStyle,
-          itemBorderColor: secondaryColor,
-          itemTitleFontColor: secondaryColor,
-          itemTitleFontSize: this.generateStyle(16, 24, "px"),
+          itemBorderColor: [primaryColor, secondaryTextColor][option],
+          itemTitleFontColor: [primaryColor, secondaryTextColor][option],
+          
           itemTitleFontFamily: randomFont,
           itemTitleFontWeight: randomFontWeight,
-          itemDescriptionFontColor: secondaryColor,
-          itemDescriptionFontSize: this.generateStyle(12, 18, "px"),
+          itemDescriptionFontColor: [primaryColor, secondaryTextColor][option],
+        
           itemDescriptionFontFamily: randomFont,
           itemDescriptionFontWeight: randomFontWeight,
-          itemTechnologiesFontColor: secondaryColor,
-          itemTechnologiesFontSize: this.generateStyle(12, 18, "px"),
+          itemTechnologiesFontColor: [primaryColor, secondaryTextColor][option],
           itemTechnologiesFontFamily: randomFont,
           itemTechnologiesFontWeight: randomFontWeight,
-          itemMaxWidth: this.generateStyle(300, 500, "px"),
-          itemMinWidth: this.generateStyle(100, 200, "px"),
-          itemMaxHeight: this.generateStyle(100, 200, "px"),
-          itemMinHeight: this.generateStyle(50, 100, "px"),
-          itemSpacing: this.generateStyle(10, 20, "px"),
+
         }),
         ...this.buildEducation({
           backgroundColor: backgroundColor,
-          alignment: randomAlignment,
-          titleFontColor: secondaryColor,
-          titleFontSize: this.generateStyle(24, 48, "px"),
+          titleFontColor: primaryColor,
+          titleFontSize: sectionTitleFontSize,
           titleFontFamily: randomFont,
           titleFontWeight: randomFontWeight,
-          itemBackgroundColor: backgroundColor,
-          itemBoxShadow: this.getRandomElementFromArray([
-            "none",
-            "0 0 10px 0 rgba(0, 0, 0, 0.2)",
-          ]),
-          itemBorderRadius: this.generateStyle(3, 16, "px"),
-          itemBorderWidth: this.generateStyle(1, 5, "px"),
+          itemBackgroundColor: [backgroundColor, secondaryColor][option],
           itemBorderStyle: randomBorderStyle,
-          itemBorderColor: secondaryColor,
-          itemInstitutionFontColor: secondaryColor,
-          itemInstitutionFontSize: this.generateStyle(16, 24, "px"),
+          itemBorderColor: [primaryColor, secondaryTextColor][option],
+          itemInstitutionFontColor: [primaryColor, secondaryTextColor][option],
           itemInstitutionFontFamily: randomFont,
           itemInstitutionFontWeight: randomFontWeight,
-          itemDegreeFontColor: secondaryColor,
-          itemDegreeFontSize: this.generateStyle(16, 24, "px"),
+          itemDegreeFontColor: [primaryColor, secondaryTextColor][option],
           itemDegreeFontFamily: randomFont,
-          itemDegreeFontWeight: randomFontWeight,
-          itemMajorFontColor: secondaryColor,
-          itemMajorFontSize: this.generateStyle(16, 24, "px"),
-          itemMajorFontFamily: randomFont,
-          itemMajorFontWeight: randomFontWeight,
-          itemDateFontColor: secondaryColor,
-          itemDateFontSize: this.generateStyle(12, 18, "px"),
-          itemDateFontFamily: randomFont,
-          itemDateFontWeight: randomFontWeight,
-          itemMaxWidth: this.generateStyle(300, 500, "px"),
-          itemMinWidth: this.generateStyle(100, 200, "px"),
-          itemMaxHeight: this.generateStyle(100, 200, "px"),
-          itemMinHeight: this.generateStyle(50, 100, "px"),
-          itemSpacing: this.generateStyle(10, 20, "px"),
+          itemDegreeFontWeight: randomFontWeight
         }),
       };
 
       return {
         ...template,
       };
-    }
+    
   }
 }
 
