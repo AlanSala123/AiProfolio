@@ -3,17 +3,6 @@
     position: relative;
     margin: 0 auto;
 }
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 6px;
-    /* background: linear-gradient(to bottom, white, black); */
-    left: 50%;
-    margin-left: -3px;
-    border-radius: 20px;
-}
 /* Clear floats after containers */
 .timeline .container::after {
     content: "";
@@ -58,12 +47,7 @@
 .timeline .container:hover .content {
     transform: rotateY(180deg);
 }
-.right {
-    animation: loadIn .5s forwards .2s;
-}
-.left {
-    animation: loadIn .5s forwards .2s;
-}
+
 @keyframes loadIn {
     from { opacity: 0; }
     to { opacity: 1; }

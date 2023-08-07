@@ -106,9 +106,7 @@ productRouter.get('/fetchAll', async (req, res)=>{
     res.send(portfolios)
 
   } catch (error) {
-    console.log(error)
   }
 })
 
 module.exports = productRouter
-
