@@ -59,6 +59,8 @@ function MorphingBall() {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 
+    // CODE THAT WILL BE USED LATER...
+
     // Increase canvas size for higher resolution
     // const scale = window.devicePixelRatio; // Change to 1 on devices that don't support high-res canvas
     // canvas.width = 1024 * scale;

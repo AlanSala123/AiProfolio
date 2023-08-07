@@ -189,12 +189,17 @@ const Create = ({ user }) => {
                   alt={imageObj.file.name}
                   className="file-image"
                 />
-                <input
-                  type="text"
-                  placeholder="Enter label"
+                <select
                   value={imageObj.label}
                   onChange={(e) => handleLabelChange(e, index)}
-                />
+                >
+                    <option value="profile picture">Profile Picture</option>
+                    <option value="logo">Logo</option>
+                    <option value="school logo">School Logo</option>
+                    <option value="photograph">Photograph</option>
+                    <option value="company logo">Company Logo</option>
+                </select>
+
                 <button
                   type="button"
                   className="remove-file-button"

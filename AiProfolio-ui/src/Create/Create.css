@@ -39,10 +39,6 @@
   color: black;
 }
 
-.dropzone-container.active {
-  border-color: #36a2d6;
-}
-
 .preview-section {
   margin-top: 20px;
   background-color: #f2f2f2;
@@ -119,12 +115,15 @@
   position: relative;
 }
 
-.file-item:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.file-image {
+  max-width: 500px;       
+  max-height: 500px;        
+  border-radius: 8px;
+  object-fit:cover; 
 }
 
 .remove-file-button {
-  bottom: 8px;
+  top: 8px;
   right: 8px;
   background-color: #c53030;
   color: #ffffff;
@@ -270,4 +269,19 @@
 @keyframes blink-2 {
   from, to {border-color: transparent;}
   50%{ border-color: black;}
+}
+
+/* Dropdown Styles */
+select {
+  width: 100%; /* Use 100% width or adjust as needed */
+  padding: 8px 12px;
+  margin-top: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px; /* Adjust as necessary */
+  background-color: #ffffff;
+  outline: none; /* Remove focus outline */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  color: #333; /* Text color */
 }
