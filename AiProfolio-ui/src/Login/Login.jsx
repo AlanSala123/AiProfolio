@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import axios from "axios";
-import "./login.css";
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
