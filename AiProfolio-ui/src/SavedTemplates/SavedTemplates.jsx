@@ -6,14 +6,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Dashboard = () => {
-  // Assuming you have an array of portfolios from the backend
-  
-
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [portfolios, setPortfolios] = useState([]);
-
-
 
   useEffect(() => {
     const fetchAllPortfolios = async () => {
@@ -22,7 +17,6 @@ const Dashboard = () => {
           withCredentials: true,
         });
         setPortfolios(res?.data)
-
       } catch (error) {
       }
     };
@@ -31,13 +25,15 @@ const Dashboard = () => {
 
   useEffect(() => {
   }, [portfolios]);
-  
 
-  //  const filteredPortfolios = portfolios.filter((portfolio) =>
-  //    portfolio.title.toLowerCase().includes(searchQuery.toLowerCase())
-  //  );
-
-  
+  const deletePortfolio = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/product/portfolio/${id}`, { withCredentials: true });
+      setPortfolios(prevPortfolios => prevPortfolios.filter(portfolio => portfolio.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  }; 
 
   return (
     <div className="MainContainer">
@@ -45,67 +41,33 @@ const Dashboard = () => {
         <div className="header">
           <h1>Portfolio Dashboard</h1>
         </div>
-
-        {/* <div className="slideshow-container">
-          <h2 className="Popular-Title">Popular Templates</h2>
-          <div className="slideshow">
-            <div
-              className="slides-container"
-            >
-              {dummyPopularTemplates.map((template) => (
-                <div key={template.id} className="slide">
-                  <RiFile2Line className="file-icon" color="#5cab72" />
-                  <h3>{template.title}</h3>
-                  <p>{template.description}</p>
-                </div>
-              ))}
-              {dummyPopularTemplates.map((template) => (
-                <div key={template.id} className="slide">
-                  <RiFile2Line className="file-icon" color="#5cab72" />
-                  <h3>{template.title}</h3>
-                  <p>{template.description}</p>
-                </div>
-              ))}
-              {dummyPopularTemplates.map((template) => (
-                <div key={template.id} className="slide">
-                  <RiFile2Line className="file-icon" color="#5cab72" />
-                  <h3>{template.title}</h3>
-                  <p>{template.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
-
-        {/* <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div> */}
         <div className="card-container">
           {portfolios.map((portfolio) => (
             <div key={portfolio.id} className="card"
-            
               style={{background: JSON.parse(portfolio?.template_code)?.header?.background?.background}}
-              onClick={()=>{navigate(`/view/${portfolio.id}`)}}
+              onClick={() => navigate(`/view/${portfolio.id}`)}
             >
               <RiFile2Line className="file-icon" color="#5cab72" />
               <h2
-              style={{color: JSON.parse(portfolio?.template_code)?.header?.title?.color}}
+                style={{color: JSON.parse(portfolio?.template_code)?.header?.title?.color}}
               >
                 {JSON.parse(portfolio.resume_data).user.name}
               </h2>
               <h2
-             style={{color: JSON.parse(portfolio?.template_code)?.header?.subtitle?.color}}
+                style={{color: JSON.parse(portfolio?.template_code)?.header?.subtitle?.color}}
               >
                 {JSON.parse(portfolio.resume_data).jobAspiration}
               </h2>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent the click event from triggering the onClick of the parent div
+                  deletePortfolio(portfolio.id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           ))}
-          {/* Add more cards here */}
         </div>
         <div
           onClick={() => {
@@ -118,7 +80,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-
 };
 
 export default Dashboard;

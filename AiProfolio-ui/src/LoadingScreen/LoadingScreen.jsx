@@ -6,7 +6,7 @@ import "./LoadingScreen.css"
 function LoadingScreen() {
   return (
     <div className='loadingScreen'>
-    <MorphingBall/>
+      <MorphingBall/>
     <h1 className = 'loading-text' style={{
         position: "absolute",
         bottom: "17.5vh",
