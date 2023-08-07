@@ -15,6 +15,7 @@ jobs:
       - run: cd AiProfolio-ui && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entryPoint: AiProfolio-ui
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_AIPROFOLIO }}'
           channelId: live
