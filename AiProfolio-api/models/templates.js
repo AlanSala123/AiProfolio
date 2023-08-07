@@ -24,6 +24,17 @@ class Template {
         }
     }
 
+    static async setHostedId(portfolio_id, user_id) {
+        try {
+            const result = await pool.query(
+                `UPDATE users SET hosted_id=$1 WHERE user_id=$2`,
+                [portfolio_id, user_id]
+            )
+        } catch (error) {
+            throw new InternalServerError("Failed to set hosted id")
+        }
+    }
+
     static async fetchKMostLikedTemplates(k) {
         try {
             const result = await pool.query(

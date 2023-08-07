@@ -1,4 +1,3 @@
-import { useEffect, useState} from "react";
 import "./App.css";
 import Hero from "../Hero/Hero";
 import LandingNavbar from "../LandingNavbar/LandingNavbar";
@@ -20,11 +19,13 @@ import Education from "../Components/Education/Education";
 import Experience from "../Components/Experiences/Experiences";
 import AboutMe from "../Components/AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -33,7 +34,6 @@ function App() {
           withCredentials: true,
         });
         const newUser = res?.data?.user;
-
         setUser(newUser);
       } catch (error) {
         handleLogout();
@@ -46,31 +46,33 @@ function App() {
     try {
       await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true })
       setUser(null);
-      navigate('/');
+      if (!location.pathname.startsWith("/public/")){
+        navigate('/');
+      }
     } catch (error) {
     }
   }
 
   return (
     <>
-      <LandingNavbar user={user} handleLogout={handleLogout} />
+      {!location.pathname.startsWith("/public/") && <LandingNavbar user={user} handleLogout={handleLogout} />}
       <Routes>
-      <Route path="/Loading" element={<LoadingScreen />} />
-      <Route path="/view/:id" element={<Portfolio user={user} />} />
-      <Route path="/create" element={user ? <Create user={user} /> : <Navigate to="/Login" replace />} />
-      <Route path="/saved-templates" element={user ? <Dashboard user={user} /> : <Navigate to="/Login" replace />} />
-      <Route path="/Register" element={user ? <Navigate to="/saved-templates" replace /> : <Register setUser={setUser} />} />
-      <Route path="/Login" element={user ? <Navigate to="/saved-templates" replace /> : <Login setUser={setUser} />} />
-      <Route path="/" element={user ? <Navigate to="/saved-templates" replace /> : 
-        <>
-          <Hero />
-          <OurServices />
-          <AboutUs/>
-          <Footer />
-        </>} 
-      />
-</Routes>
-
+        <Route path="/public/:id" element={<Portfolio user={user} isPublic={true} />} />
+        <Route path="/Loading" element={<LoadingScreen />} />
+        <Route path="/view/:id" element={<Portfolio user={user} />} />
+        <Route path="/create" element={user ? <Create user={user} /> : <Navigate to="/Login" replace />} />
+        <Route path="/saved-templates" element={user ? <Dashboard user={user} /> : <Navigate to="/Login" replace />} />
+        <Route path="/Register" element={user ? <Navigate to="/saved-templates" replace /> : <Register setUser={setUser} />} />
+        <Route path="/Login" element={user ? <Navigate to="/saved-templates" replace /> : <Login setUser={setUser} />} />
+        <Route path="/" element={user ? <Navigate to="/saved-templates" replace /> : 
+          <>
+            <Hero />
+            <OurServices />
+            <AboutUs/>
+            <Footer />
+          </>} 
+        />
+      </Routes>
     </>
   );
 }

@@ -33,12 +33,13 @@ class User {
       throw new InvalidCredentialsError("Invalid Token")
   }
 }
-
+ 
   static generateAuthToken(user) {
     let payload = {
       id : user.id, 
       first_name : user.first_name,
-      email : user.email
+      email : user.email,
+      hosted_id : user.hosted_id
     }
     let token = jwt.sign(payload, secretKey, { expiresIn: "3d" })
     return token
@@ -87,6 +88,17 @@ class User {
       throw new InternalServerError("Error Creating User")
     }
   }
+
+  static async setHostedId(portfolio_id, user_id) {
+    try {
+        const result = await pool.query(
+            `UPDATE users SET hosted_id=$1 WHERE id=$2`,
+            [portfolio_id, user_id]
+        )
+    } catch (error) {
+        throw new InternalServerError("Failed to set hosted id")
+    }
+}
 
   static async delete(email){
     try {

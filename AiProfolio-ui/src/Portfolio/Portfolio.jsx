@@ -10,7 +10,7 @@ import Skills from "../Components/Skills/Skills"
 import Projects from "../Components/Projects/Projects"
 
 
-export default function Portfolio(){
+export default function Portfolio({user, isPublic=false}){
     const [resumeObj, setResumeObj] = useState(null)
     const [templateObj, setTemplateObj] = useState(null)
     const [images, setImages] = useState(null)
@@ -30,7 +30,7 @@ export default function Portfolio(){
 
   async function fetchPortfolio() {
     try {
-        const res = await axios.get(`http://localhost:3001/product/fetch/${id}`, { withCredentials: true });
+        const res = isPublic ? await axios.get(`http://localhost:3001/public/${id}`) : await axios.get(`http://localhost:3001/product/fetch/${id}`, { withCredentials: true });
         setImages(res?.data?.images);
         setResumeObj(res?.data?.resume);
         setTemplateObj(res?.data?.template);

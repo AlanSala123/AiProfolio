@@ -6,11 +6,16 @@ import { useNavigate} from "react-router-dom";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
-const Dashboard = () => {
+
+const Dashboard = ({user}) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [portfolios, setPortfolios] = useState([]);
+  const [hostedId, setHostedId] = useState(null);
 
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -23,12 +28,26 @@ const Dashboard = () => {
         const res = await axios.get("http://localhost:3001/product/fetchAll", {
           withCredentials: true,
         });
-        setPortfolios(res?.data)
+        setPortfolios(res?.data?.portfolios)
+        setHostedId(res?.data?.hosted?.hosted_id)
       } catch (error) {
       }
     };
     fetchAllPortfolios();
   }, []);
+
+  async function setHosted(id){
+    try {
+      const res = await axios.post(`http://localhost:3001/product/host`,{
+        idToHost:id
+      } ,{
+        withCredentials: true,
+      });
+      setHostedId(res?.data?.hostedId)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
   }, [portfolios]);
@@ -37,10 +56,41 @@ const Dashboard = () => {
     try {
       await axios.delete(`http://localhost:3001/product/portfolio/${id}`, { withCredentials: true });
       setPortfolios(prevPortfolios => prevPortfolios.filter(portfolio => portfolio.id !== id));
+      toast.success('Deleted Portfolio!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+        
+      });
     } catch (error) {
       console.error(error);
     }
   }; 
+
+  async function copyToClipboard() {
+    try {
+      var copyText = `http://localhost:5173/public/${user?.id}`;
+      await navigator.clipboard.writeText(copyText);
+      toast.success('Copied To Clipboard!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+        
+      });
+     
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  }
+  
 
   return (
     <>
@@ -120,16 +170,25 @@ const Dashboard = () => {
             />
     <div className="MainContainer">
       <div className="dashboard">
+        
         <div className="header">
           <h1>Portfolio Dashboard</h1>
         </div>
+
+        <ToastContainer />
+
+
+        {hostedId && <button  id="hostedCopyButton" onClick={copyToClipboard}>
+          Copy Public Url
+        </button> }
+
         <div className="card-container">
           {portfolios.map((portfolio) => (
             <div key={portfolio.id} className="card"
               style={{background: JSON.parse(portfolio?.template_code)?.header?.background?.background}}
               onClick={() => navigate(`/view/${portfolio.id}`)}
             >
-              <RiFile2Line className="file-icon" color="#5cab72" />
+              
               <h2
                 style={{color: JSON.parse(portfolio?.template_code)?.header?.title?.color}}
               >
@@ -140,7 +199,7 @@ const Dashboard = () => {
               >
                 {JSON.parse(portfolio.resume_data).jobAspiration}
               </h2>
-              <button
+              {!(hostedId === portfolio.id) && <button
                 className="deleteButton"
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent the click event from triggering the onClick of the parent div
@@ -148,6 +207,16 @@ const Dashboard = () => {
                 }}
               >
                 Delete
+              </button>}
+              <button 
+              className="hostButton"
+              disabled={hostedId === portfolio.id}
+              onClick={(e)=>{
+                setHostedId(portfolio.id)
+                setHosted(portfolio.id)
+                e.stopPropagation()
+              }}>
+                {hostedId === portfolio.id ? "Hosting" : "Host"}
               </button>
             </div>
           ))}
