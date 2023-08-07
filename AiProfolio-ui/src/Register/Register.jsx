@@ -33,7 +33,7 @@ export default function Register({ setUser }) {
         setError(null);
         setLoading(true);
         try {
-            const res = await axios.post("http://localhost:3001/auth/register", {
+            const res = await axios.post("https://aiprofolio-api.onrender.com/auth/register", {
                 first_name: form.firstName,
                 email: form.email,
                 password: form.password,

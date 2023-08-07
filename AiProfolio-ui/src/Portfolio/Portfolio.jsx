@@ -30,7 +30,7 @@ export default function Portfolio({user, isPublic=false}){
 
   async function fetchPortfolio() {
     try {
-        const res = isPublic ? await axios.get(`http://localhost:3001/public/${id}`) : await axios.get(`http://localhost:3001/product/fetch/${id}`, { withCredentials: true });
+        const res = isPublic ? await axios.get(`https://aiprofolio-api.onrender.com/public/${id}`) : await axios.get(`https://aiprofolio-api.onrender.com/product/fetch/${id}`, { withCredentials: true });
         setImages(res?.data?.images);
         setResumeObj(res?.data?.resume);
         setTemplateObj(res?.data?.template);
