@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan")
 
+const functions = require('firebase-functions');
+
 const app = express();
 const authRouter = require('./routes/auth.js');
 const productRouter = require('./routes/product.js')
@@ -40,5 +42,12 @@ app.use(function (req, res, next) {
   
   /** Generic error handler; anything unhandled goes here. */
 
+
+
+exports.api = functions.https.onRequest(app);
+
+exports.myFunction = functions.https.onRequest((request, response) => {
+  console.log("Hello from Firebase!");
+});
 
 module.exports = app
