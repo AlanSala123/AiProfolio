@@ -8,6 +8,7 @@
   height: 100vh;
   position: relative;
   z-index: 2;
+  margin-top: 10px;
 }
 
 .section-title {
@@ -72,7 +73,6 @@
   font-family: outfit;
 }
 
-/* Media query for mobile devices */
 @media (max-width: 768px) {
   .section-title {
     font-size: 30px;
@@ -83,37 +83,38 @@
   }
 
   .services-container {
-    flex-direction: column; /* Display cards in a column on smaller screens */
-    align-items: center; /* Center the cards horizontally */
-    gap: 10px; /* Reduce the spacing between the cards */
-    max-width: 100%; /* Ensure the cards take up the full width */
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+    max-width: 100%; 
+    height: fit-content;
   }
 
   .service {
-    flex-basis: 100%; /* Make each card take up the full width */
-    margin: 8px; /* Reduce the margin around each card */
-    padding:18px; /* Further reduce the padding for each card */
+    flex-basis: 100%; 
+    margin: 10px;
+    padding: 8px;
     box-shadow: none;
     border: 2px solid #5CAB72;
   }
 
   .service:hover {
-    scale: 1; /* Set the scale back to 1 to disable the hover scaling */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 16px 32px rgba(0, 0, 0, 0.2); /* Use the original box-shadow for the hover state */
-    transition: none; /* Remove the hover transition effect */
-    cursor: auto; /* Remove the hover cursor */
+    scale: 1; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 16px 32px rgba(0, 0, 0, 0.2); 
+    transition: none; 
+    cursor: auto; 
     box-shadow: none;
   }
 
   .service svg {
-    height: 60px; /* Reduce the height of the service icon on smaller screens */
+    height: 60px;
   }
 
   .service-heading {
-    font-size: 20px; /* Reduced font size for service heading */
+    font-size: 20px; 
   }
 
   .service-p {
-    font-size: 14px; /* Reduced font size for service description */
+    font-size: 14px; 
   }
 }
