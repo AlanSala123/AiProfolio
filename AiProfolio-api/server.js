@@ -17,7 +17,7 @@ app.use(morgan("tiny"))
 
 const corsOptions = {
   origin: [
-    "aiprofolio.com"
+    "https://aiprofolio.com"
   ],
   credentials: true,
 };
