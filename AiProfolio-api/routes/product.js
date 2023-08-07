@@ -106,7 +106,21 @@ productRouter.get('/fetchAll', async (req, res)=>{
     res.send(portfolios)
 
   } catch (error) {
+    console.log(error)
   }
 })
+
+productRouter.delete('/portfolio/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = req.user;
+
+    await Portfolio.deletePortfolio(id, user.id);
+
+    res.status(200).send({ message: `Portfolio ${id} deleted successfully.` });
+  } catch (error) {
+    res.status(500).send({ error: 'Error deleting portfolio.' });
+  }
+});
 
 module.exports = productRouter

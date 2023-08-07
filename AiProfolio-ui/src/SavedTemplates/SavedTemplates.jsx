@@ -1,14 +1,21 @@
 // Dashboard.js
-import React, { useState, useEffect } from "react";
-import "./SavedTemplates.css"; // Make sure to create this CSS file for styling
-import { RiFile2Line } from "react-icons/ri"; // Import the file icon from react-icons library
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import "./SavedTemplates.css"; 
+import { RiFile2Line } from "react-icons/ri"; 
+import { useNavigate} from "react-router-dom";
+import Particles from "react-particles";
+import { loadSlim } from "tsparticles-slim";
 import axios from "axios";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [portfolios, setPortfolios] = useState([]);
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadSlim(engine);
+  }, []);
+  const particlesLoaded = useCallback(async (container) => { }, []);
 
   useEffect(() => {
     const fetchAllPortfolios = async () => {
@@ -36,6 +43,81 @@ const Dashboard = () => {
   }; 
 
   return (
+    <>
+    <Particles
+                id="tsparticles"
+                init={particlesInit}
+                loaded={particlesLoaded}
+                options={{
+                    background: {
+                        color: {
+                            value: "#383838",
+                        },
+                    },
+                    fpsLimit: 60,
+                    interactivity: {
+                        events: {
+                            onClick: {
+                                enable: true,
+                                mode: "push",
+                            },
+                            onHover: {
+                                enable: true,
+                                mode: "repulse",
+                            },
+                            resize: true,
+                        },
+                        modes: {
+                            push: {
+                                quantity: 2,
+                            },
+                            repulse: {
+                                distance: 100,
+                                duration: 0.4,
+                            },
+                        },
+                    },
+                    particles: {
+                        color: {
+                            value: "#4d935d",
+                        },
+                        links: {
+                            color: "#4d935d",
+                            distance: 150,
+                            enable: true,
+                            opacity: 0.5,
+                            width: 1,
+                        },
+                        move: {
+                            direction: "none",
+                            enable: true,
+                            outModes: {
+                                default: "bounce",
+                            },
+                            random: false,
+                            speed: 1,
+                            straight: false,
+                        },
+                        number: {
+                            density: {
+                                enable: true,
+                                area: 800,
+                            },
+                            value: 80,
+                        },
+                        opacity: {
+                            value: 0.5,
+                        },
+                        shape: {
+                            type: "circle",
+                        },
+                        size: {
+                            value: { min: 1, max: 5 },
+                        },
+                    },
+                    detectRetina: true,
+                }}
+            />
     <div className="MainContainer">
       <div className="dashboard">
         <div className="header">
@@ -59,6 +141,7 @@ const Dashboard = () => {
                 {JSON.parse(portfolio.resume_data).jobAspiration}
               </h2>
               <button
+                className="deleteButton"
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent the click event from triggering the onClick of the parent div
                   deletePortfolio(portfolio.id);
@@ -79,6 +162,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
