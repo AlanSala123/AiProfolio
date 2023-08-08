@@ -19,6 +19,42 @@ const Create = ({ user }) => {
  
   const navigate = useNavigate();
 
+  const hasValidImages = images.some((imageObj) => imageObj.label !== "");
+
+  const shouldShowSubmitButton = () => {
+    if (resume && images.length > 0) {
+      return hasValidImages;
+    } else if (resume && images.length === 0) {
+      return true;
+    }
+    return false;
+  };
+
+  const showMissingInfoToast = () => {
+    if (!resume) {
+      toast.error("Please upload a resume.", { 
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+    }
+    if (images.length > 0 && !hasValidImages) {
+      toast.error("Please provide labels for all images.", { 
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+    }
+  };
+
  
   async function submitResume(e) {
     e.preventDefault();
@@ -236,9 +272,22 @@ const Create = ({ user }) => {
             ))}
           </ul>
         </section>
-        <button id="submit-resume-button" onClick={submitResume}>
-          Submit Resume
-        </button>
+
+        {shouldShowSubmitButton() && (
+          <button
+            id="submit-resume-button"
+            onClick={() => {
+              if (shouldShowSubmitButton()) {
+                submitResume();
+              } else {
+                showMissingInfoToast();
+              }
+            }}
+          >
+            Submit Resume
+          </button>
+        )}
+
       </form>
     );
   } else {
