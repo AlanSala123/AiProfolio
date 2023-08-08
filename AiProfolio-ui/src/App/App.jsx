@@ -41,17 +41,21 @@ function App() {
     };
     fetchUser();
   }, []);
-
+  
   async function handleLogout() {
     try {
       await axios.post('https://aiprofolio-api.onrender.com/auth/logout', {}, { withCredentials: true })
       setUser(null);
       if (!location.pathname.startsWith("/public/")){
-        navigate('/');
+        // Only navigate if the user is logged out and not on a /public/ route
+        if (location.pathname !== '/') {
+          navigate('/');
+        }
       }
     } catch (error) {
     }
   }
+  
 
   return (
     <>

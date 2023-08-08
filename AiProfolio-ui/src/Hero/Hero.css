@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
 
-#particles-js{
+#particles-js {
     z-index: inherit;
 }
 
-#hero{
+#hero {
     height: 100vh;
     width: 100vw;
-    font-family: "Outfit" ;
+    font-family: "Outfit";
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@
 
 #hero-title {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 25vh;
@@ -30,22 +30,22 @@
 
 #hero-title h1,
 #hero-title p {
-    display: inline; 
+    display: inline;
     position: relative;
     z-index: 10;
 }
 
 #hero-title h1:first-child {
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
-#hero-title h1{
+#hero-title h1 {
     font-size: 7.5rem;
     color: white;
     margin: 0;
 }
 
-#hero-title p{
+#hero-title p {
     font-size: 2.5rem;
     color: rgb(183, 183, 183);
     margin: 0 auto;
@@ -59,7 +59,7 @@
     max-width: 95%;
 }
 
-#hero-title #hero-ai{
+#hero-title #hero-ai {
     color: #4d935d;
 }
 
@@ -79,41 +79,57 @@
     transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
   }
 
-  .get-started-button:hover{
+.get-started-button:hover {
     cursor: pointer;
     background-color: #fff;
-    color: #333;
     text-shadow: none;
+    color: #333;
   }
   
 @keyframes appear {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes typing {
-    from {width: 0}
-    to {width: 100%;}
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
 @keyframes blink {
-    from, to {border-color: transparent;}
-    50%{ border-color: white;}
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
 }
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
     #hero-title h1 {
-      font-size: 3rem;
+        font-size: 3rem;
     }
-  
+
     #hero-title p {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
-  
+
     .get-started-button {
-      font-size: 1rem;
-      padding: 10px 20px;
+        font-size: 1rem;
+        padding: 10px 20px;
     }
-  }
-  
+}

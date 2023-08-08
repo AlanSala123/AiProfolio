@@ -13,7 +13,7 @@ export default function LandingNavbar({ user, handleLogout }) {
           <span>Profolio</span>
         </Link>
       </div> : <div className="navbar-left">
-        <Link to="/#hero" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <span className="Ai">Ai</span>
           <span>Profolio</span>
         </Link>
