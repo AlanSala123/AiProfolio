@@ -27,6 +27,26 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+    let userObject = jwt_decode(response.credential);
+    console.log(userObject)
+    setUser(userObject)
+  }
+
+  useEffect(() => {
+    /*global google */
+    google.accounts.id.initialize({
+      client_id: "10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    })
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      {theme: "outline", size: "large"}
+    )
+  }, []);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
