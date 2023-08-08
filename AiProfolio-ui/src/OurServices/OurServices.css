@@ -79,6 +79,8 @@
   color: black;
   margin-bottom: 10px;
   font-family: outfit;
+  max-width: 90%;
+  text-align: center;
 }
 
 .service-p {
@@ -93,7 +95,7 @@
   }
 
   .section-heading {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .services-container {
