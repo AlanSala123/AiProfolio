@@ -27,13 +27,6 @@
   row-gap: 20px;
 }
 
-.user-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
-  margin-right: 700px;
-}
-
 .registerForm input {
   max-width: 300px;
 }
