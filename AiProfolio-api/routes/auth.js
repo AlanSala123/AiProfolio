@@ -26,7 +26,7 @@ const authMiddleware = (req, res, next) => {
 authRouter.post('/register', async (req, res)=>{
     try {
         const {user, token} = await User.register(req.body)
-        res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'lax'})
+        res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'lax'})
         res.send({user: user})
     } catch (error) {
         res.status(Number(error.errorCode) || 400).send({error: error.message})
@@ -36,7 +36,7 @@ authRouter.post('/register', async (req, res)=>{
 authRouter.post('/login', async (req, res)=>{
     try {
         const {user, newToken} = await User.login(req.body)
-        res.cookie('token', newToken, { httpOnly: true, secure: true, sameSite: 'lax' });
+        res.cookie('token', newToken, { httpOnly: true, secure: false, sameSite: 'lax' });
         res.send({user: user})
     } catch (error) {
         res.status(Number(error.errorCode) || 400).send({error: error.message})
