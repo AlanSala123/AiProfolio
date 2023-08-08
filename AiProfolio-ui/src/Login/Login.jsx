@@ -43,7 +43,7 @@ export default function Login({ setUser }) {
       }, {
         withCredentials: true,
       });
-      const user = response.data;
+      const user = response.data.user;
       setUser(user);
       navigate("/saved-templates");
     } catch (error) {
