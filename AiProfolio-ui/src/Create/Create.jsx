@@ -30,32 +30,6 @@ const Create = ({ user }) => {
     return false;
   };
 
-  const showMissingInfoToast = () => {
-    if (!resume) {
-      toast.error("Please upload a resume.", { 
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined
-      });
-    }
-    if (images.length > 0 && !hasValidImages) {
-      toast.error("Please provide labels for all images.", { 
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined
-      });
-    }
-  };
-
- 
   async function submitResume(e) {
     e.preventDefault();
     if (resume) {
@@ -188,7 +162,7 @@ const Create = ({ user }) => {
             {isDragActive ? (
               <p>Drop The Files Here ...</p>
             ) : (
-              <p>Drag & Drop Files Here, Or Click To Select Files</p>
+              <p>Upload Your Resume And Images</p>
             )}
           </div>
         </div>
@@ -237,7 +211,7 @@ const Create = ({ user }) => {
               </button>
             </div>
           ) : (
-            <>Please upload a resume</>
+            <p style={{fontSize: "15px"}}>Please upload a resume</p>
           )}
           <h3 className="accepted-title">Accepted Images</h3>
           <ul className="file-list">
@@ -249,6 +223,9 @@ const Create = ({ user }) => {
                   alt={imageObj.file.name}
                   className="file-image"
                 />
+                {
+                  !imageObj.label ? <p style={{color: "red"}}> Must Have A Label </p> : <></>
+                }
                 <select
                   value={imageObj.label}
                   onChange={(e) => handleLabelChange(e, index)}
@@ -272,22 +249,11 @@ const Create = ({ user }) => {
             ))}
           </ul>
         </section>
-
         {shouldShowSubmitButton() && (
-          <button
-            id="submit-resume-button"
-            onClick={() => {
-              if (shouldShowSubmitButton()) {
-                submitResume();
-              } else {
-                showMissingInfoToast();
-              }
-            }}
-          >
+          <button id="submit-resume-button" onClick={submitResume}>
             Submit Resume
           </button>
         )}
-
       </form>
     );
   } else {
