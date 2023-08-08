@@ -60,6 +60,8 @@ function App() {
     };
     fetchUser();
   }, []);
+
+  console.log("User: ", user)
   
   async function handleLogout() {
     try {
