@@ -129,80 +129,78 @@ export default function Login({ setUser }) {
         detectRetina: true,
       }}
     />
-      <div className="login-container">
+     <div id="login">
+     <div className="login-container">
 
-        <div className="login-left">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/248/248928.png"
-            alt="User Icon"
-            className="user-icon"
-          />
-          <div className="title"><h3>Login</h3></div>
-          <p>Welcome to AiProfolio. Please log in to continue.</p>
-          <div id="signInDiv">
-          <button className="Google">Continue with Google</button>
-          </div>
-          <div className="separator">
-            <div className="line"></div>
-            <span>Or</span>
-            <div className="line"></div>
-          </div>
+<div className="login-left">
+
+  <div className="title"><h3>Login</h3></div>
+  <p>Welcome to <p style={{fontWeight: "600", display: "inline"}}><p style={{color: "#5CAB72", display: "inline"}}>Ai</p>Profolio</p>. <br />  Please login to continue.</p>
+  <div id="signInDiv">
+  <button className="Google">Continue with Google</button>
+  </div>
+  <div className="separator">
+    <div className="line"></div>
+    <span>Or</span>
+    <div className="line"></div>
+  </div>
 
 
-          {error ? (
-            <h2
-              id={
-                error.length >= 22
-                  ? error.length > 43
-                    ? "error-message-long"
-                    : "error-message"
-                  : error.length <= 15 ? "error-message-shortest" : "error-message-short"
-              }
-            >
-              {error}
-            </h2>
-          ) : null}
-          <form onSubmit={handleLogin} className="loginForm">
-            <label>
-              <input
-                type="email"
-                value={email}
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </label>
-            <br />
-            <label>
-              <input
-                type="password"
-                value={password}
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
-            <br />
-            {
-              loading ? <ReactLoading
-                type="spin"
-                color="#fff"
-                height={50}
-                width={50}
-                className="loading-icon"
-              /> : <button
-                type="submit"
-                className="loginButton"
-                disabled={isLoginButtonDisabled}
-                style={loginButtonStyles}
-              >
-                Login
-              </button>
-            }
-          </form>
+  {error ? (
+    <h2
+      id={
+        error.length >= 22
+          ? error.length > 43
+            ? "error-message-long"
+            : "error-message"
+          : error.length <= 15 ? "error-message-shortest" : "error-message-short"
+      }
+    >
+      {error}
+    </h2>
+  ) : null}
+  <form onSubmit={handleLogin} className="loginForm">
 
-        </div>
-        <div className="login-right" />
-      </div></>
+      <input
+        type="email"
+        value={email}
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+
+   
+
+      <input
+        type="password"
+        value={password}
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
+    {
+      loading ? <ReactLoading
+        type="spin"
+        color="#fff"
+        height={50}
+        width={50}
+        className="loading-icon"
+      /> : <button
+        type="submit"
+        className="loginButton"
+        disabled={isLoginButtonDisabled}
+        style={loginButtonStyles}
+      >
+        Login
+      </button>
+    }
+  </form>
+
+</div>
+
+</div>
+     </div>
+      </>
   );
 }
