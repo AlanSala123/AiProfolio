@@ -7,7 +7,12 @@ function AboutMe({ about, data, images }) {
         const profilePicture = images.find((image) => image.label === 'profile picture');
         if (profilePicture) {
             const buffer = profilePicture.serialized.data;
-            const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+            const uint8Array = new Uint8Array(buffer);
+            let binaryString = '';
+            uint8Array.forEach(byte => {
+                binaryString += String.fromCharCode(byte);
+            });
+            const base64String = btoa(binaryString);
             return `data:${profilePicture.mimetype};base64,${base64String}`;
         }
         return null;

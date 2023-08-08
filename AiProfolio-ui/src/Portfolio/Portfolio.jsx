@@ -45,7 +45,7 @@ export default function Portfolio({user, isPublic=false}){
         return(
             <>
                 <Navbar navbar={templateObj?.navbar} data={resumeObj}/>
-                <Header header={templateObj?.header} data={resumeObj}/>
+                <Header header={templateObj?.header} data={resumeObj} images={images}/>
                 <AboutMe about={templateObj?.about} data={resumeObj} images={images}/>
                 <Education education={templateObj?.education} educationData={resumeObj?.education}/>
                 <Experience experiences={templateObj?.experiences} experienceList={resumeObj?.experiences}/>
