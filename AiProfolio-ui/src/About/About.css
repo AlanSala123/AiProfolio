@@ -9,14 +9,12 @@
   color: #fff; 
   margin: 0; 
   padding: 10px; 
-  background-color: #161623; 
-  border-radius: 10px; 
   position: absolute;
-  top: 130px; 
+  top: 15vh; 
   left: 50%;
   transform: translateX(-50%); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   font-family: outfit;
+  text-align: center;
 }
 
 .bod section::before{
@@ -47,8 +45,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  height: 110vh;
+  flex-wrap: nowrap;
+  height: 100vh;
+  padding-top: 5vh;
 }
 
 .container .card {
@@ -146,21 +145,34 @@
 @media (max-width: 768px) {
   #team {
     font-size: 40px;
-    padding: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    top: 2.5vh;
+
   }
 
   .container {
     height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    row-gap: 2.5vh;
+    padding-top: 5vh;
+    padding-bottom: 7.5vh;
   }
 
   .container .card {
-    width: 100px;
-    height: 250px;
-    margin: 10px;
+    width: 60%;
+    max-width: 900px;
+    min-width: 85px;
+    height: 200px;
+    margin: 0;
     box-shadow: none; 
     cursor: default; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .container .card .content {
@@ -180,6 +192,7 @@
   }
 
   .container .card .sci {
+    width: 100%;
     display: flex; /* Show the social icons by default on mobile */
     align-items: center;
     justify-content: center;
@@ -206,5 +219,13 @@
     font-size: 24px;
     color: white;
   }
+}
+
+.social_icon{
+  padding: 0;
+}
+
+.menu {
+  padding: 0;
 }
 
