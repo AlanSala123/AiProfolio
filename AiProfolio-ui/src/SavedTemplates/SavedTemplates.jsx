@@ -73,6 +73,7 @@ const Dashboard = ({user}) => {
 
   async function copyToClipboard() {
     try {
+      console.log(user)
       var copyText = `https://aiprofolio.com/public/${user?.id}`;
       await navigator.clipboard.writeText(copyText);
       toast.success('Copied To Clipboard!', {
