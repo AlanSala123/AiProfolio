@@ -6,6 +6,9 @@ import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import ReactLoading from 'react-loading';
 import jwt_decode from "jwt-decode"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
@@ -20,6 +23,13 @@ export default function Login({ setUser }) {
   const particlesLoaded = useCallback(async (container) => { }, []);
 
   const navigate = useNavigate();
+
+  const toastOptions = {
+    position: "top-center",
+    autoClose: false,
+    closeOnClick: true,
+    draggable: true,
+};
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -39,7 +49,7 @@ export default function Login({ setUser }) {
     } catch (error) {
       if (error?.response?.data?.error) {
         const message = error?.response?.data?.error;
-        setError(message);
+        toast.error(message,toastOptions)
         setLoading(false);
       }
     }
@@ -130,7 +140,9 @@ export default function Login({ setUser }) {
       }}
     />
      <div id="login">
+      <ToastContainer/>
      <div className="login-container">
+
 
 <div className="login-left">
 
@@ -145,20 +157,6 @@ export default function Login({ setUser }) {
     <div className="line"></div>
   </div>
 
-
-  {error ? (
-    <h2
-      id={
-        error.length >= 22
-          ? error.length > 43
-            ? "error-message-long"
-            : "error-message"
-          : error.length <= 15 ? "error-message-shortest" : "error-message-short"
-      }
-    >
-      {error}
-    </h2>
-  ) : null}
   <form onSubmit={handleLogin} className="loginForm">
 
       <input

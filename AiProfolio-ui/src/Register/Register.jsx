@@ -44,7 +44,7 @@ const toastOptions = {
 
     useEffect(() => {
         if (!hasShownToast.current) {
-            toast(passwordRequirementMessage, toastOptions);
+            toast.info(passwordRequirementMessage, toastOptions);
             hasShownToast.current = true; 
         }
     }, []);
@@ -78,7 +78,7 @@ const toastOptions = {
         } catch (err) {
             if (err?.response?.data?.error) {
                 const message = err?.response?.data?.error;
-                setError(message);
+                toast.error(message, toastOptions)
                 setLoading(false);
             }
         }
@@ -173,7 +173,6 @@ const toastOptions = {
             <ToastContainer />
 
             <div className="register-container">
-        
                 <div className="register-left">
                
                     <div className="title">
@@ -187,24 +186,7 @@ const toastOptions = {
                         <span>Or</span>
                         <div className="line"></div>
                     </div> */}
-                    {error ? (
-                        <h2
-                            style={{
-                                position: "absolute",
-                                zIndex: "999",
-                                marginTop: "42vh"
-                            }}
-                            id={
-                                error.length >= 22
-                                    ? error.length > 43
-                                        ? "error-message-long"
-                                        : "error-message"
-                                    : error.length <= 15 ? "error-message-shortest" : "error-message-short"
-                            }
-                        >
-                            {error}
-                        </h2>
-                    ) : null}
+                    
                     <form onSubmit={handleOnSubmit} className="registerForm">
                         <label htmlFor="firstName"></label>
                     
