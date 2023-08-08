@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export default function LandingNavbar({ user, handleLogout }) {
   return (
     <nav className="navbar">
+      <div id="navbar-content">
       {
         user ?  <div className="navbar-left">
         <Link to="/saved-templates" className="navbar-brand">
@@ -36,6 +37,7 @@ export default function LandingNavbar({ user, handleLogout }) {
           <Link to="/register" className="navbar-Register">Register</Link>
         </div>
       }
+      </div>
     </nav>
   )
 } 

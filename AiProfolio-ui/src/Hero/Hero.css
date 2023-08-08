@@ -24,6 +24,8 @@
     align-items: center;
     margin-bottom: 25vh;
     user-select: none;
+    width: 97.5%;
+    overflow-wrap: break-word;
 }
 
 #hero-title h1,
@@ -54,6 +56,7 @@
     animation:
         typing 3.5s steps(40, end),
         blink .75s step-end infinite;
+    max-width: 95%;
 }
 
 #hero-title #hero-ai {
@@ -72,18 +75,17 @@
     position: relative;
     z-index: 100;
     opacity: 0;
-    box-shadow: 0px 4px 8px #ffffff;
     animation: appear 3s 1.5s forwards;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
+    transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+  }
 
 .get-started-button:hover {
     cursor: pointer;
     background-color: #fff;
     text-shadow: none;
     color: #333;
-}
-
+  }
+  
 @keyframes appear {
     from {
         opacity: 0;
