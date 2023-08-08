@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReactLoading from 'react-loading';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -254,8 +254,12 @@ const toastOptions = {
                             >
                                 Register
                             </button>
+                            
                         }
                     </form>
+                    <Link to="/login" className="login-link"> Already have an account? Login </Link>
+
+                    
                 </div>
                 
             </div>
