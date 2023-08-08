@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import ReactLoading from 'react-loading';
@@ -196,7 +196,8 @@ export default function Login({ setUser }) {
       </button>
     }
   </form>
-
+ {/* <Link to="/forgot-password" className="forgotPassword">Forgot Password?</Link> */}
+ <Link to="/register" className="signupLink">Don't have an account? Sign up</Link>
 </div>
 
 </div>

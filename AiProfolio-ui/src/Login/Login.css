@@ -149,7 +149,13 @@
   margin-top: 2vh;
   transition: background-color 0.3s ease;
 }
+.signupLink{
+  text-decoration: none;
+  color: #5CAB72;
+  margin-top: 3vh;
+  font-size: 20px;
 
+}
 .loginButton:hover {
   background-color: #4d935d;
 }
