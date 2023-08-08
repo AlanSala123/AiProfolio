@@ -211,7 +211,7 @@ const Create = ({ user }) => {
               </button>
             </div>
           ) : (
-            <p style={{fontSize: "15px"}}>Please upload a resume</p>
+            <p style={{fontSize: "15px", color: "red", fontFamily: "outfit"}}>Please upload a resume</p>
           )}
           <h3 className="accepted-title">Accepted Images</h3>
           <ul className="file-list">
@@ -224,7 +224,7 @@ const Create = ({ user }) => {
                   className="file-image"
                 />
                 {
-                  !imageObj.label ? <p style={{color: "red"}}> Must Have A Label </p> : <></>
+                  !imageObj.label ? <p style={{color: "red", fontFamily: "outfit", paddingTop:"10px", paddingBottom:"10px"}}> Must Have A Label </p> : <></>
                 }
                 <select
                   value={imageObj.label}
