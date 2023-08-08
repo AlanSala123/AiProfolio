@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import ReactLoading from 'react-loading';
+import jwt_decode from "jwt-decode"
 
 export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
@@ -138,7 +139,9 @@ export default function Login({ setUser }) {
           />
           <div className="title"><h3>Login</h3></div>
           <p>Welcome to AiProfolio. Please log in to continue.</p>
-          <button className="Google">Continue with Google</button>
+          <div id="signInDiv">
+          {/* <button className="Google">Continue with Google</button> */}
+          </div>
           <div className="separator">
             <div className="line"></div>
             <span>Or</span>
