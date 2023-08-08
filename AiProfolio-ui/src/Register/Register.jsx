@@ -1,7 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from 'react-loading';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 // Internal dependencies
 import Particles from "react-particles";
@@ -17,6 +20,35 @@ export default function Register({ setUser }) {
         email: "",
         password: "",
     });
+
+    const passwordRequirementMessage =(
+        <div>
+          Password must contain at least:
+          <ul>
+            <li>8 characters</li>
+            <li>1 uppercase letter</li>
+            <li>1 lowercase letter</li>
+            <li>1 number</li>
+          </ul>
+        </div>
+      );;
+
+const toastOptions = {
+    position: "top-center",
+    autoClose: false,
+    closeOnClick: true,
+    draggable: true,
+};
+
+    const hasShownToast = useRef(false);
+
+    useEffect(() => {
+        if (!hasShownToast.current) {
+            toast(passwordRequirementMessage, toastOptions);
+            hasShownToast.current = true; 
+        }
+    }, []);
+
 
     // Particles configuration
     const particlesInit = useCallback(async (engine) => {
@@ -137,23 +169,24 @@ export default function Register({ setUser }) {
                     detectRetina: true,
                 }}
             />
+            <div id="register">
+            <ToastContainer />
+
             <div className="register-container">
+        
                 <div className="register-left">
-                    <img
-                        src="https://cdn-icons-png.flaticon.com/512/248/248928.png"
-                        alt="User Icon"
-                        className="user-icon"
-                    />
+               
                     <div className="title">
+                        
                         <h3>Register</h3>
                     </div>
-                    <p>Welcome to AiProfolio. Please register to continue.</p>
-                    <button className="GoogleButton">Continue with Google</button>
+                    <p>Welcome to <p style={{fontWeight: "600", display: "inline"}}><p style={{color: "#5CAB72", display: "inline"}}>Ai</p>Profolio</p>. <br />  Please register to continue.</p>
+                    {/* <button className="GoogleButton">Continue with Google</button>
                     <div className="separator">
                         <div className="line"></div>
                         <span>Or</span>
                         <div className="line"></div>
-                    </div>
+                    </div> */}
                     {error ? (
                         <h2
                             style={{
@@ -174,7 +207,7 @@ export default function Register({ setUser }) {
                     ) : null}
                     <form onSubmit={handleOnSubmit} className="registerForm">
                         <label htmlFor="firstName"></label>
-                        <br />
+                    
                         <input
                             type="text"
                             placeholder="First Name"
@@ -183,9 +216,9 @@ export default function Register({ setUser }) {
                             value={form.firstName}
                             onChange={handleOnInputChange}
                         />
-                        <br />
+                        
                         <label htmlFor="email"></label>
-                        <br />
+                 
                         <input
                             type="email"
                             placeholder="Email"
@@ -194,9 +227,9 @@ export default function Register({ setUser }) {
                             value={form.email}
                             onChange={handleOnInputChange}
                         />
-                        <br />
+       
                         <label htmlFor="password"></label>
-                        <br />
+         
                         <input
                             type="password"
                             placeholder="Password"
@@ -205,17 +238,7 @@ export default function Register({ setUser }) {
                             value={form.password}
                             onChange={handleOnInputChange}
                         />
-                        <br />
-                        <div className="password-requirements">
-                            <h4>Password must:</h4>
-                            <ul>
-                                <li>Have at least one uppercase character</li>
-                                <li>Have at least one lowercase character</li>
-                                <li>Have at least one number</li>
-                                <li>Be 8 characters long</li>
-                            </ul>
-                        </div>
-                        <br />
+         
                         {
                             loading ? <ReactLoading
                                 type="spin"
@@ -234,7 +257,9 @@ export default function Register({ setUser }) {
                         }
                     </form>
                 </div>
-                <div className="register-right" />
+                
+            </div>
+
             </div>
         </>
     );
