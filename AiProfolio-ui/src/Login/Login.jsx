@@ -140,7 +140,7 @@ export default function Login({ setUser }) {
           <div className="title"><h3>Login</h3></div>
           <p>Welcome to AiProfolio. Please log in to continue.</p>
           <div id="signInDiv">
-          {/* <button className="Google">Continue with Google</button> */}
+          <button className="Google">Continue with Google</button>
           </div>
           <div className="separator">
             <div className="line"></div>
