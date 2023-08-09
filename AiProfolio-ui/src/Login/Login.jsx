@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import {GoogleOAuthProvider, GoogleLogin} from '@react-oauth/google';
+import { gapi } from "gapi-script";
 
 export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
@@ -55,6 +56,18 @@ export default function Login({ setUser }) {
       }
     }
   };
+
+  const initializeGapi = () => {
+    gapi.client.init({
+      clientId: "10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com",
+      scope: "",
+    });
+  };
+  
+  useEffect(() =>{
+    // load and init google api scripts
+    gapi.load("client:auth2", initializeGapi);
+  })
 
   const isLoginButtonDisabled = !(email && password);
   const loginButtonStyles = {
