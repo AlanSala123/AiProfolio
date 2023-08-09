@@ -394,6 +394,7 @@ class Generator {
           fontWeight: itemDateFontWeight,
           textAlign: this.getRandomElementFromArray(['center', 'flex-start']),
           width: "95%",
+          padding: "2vh",
         },
       },
     };
@@ -562,7 +563,7 @@ class Generator {
         },
         itemTechnologies: {
             color: itemTechnologiesFontColor,
-            fontSize: this.generateStyle(14, 16, "px"),
+            fontSize: this.generateStyle(18, 24, "px"),
             fontFamily: itemTechnologiesFontFamily,
             fontWeight: itemTechnologiesFontWeight,
             textAlign: this.getRandomElementFromArray(['center', 'flex-start']),
