@@ -60,7 +60,7 @@
 }
 
 .preview-title {
-  font-size: calc(20px + 0.5vw);
+  font-size: 32px;
   font-weight: bold;
   color: #333;
 }
@@ -99,14 +99,8 @@
   justify-content: center;
 }
 
-.file-name {
-  background-color: #4d935d;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  display: inline-block;
-  order:1;
-  margin-right: 20px;
+.file-list select{
+  width: fit-content;
 }
 
 .file-item {
@@ -165,7 +159,7 @@
 
 .accepted-title,
 .rejected-title {
-  font-size: 22px;
+  font-size: 32px;
   font-weight: bold;
   margin-top: 20px;
   color: #333;
