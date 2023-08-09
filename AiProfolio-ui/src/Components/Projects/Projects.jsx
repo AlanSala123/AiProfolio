@@ -46,7 +46,7 @@ function Projects({ projects, projectList }) {
                             <p
                                 style={projects?.itemTechnologies}
                             >
-                                Technologies used: {project?.technologies}
+                                {project?.technologies}
                             </p>
                         </div>
                     ))}
