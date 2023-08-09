@@ -10,13 +10,13 @@ import { ToastContainer } from 'react-toastify';
 
 
 const Create = ({ user }) => {
- 
+
   const [resume, setResume] = useState(null);
   const [images, setImages] = useState([]);
   const [rejected, setRejected] = useState([]);
   const [loading, setLoading] = useState(false);
 
- 
+
   const navigate = useNavigate();
 
   const hasValidImages = images.some((imageObj) => imageObj.label !== "");
@@ -37,7 +37,7 @@ const Create = ({ user }) => {
         // Prepare form data
         const formData = new FormData();
 
-        
+
         if (resume) {
           formData.append("resume", resume);
         }
@@ -46,7 +46,7 @@ const Create = ({ user }) => {
           formData.append(`labels[${index}]`, imageObj.label);
         });
 
-        
+
         setLoading(true);
         const res = await axios.post(
           "https://aiprofolio-api.onrender.com/product/create",
@@ -54,7 +54,7 @@ const Create = ({ user }) => {
           { withCredentials: true }
         );
         setLoading(false);
-  
+
         navigate(`/view/${res?.data}`);
       } catch (error) {
         setLoading(false);
@@ -95,7 +95,7 @@ const Create = ({ user }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined
-        
+
       });
     }
     if (droppedImages.length) {
@@ -107,11 +107,11 @@ const Create = ({ user }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined
-        
+
       });
       setImages((previousFiles) => [...previousFiles, ...droppedImages]);
     }
-  
+
     if (rejectedFiles?.length) {
       setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
     }
@@ -186,6 +186,23 @@ const Create = ({ user }) => {
         {/* Preview section to show the accepted and rejected files */}
         <section className="preview-section">
           <div className="preview-heading">
+            
+            {resume ? (
+              <div className="resumeStatus">
+                <h3>Resume</h3>
+                <div className="file-name">{resume.name}</div>
+                <button
+                  type="button"
+                  className="remove-resume-button"
+                  onClick={removeResume}
+                >
+                  Remove
+                </button>
+              </div>
+            ) : (
+              <p style={{ fontSize: "15px", color: "red", fontFamily: "outfit" }}>Please upload a resume</p>
+            )}
+
             <h2 className="preview-title">Your Files</h2>
             {(resume ? 1 : 0) + images.length + rejected.length > 1 && (
               <button
@@ -211,7 +228,7 @@ const Create = ({ user }) => {
               </button>
             </div>
           ) : (
-            <p style={{fontSize: "15px", color: "red", fontFamily: "outfit"}}>Please upload a resume</p>
+            <p style={{ fontSize: "15px", color: "red", fontFamily: "outfit" }}>Please upload a resume</p>
           )}
           <h3 className="accepted-title">Accepted Images</h3>
           <ul className="file-list">
@@ -223,18 +240,18 @@ const Create = ({ user }) => {
                   className="file-image"
                 />
                 {
-                  !imageObj.label ? <p style={{color: "red", fontFamily: "outfit", paddingTop:"10px", paddingBottom:"10px"}}> Must Have A Label </p> : <></>
+                  !imageObj.label ? <p style={{ color: "red", fontFamily: "outfit", paddingTop: "10px", paddingBottom: "10px" }}> Must Have A Label </p> : <></>
                 }
                 <select
                   value={imageObj.label}
                   onChange={(e) => handleLabelChange(e, index)}
                 >
-                    <option value="">Select Label</option>
-                    <option value="profile picture">Profile Picture</option>
-                    <option value="background image">background image</option>
-                    <option value="school logo">School Logo</option>
-                    <option value="photograph">Photograph</option>
-                    <option value="company logo">Company Logo</option>
+                  <option value="">Select Label</option>
+                  <option value="profile picture">Profile Picture</option>
+                  <option value="background image">background image</option>
+                  <option value="school logo">School Logo</option>
+                  <option value="photograph">Photograph</option>
+                  <option value="company logo">Company Logo</option>
                 </select>
 
                 <button
