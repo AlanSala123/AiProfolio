@@ -57,14 +57,13 @@ export default function Login({ setUser }) {
     }
   };
 
-  const initializeGapi = () => {
-    gapi.client.init({
-      clientId: "10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com",
-      scope: "",
-    });
-  };
-  
   useEffect(() =>{
+    const initializeGapi = () => {
+      gapi.client.init({
+        client_Id: "10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com",
+        scope: "",
+      });
+    };
     // load and init google api scripts
     gapi.load("client:auth2", initializeGapi);
   })
@@ -163,7 +162,7 @@ export default function Login({ setUser }) {
   <div className="title"><h3>Login</h3></div>
   <p>Welcome to <p style={{fontWeight: "600", display: "inline"}}><p style={{color: "#5CAB72", display: "inline"}}>Ai</p>Profolio</p>. <br />  Please login to continue.</p>
   <div id="signInDiv">
-    <GoogleOAuthProvider clientId="10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com">
+    <GoogleOAuthProvider client_Id="10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com">
       <GoogleLogin
         onSuccess={credentialResponse => {
           let decoded = jwt_decode(credentialResponse.credential)
