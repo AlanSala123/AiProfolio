@@ -6,3 +6,8 @@
     margin-top: 0vh;
     border: 0%;
 }
+
+#header {
+    background-repeat: none;
+    background-size: cover;
+}
