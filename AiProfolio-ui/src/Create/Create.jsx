@@ -211,7 +211,7 @@ const Create = ({ user }) => {
               </button>
             </div>
           ) : (
-            <p style={{fontSize: "25px", color: "red", fontFamily: "outfit"}}>Please upload a resume</p>
+            <p style={{fontSize: "15px", color: "red", fontFamily: "outfit"}}>Please upload a resume</p>
           )}
           <h3 className="accepted-title">Accepted Images</h3>
           <ul className="file-list">
