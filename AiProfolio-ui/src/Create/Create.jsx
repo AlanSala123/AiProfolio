@@ -185,9 +185,7 @@ const Create = ({ user }) => {
 
         {/* Preview section to show the accepted and rejected files */}
         <section className="preview-section">
-          <div className="preview-heading">
-            
-            {resume ? (
+        {resume ? (
               <div className="resumeStatus">
                 <h3>Resume</h3>
                 <div className="file-name">{resume.name}</div>
@@ -202,7 +200,7 @@ const Create = ({ user }) => {
             ) : (
               <p style={{ fontSize: "15px", color: "red", fontFamily: "outfit" }}>Please upload a resume</p>
             )}
-
+          <div className="preview-heading">
             <h2 className="preview-title">Your Files</h2>
             {(resume ? 1 : 0) + images.length + rejected.length > 1 && (
               <button
@@ -233,9 +231,6 @@ const Create = ({ user }) => {
                   <option value="">Select Label</option>
                   <option value="profile picture">Profile Picture</option>
                   <option value="background image">background image</option>
-                  <option value="school logo">School Logo</option>
-                  <option value="photograph">Photograph</option>
-                  <option value="company logo">Company Logo</option>
                 </select>
 
                 <button
