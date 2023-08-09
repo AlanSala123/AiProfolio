@@ -21,7 +21,10 @@ function Header({header, data, images}){
     }, [images]);
 
     return (
-        <div id="header" style={{...header?.background, backgroundImage : backgroundImage ? `url(${backgroundImage})` : "", backgroundRepeat :"none", backgroundSize: "cover"}}>
+        <div id="header" style={{...header?.background, background : backgroundImage ? `linear-gradient(
+            rgba(0, 0, 0, 0.7), 
+            rgba(0, 0, 0, 0.7)
+          ), url(${backgroundImage})` : "", backgroundRepeat :"none", backgroundSize: "cover"}}>
             <h1 id="header-title" style={header?.title}> {data?.user?.name} </h1>
             <p id="header-subtitle" style={header?.subtitle}> {data?.jobAspiration} </p>
         </div> 
