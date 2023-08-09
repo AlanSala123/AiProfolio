@@ -25,8 +25,8 @@ function Header({header, data, images}){
             rgba(0, 0, 0, 0.7), 
             rgba(0, 0, 0, 0.7)
           ), url(${backgroundImage})` : "", backgroundRepeat :"none", backgroundSize: "cover"}}>
-            <h1 id="header-title" style={{...header?.title, textShadow : backgroundImage ? "#FFF 1px 0px 2px" : ""}}> {data?.user?.name} </h1>
-            <p id="header-subtitle" style={{...header?.subtitle, textShadow : backgroundImage ? "#FFF 1px 0px 2px" : ""}}> {data?.jobAspiration} </p>
+            <h1 id="header-title" style={{...header?.title, textShadow : backgroundImage ? "#FFF 0px 0px 2px" : ""}}> {data?.user?.name} </h1>
+            <p id="header-subtitle" style={{...header?.subtitle, textShadow : backgroundImage ? "#FFF 0px 0px 2px" : ""}}> {data?.jobAspiration} </p>
         </div> 
     )
 }
