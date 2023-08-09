@@ -172,8 +172,10 @@ export default function Login({ setUser }) {
         onError={() => {
           console.log("Login Failed")
         }}
-     />
+     />;
     </GoogleOAuthProvider>
+
+  <button className="Google">Continue with Google</button>
   </div>
   <div className="separator">
     <div className="line"></div>
