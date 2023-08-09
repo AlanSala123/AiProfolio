@@ -214,22 +214,6 @@ const Create = ({ user }) => {
               </button>
             )}
           </div>
-
-          {resume ? (
-            <div className="resumeStatus">
-              <h3>Resume</h3>
-              <div className="file-name">{resume.name}</div>
-              <button
-                type="button"
-                className="remove-resume-button"
-                onClick={removeResume}
-              >
-                Remove
-              </button>
-            </div>
-          ) : (
-            <p style={{ fontSize: "15px", color: "red", fontFamily: "outfit" }}>Please upload a resume</p>
-          )}
           <h3 className="accepted-title">Accepted Images</h3>
           <ul className="file-list">
             {images.map((imageObj, index) => (
