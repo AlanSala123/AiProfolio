@@ -161,7 +161,7 @@ export default function Login({ setUser }) {
 
   <div className="title"><h3>Login</h3></div>
   <p>Welcome to <p style={{fontWeight: "600", display: "inline"}}><p style={{color: "#5CAB72", display: "inline"}}>Ai</p>Profolio</p>. <br />  Please login to continue.</p>
-  <div id="signInDiv">
+  {/* <div id="signInDiv">
     <GoogleOAuthProvider client_Id="10044743293-9g3fvpge6cr85l61e953q65q2po580lj.apps.googleusercontent.com">
       <GoogleLogin
         onSuccess={credentialResponse => {
@@ -180,7 +180,7 @@ export default function Login({ setUser }) {
     <div className="line"></div>
     <span>Or</span>
     <div className="line"></div>
-  </div>
+  </div> */}
 
   <form onSubmit={handleLogin} className="loginForm">
 
