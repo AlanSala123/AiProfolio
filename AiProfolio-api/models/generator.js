@@ -7,7 +7,6 @@ class Generator {
       "Georgia",
       "Times New Roman",
       "Courier New",
-      "Brush Script MT",
       "Comic Sans MS",
       "Impact",
       "Lucida Sans Unicode",

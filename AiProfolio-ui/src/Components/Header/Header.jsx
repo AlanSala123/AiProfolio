@@ -8,7 +8,7 @@ function Header({header, data, images}){
     const backgroundImage = useMemo(() => {
         const backgroundImage = images.find((image) => image.label === "background image");
         if (backgroundImage) {
-            const buffer = backgroundImage.serialized.data;
+            const buffer = pako.inflate(backgroundImage.serialized.data);
             const uint8Array = new Uint8Array(buffer);
             let binaryString = '';
             uint8Array.forEach(byte => {
