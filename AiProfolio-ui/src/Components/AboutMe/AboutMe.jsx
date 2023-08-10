@@ -7,7 +7,7 @@ function AboutMe({ about, data, images }) {
     const profilePicture = useMemo(() => {
         const profilePicture = images.find((image) => image.label === 'profile picture');
         if (profilePicture) {
-            const buffer = pako.inflate(profilePic.serialized.data);
+            const buffer = pako.inflate(profilePicture.serialized.data);
             const uint8Array = new Uint8Array(buffer);
             let binaryString = '';
             uint8Array.forEach(byte => {
