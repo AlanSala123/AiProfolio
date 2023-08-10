@@ -1,4 +1,5 @@
 const pool = require("../config/database.js")
+const zlib = require('zlib');
 const {
   InvalidCredentialsError,
   NotFoundError,
@@ -24,13 +25,14 @@ class Image {
 
   static async insertImage({image, label}, portfolioId) {
     try {
+      const compressedBuffer = zlib.gzipSync(image.buffer);
       const result = await pool.query(
         `INSERT INTO images (id, portfolio_id, label, serialized, mimetype) 
          VALUES ($1, $2, $3, $4, $5)
          RETURNING *`,
 
         //Generating portfolio id 
-        [crypto.randomBytes(8).toString('hex'), portfolioId, label, image.buffer, image.mimetype]
+        [crypto.randomBytes(8).toString('hex'), portfolioId, label, compressedBuffer, image.mimetype]
       );
       return result.rows[0];
     } catch (error) {
