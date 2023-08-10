@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import './Header.css'
+import pako from 'pako';
 
 function Header({header, data, images}){
 
