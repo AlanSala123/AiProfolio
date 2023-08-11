@@ -1,14 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './AboutMe.css';
-import pako from 'pako';
+import decompress from 'brotli/decompress';
 
 function AboutMe({ about, data, images }) {
 
     const profilePicture = useMemo(() => {
         const profilePicture = images.find((image) => image.label === 'profile picture');
         if (profilePicture) {
-            const prebuffer = new Uint8Array(profilePicture.serialized.data)
-            const buffer = pako.inflate(prebuffer);
+            const buffer = profilePicture.serialized.data;
             const uint8Array = new Uint8Array(buffer);
             let binaryString = '';
             uint8Array.forEach(byte => {
